@@ -100,11 +100,6 @@
     <Content Include="Base\SysRole\Role_Info.aspx" />
     <Content Include="Base\SysRole\Role_Left.aspx" />
     <Content Include="Base\SysRole\Role_List.aspx" />
-    <Content Include="Base\SysStep\StepInfo_Form.aspx" />
-    <Content Include="Base\SysStep\StepInfo_Index.aspx" />
-    <Content Include="Base\SysStep\StepInfo_Left.aspx" />
-    <Content Include="Base\SysStep\StepInfo_List.aspx" />
-    <Content Include="Base\SysStep\Step_Info.aspx" />
     <Content Include="Base\SysUser\UpdateUserPwd.aspx" />
     <Content Include="Base\SysUser\UserInfo_Form.aspx" />
     <Content Include="Base\SysUser\UserInfo_Index.aspx" />
@@ -1258,44 +1253,6 @@
     <Compile Include="Base\SysRole\SysRole.ashx.cs">
       <DependentUpon>SysRole.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Base\SysStep\StepInfo_Form.aspx.cs">
-      <DependentUpon>StepInfo_Form.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Base\SysStep\StepInfo_Form.aspx.designer.cs">
-      <DependentUpon>StepInfo_Form.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Base\SysStep\StepInfo_Index.aspx.cs">
-      <DependentUpon>StepInfo_Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Base\SysStep\StepInfo_Index.aspx.designer.cs">
-      <DependentUpon>StepInfo_Index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Base\SysStep\StepInfo_Left.aspx.cs">
-      <DependentUpon>StepInfo_Left.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Base\SysStep\StepInfo_Left.aspx.designer.cs">
-      <DependentUpon>StepInfo_Left.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Base\SysStep\StepInfo_List.aspx.cs">
-      <DependentUpon>StepInfo_List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Base\SysStep\StepInfo_List.aspx.designer.cs">
-      <DependentUpon>StepInfo_List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Base\SysStep\Step_Info.aspx.cs">
-      <DependentUpon>Step_Info.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Base\SysStep\Step_Info.aspx.designer.cs">
-      <DependentUpon>Step_Info.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Base\SysStep\SysStep.ashx.cs">
-      <DependentUpon>SysStep.ashx</DependentUpon>
-    </Compile>
     <Compile Include="Base\SysUser\SysUser.ashx.cs">
       <DependentUpon>SysUser.ashx</DependentUpon>
     </Compile>
@@ -1446,7 +1403,6 @@
     <Content Include="Base\SysRole\SysRole.ashx" />
     <Content Include="Base\SysUser\SysUser.ashx" />
     <Content Include="Base\SysDept\SysDept.ashx" />
-    <Content Include="Base\SysStep\SysStep.ashx" />
     <Content Include="uploads\pdf\流量站\2e5f3034-dfd6-4897-a613-4aefa2967f87.pdf" />
     <Content Include="uploads\pdf\流量站\检定证书2e5f3034-dfd6-4897-a613-4aefa2967f87.pdf" />
     <Content Include="uploads\pdf\安全阀\安全阀校验委托单.pdf" />
