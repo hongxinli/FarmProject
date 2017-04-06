@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登录页面</title>
+    <link href="../Themes/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../Themes/Styles/login.css" rel="stylesheet" type="text/css" />
+    <script src="../Themes/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="../Themes/Scripts/FunctionJS.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            var h = $(document.body).height(); //浏览器当前窗口文档的高度
+            var w = $(document.body).width();
+            //alert(h + "&" + w);
+            $(document.body).css("background-size", w + "px " + h + "px ");
+        })
+        window.onresize = function () {
+            var h = $(document.body).height(); //浏览器当前窗口文档的高度
+            var w = $(document.body).width();
+            //alert(h + "&" + w);
+            $(document.body).css("background-size", w + "px " + h + "px ");
+        }
+        //回车键
+        document.onkeydown = function (e) {
+            if (!e) e = window.event; //火狐中是 window.event
+            if ((e.keyCode || e.which) == 13) {
+                var obtnSearch = document.getElementById("Log_Submit")
+                obtnSearch.focus(); //让另一个控件获得焦点就等于让文本输入框失去焦点
+                obtnSearch.click();
+            }
+        }
+        function LoginBtn() {
+            var name = $("#txtUserName").val();
+            var pwd = $("#txtUserPwd").val();
+            $("#errorMsg0").html("");
+            $("#errorMsg1").html("");
+            $("#errorMsg2").html("");
+            if (name == "") {
+                $("#txtUserName").focus();
+                $("#errorMsg0").html("账户不能为空");
+                return false;
+            } else if (pwd == "") {
+                $("#txtUserPwd").focus();
+                $("#errorMsg1").html("密码不能为空");
+                return false;
+            } else {
+                return true;
+            }
+        }
+        /**
+        数据验证完整性
+        **/
+        function CheckUserDataValid() {
+            if (!LoginBtn()) {
+                return false;
+            }
+            else {
+                CheckingLogin(1);
+                var userName =$.trim($("#txtUserName").val());
+                var userPwd = $("#txtUserPwd").val();
+                var parm = 'action=login&_UserId=' + escape(userName) + '&_UserPwd=' + escape(userPwd) + "&r=" + Math.random();
+                $.ajax({
+                    type: 'post',
+                    dataType: "text",
+                    url: 'Frame.ashx',
+                    data: parm,
+                    cache: false,
+                    async: false,
+                    success: function (rs) {
+                        if (parseInt(rs) == 1) {
+                            $("#txtUserName").focus();
+                            $("#errorMsg0").html("账户或密码有错误");
+                            CheckingLogin(0);
+                            return false;
+                        } else if (parseInt(rs) == 2) {
+                            $("#txtUserName").focus();
+                            $("#errorMsg0").html("账户被锁,联系管理员");
+                            CheckingLogin(0);
+                            return false;
+                        } else if (parseInt(rs) == 3) {
+                            $("#txtUserName").focus();
+                            $("#errorMsg0").html("该用户已经登录");
+                            CheckingLogin(0);
+                            return false;
+                        } else if (parseInt(rs) == 4) {
+                            window.location.href = "MainSwitch.aspx";
+                            // Load();
+                        }
+                    }
+                });
+            }
+        }
+        //登陆加载
+        function Load() {
+            window.location.href = 'MainSwitch.aspx';
+            return false;
+        }
+        //清空
+        function resetInput() {
+            $("#txtUserName").focus(); //默认焦点
+            $("#txtUserName").val("");
+            $("#txtUserPwd").val("");
+        }
+        function CheckingLogin(id) {
+            if (id == 1) {
+                $("#Log_Submit").attr("disabled", "disabled")
+                $("#Log_Submit").attr("class", "signload");
+                $(".load").show();
+            } else {
+                $("#Log_Submit").removeAttr("disabled");
+                $("#Log_Submit").attr("class", "sign");
+                $(".load").hide();
+            }
+        }
+    </script>
+
+</head>
+<body style="padding-top: 167px">
+    <form id="form1">
+        <div class="box">
+            <div class="boxLogin">
+                <dl>
+                    <dd>
+                        <div class="s1">
+                            账&nbsp;户：
+                        </div>
+                        <div class="s2">
+                            <input type="text" id="txtUserName" class="txt" style="width: 150px; height:25px;" />
+                            <span id="errorMsg0" class="errorMsg"></span>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="s3">
+                            密&nbsp;码：
+                        </div>
+                        <div class="s4">
+                            <input type="password" onpaste="return false;" id="txtUserPwd" class="txt" onpaste="return false;"
+                                   style="width: 150px; height: 25px; " />&nbsp;<span id="errorMsg1" class="errorMsg"></span>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="load">
+                            <img src="../Themes/Images/Login/loading.gif" />
+                        </div>
+                    </dd>
+                </dl>
+                <div class="s8">
+                    <input id="Log_Submit" type="button" class="sign" onclick="return CheckUserDataValid();" />
+                </div>
+            </div>
+            <div class="copyright">
+                <p id="cp">
+                    最佳浏览环境：IE9.0～10.0或基于IE内核的浏览器，1280×800显示分辨率。
+                </p>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

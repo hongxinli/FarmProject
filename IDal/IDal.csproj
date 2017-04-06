@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DA5D98E5-F717-43A8-94D7-45F1CE040486}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IDal</RootNamespace>
+    <AssemblyName>IDal</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IBaseRepository.cs" />
+    <Compile Include="Sys\IFlowData.cs" />
+    <Compile Include="Sys\IFlowDept.cs" />
+    <Compile Include="Sys\IFlowStep.cs" />
+    <Compile Include="Sys\IFlowTable.cs" />
+    <Compile Include="Sys\IModuleDept.cs" />
+    <Compile Include="Sys\INextUser.cs" />
+    <Compile Include="Sys\IOperLog.cs" />
+    <Compile Include="Sys\IStepDept.cs" />
+    <Compile Include="Sys\IStepInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sys\IButton.cs" />
+    <Compile Include="Sys\ICode.cs" />
+    <Compile Include="Sys\IDepartment.cs" />
+    <Compile Include="Sys\IFlowInfo.cs" />
+    <Compile Include="Sys\ILog.cs" />
+    <Compile Include="Sys\ILoginLog.cs" />
+    <Compile Include="Sys\IModuleInfo.cs" />
+    <Compile Include="Sys\IRoleDept.cs" />
+    <Compile Include="Sys\IRoleRight.cs" />
+    <Compile Include="Sys\IRoles.cs" />
+    <Compile Include="Sys\IStepRole.cs" />
+    <Compile Include="Sys\ITranctProc.cs" />
+    <Compile Include="Sys\IUserDept.cs" />
+    <Compile Include="Sys\IUserInfo.cs" />
+    <Compile Include="Sys\IUserRole.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{d1691785-4a93-48a8-9ca9-592cda490bce}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
