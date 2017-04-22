@@ -282,8 +282,12 @@ namespace Bll.Sys
         /// <returns></returns>
         public string GetMenuHtml()
         {
-            string roleid = RequestSession.GetSessionUser().RoleId.ToString();
-            string sqlStr = "select * from  base_moduleinfo  where deleteMark=0 and target='Iframe' and moduletype in ('0','1','2') and  moduleid in(select m.moduleid from base_roleright m where m.rolesid='" + roleid + "') order by moduleType,sortcode";
+            string sqlStr="select * from  base_moduleinfo  where deleteMark=0 and target='Iframe' and moduletype in ('0','1','2')";
+            if (!BaseService.IsAdmin()) {
+                string roleid = RequestSession.GetSessionUser().RoleId.ToString();
+                sqlStr = sqlStr + " and  moduleid in(select m.moduleid from base_roleright m where m.rolesid='" + roleid + "') ";
+            }
+            sqlStr = sqlStr + " order by moduleType,sortcode";
             DataTable dt = dal.Query(sqlStr).Tables[0];
             return JsonHelper.DataTableToJson(dt, "Menu");
         }

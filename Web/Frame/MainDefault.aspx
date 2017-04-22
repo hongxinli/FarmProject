@@ -6,7 +6,7 @@
 <head runat="server">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>欢迎使用技术检测中心数据综合管理系统</title>
+    <title>控制面板</title>
     <link href="/Themes/Styles/Site.css" rel="stylesheet" type="text/css" />
     <link href="/Themes/Styles/Menu.css" rel="stylesheet" type="text/css" />
     <script src="/Themes/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
@@ -82,7 +82,7 @@
                 </div>
                 <div id="weather">
                 </div>
-                <div id="Headermenu" style="font-size: larger; font-weight: 700; color: white; margin-top: 25px;width:300px;">
+                <div id="Headermenu" style="font-size: larger; font-weight: 700; color: white; margin-top: 25px;width:150px;">
                   <%=DepartName.ToString()%> &nbsp;&nbsp;&nbsp;&nbsp; <%=UserName.ToString()%>
                 </div>
             </div>
@@ -141,42 +141,3 @@
     </form>
 </body>
 </html>
-<script type="text/javascript">
-    //此处为环境监测站计划提示窗口。创建人 赵志鹏   创建时间 2016年9月9日09:10:19
-    function chooseAj() {
-        url = "../Views/FlowManage/HJJC/DiaArt.aspx";
-        art.dialog.open(url, {
-                id: 'ajxxList',
-                title: '近期待办任务',
-                width: 650,
-                height: 460,
-                left: '50%',
-                top: '50%',
-                background: '#000000',
-                opacity: 0.1,
-                lock: true,
-                resize: false,
-                close: function () {
-                    var ajxxUuid = art.dialog.data('ajxxUuid'); // 读取子窗口返回的数据                   
-                    if (ajxxUuid == "a1") {
-                        setTimeout("chooseAj()", "600000");
-                    } else if (ajxxUuid == "a2") { 
-                    } else {
-                        setTimeout("chooseAj()", "600000");
-                    }
-                }
-            },
-            false); 
-    } 
-    $(document).ready(function() {
-        $.ajax({
-            type: "get",
-            url: "../Views/FlowManage/HJJC/HJJC.ashx?action=ARTJH",
-            success: function (data) { 
-                if (data !="False") {
-                    chooseAj();
-                }  
-            }
-        });
-    });
-</script>

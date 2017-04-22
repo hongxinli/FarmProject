@@ -68,7 +68,7 @@
                 <img src="/Themes/Images/sun_2.png" alt="" width="20" height="20" />
                 <label id="BeautifulGreetings">
                 </label>
-                <%=_UserName.ToString()%>，欢迎使用吐哈油田监（检）测综合管理信息系统
+                <%=_UserName.ToString()%>，欢迎使用安徽省农科院GIS管理系统
             </div>
             <div class="box-content">
                 <%--快捷功能--%>

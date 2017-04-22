@@ -40,7 +40,10 @@ namespace Bll.Sys
                 strWhere = strWhere + " and DeptId in(" + deptid + ")";
             }
             //过滤数据权限
-            string strSql = "select * from ( select t.*,m.DeptId from Base_UserInfo t left join Base_userDept m on t.UserId=m.UserId where m.DeptId in (" + Bll.BaseService.ReturnAuthority() + ")) ";
+            string strSql = "select * from ( select t.*,m.DeptId from Base_UserInfo t left join Base_userDept m on t.UserId=m.UserId  ";
+            if (!BaseService.IsAdmin())
+                strSql = strSql + "where m.DeptId in (" + Bll.BaseService.ReturnAuthority() + ") ";
+            strSql = strSql + ")";
             DataTable dt = dal.DataTableByPage(pageSize, pageIndex, strSql, strWhere, ref count, "");
             return dt;
         }
@@ -79,7 +82,7 @@ namespace Bll.Sys
             {
                 StringBuilder strSql = new StringBuilder();
                 strSql.Append(" update Base_UserInfo set UserId='" + model.UserId + "', UserName='" + model.UserName + "',Phone='" + model.Phone + "',Email='" + model.Email + "',IsAdmin=" + model.IsAdmin + ", UserPwd='" + model.UserPwd + "',Remarks='" + model.Remarks + "',Am='" + model.Am + "',Theme='" + model.Theme + "'");//赵志鹏  2016年9月21日09:21:40  增加‘备注’项内容修改
-                strSql.Append(" where UserId='" + UserId + "'"); 
+                strSql.Append(" where UserId='" + UserId + "'");
                 #region 操作日志记录
                 string actStr = "该用户对-用户编号：[" + model.UserId + "]进行了修改操作。";
                 Bll.BaseService.WriteLogEvent(actStr, moduleId);
@@ -87,7 +90,7 @@ namespace Bll.Sys
 
                 if (dal.ExecuteNonQuery(strSql.ToString()) > 0)
                 {
-                    List<string> list=new List<string>();
+                    List<string> list = new List<string>();
                     string sql1 = "update s_flowdata set nextuserid='" + model.UserId + "' where nextuserid='" + UserId +
                                   "'";
                     list.Add(sql1);
@@ -102,7 +105,7 @@ namespace Bll.Sys
                 else
                 {
                     return false;
-                } 
+                }
             }
         }
         /// <summary>
@@ -128,7 +131,15 @@ namespace Bll.Sys
             string _deptId = string.Empty;
             if (!string.IsNullOrEmpty(_UserId))
                 _deptId = dal_UserDept.List("UserId='" + _UserId + "'")[0].DeptId;
-            IList<Model.Base_Department> AuthorityList = BaseService.ReturnRightData<Model.Base_Department>(list);
+            IList<Model.Base_Department> AuthorityList = null;
+            if (BaseService.IsAdmin())
+            {
+                AuthorityList = list;
+            }
+            else
+            {
+                AuthorityList = BaseService.ReturnRightData<Model.Base_Department>(list); ;
+            }
             IList<Model.Base_Department> newList = new List<Model.Base_Department>();
             foreach (Model.Base_Department model in AuthorityList)
             {
@@ -210,10 +221,12 @@ namespace Bll.Sys
             StringBuilder str_allRolesInfo = new StringBuilder();
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT DeptId, DeptName, ParentId, '0' AS isRoles FROM Base_Department where DeleteMark='0'");
-            strSql.Append(" and DeptId in (" + BaseService.ReturnAuthority() + ")");
+            if (!BaseService.IsAdmin())
+                strSql.Append(" and DeptId in (" + BaseService.ReturnAuthority() + ")");
             strSql.Append("  UNION ALL ");
             strSql.Append("  SELECT RolesId,RolesName, DeptId, '1' AS isRoles FROM Base_Roles where DeleteMark='0' ");
-            strSql.Append(" and DeptId in (" + BaseService.ReturnAuthority() + ")");
+            if (!BaseService.IsAdmin())
+                strSql.Append(" and DeptId in (" + BaseService.ReturnAuthority() + ")");
 
             DataTable AuthorityDT = dal.Query(strSql.ToString()).Tables[0];
             DataTable dt = dal_dept.Query("select DeptId, DeptName, ParentId,'0' AS isRoles from base_department").Tables[0];
@@ -301,7 +314,7 @@ namespace Bll.Sys
         /// <param name="items"></param>
         /// <param name="_UserId"></param>
         /// <returns></returns>
-        public bool add_ItemForm(string strs, string _UserId,string oldUserId)
+        public bool add_ItemForm(string strs, string _UserId, string oldUserId)
         {
             List<string> list = new List<string>();
             list.Add(" delete from Base_UserDept where UserId='" + oldUserId + "' ");
@@ -332,9 +345,9 @@ namespace Bll.Sys
         /// <param name="_UserName"></param>
         /// <param name="_UserPwd"></param>
         /// <returns></returns>
-        public IList<Model.Base_UserInfo> UserLogin(string _UserId, string _UserPwd)
+        public Model.Base_UserInfo UserLogin(string _UserId, string _UserPwd)
         {
-            return dal.List("UserId='" + _UserId + "' and UserPwd='" + Md5Helper.MD5(_UserPwd, 32) + "'");
+            return dal.CheckUserInfo(_UserId, Md5Helper.MD5(_UserPwd, 32).ToString());
         }
 
         public bool IsExits(string _UserId)

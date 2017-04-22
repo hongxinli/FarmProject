@@ -37,8 +37,8 @@
             <table style="padding: 0px; margin: 0px; height: 100%;" cellpadding="0" cellspacing="0">
                 <tr>
                     <td id="menutab" style="vertical-align: bottom;">
-                        <div id="tab0" class="Tabremovesel" onclick="GetTabClick(this);Urlhref('OperLogList.aspx');">
-                            操作日志</div>
+                       <%-- <div id="tab0" class="Tabremovesel" onclick="GetTabClick(this);Urlhref('OperLogList.aspx');">
+                            操作日志</div>--%>
                         <div id="tab1" class="Tabsel" onclick="GetTabClick(this);Urlhref('LoginList.aspx');">
                             登录日志</div>
                     </td>

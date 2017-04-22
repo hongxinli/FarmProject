@@ -1145,6 +1145,8 @@
     <Content Include="UserControl\LoadButton.ascx" />
     <Content Include="UserControl\PageControl.ascx" />
     <Content Include="UserControl\SubmitCheck.ascx" />
+    <Content Include="Views\Caption\Caption_Form.aspx" />
+    <Content Include="Views\Caption\Caption_List.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1361,6 +1363,20 @@
     <Compile Include="UserControl\SubmitCheck.ascx.designer.cs">
       <DependentUpon>SubmitCheck.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Caption\Caption_Form.aspx.cs">
+      <DependentUpon>Caption_Form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Caption\Caption_Form.aspx.designer.cs">
+      <DependentUpon>Caption_Form.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Caption\Caption_List.aspx.cs">
+      <DependentUpon>Caption_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Caption\Caption_List.aspx.designer.cs">
+      <DependentUpon>Caption_List.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Base\SysModule\SysModule.ashx" />
@@ -1469,7 +1485,6 @@
     <Folder Include="uploads\word\节能站\" />
     <Folder Include="uploads\word\计量站\" />
     <Folder Include="uploads\word\锅检站\" />
-    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bll\Bll.csproj">

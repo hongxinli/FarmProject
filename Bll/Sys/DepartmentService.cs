@@ -92,7 +92,16 @@ namespace Bll.Sys
         {
             StringBuilder strHtml = new StringBuilder();
             var list = dal.List("DeleteMark=0 order by DeptId, SortCode asc");
-            IList<Model.Base_Department> AuthorityList = BaseService.ReturnRightData<Model.Base_Department>(list);
+            IList<Model.Base_Department> AuthorityList = null;
+            if (BaseService.IsAdmin())
+            {
+                AuthorityList = list;
+            }
+            else
+            {
+                AuthorityList = BaseService.ReturnRightData<Model.Base_Department>(list);
+            }
+
             RolesService bll_Roles = new RolesService();
             IList<Model.Base_Department> newList = new List<Model.Base_Department>();
             foreach (Model.Base_Department model in AuthorityList)

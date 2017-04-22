@@ -43,7 +43,8 @@ namespace Bll.Sys
             {
                 list = dal.List();
             }
-            list = BaseService.ReturnRightData<Model.Base_Roles>(list);
+            if (!BaseService.IsAdmin())
+                list = BaseService.ReturnRightData<Model.Base_Roles>(list);
             int eRowIndex = 0;
             foreach (Model.Base_Roles model in list)
             {

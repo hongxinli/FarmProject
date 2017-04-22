@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using Web.App_Code;
 using Bll.Sys;
 using Common;
+using Bll;
 
 namespace Web.Base.SysLog
 {
@@ -35,7 +36,8 @@ namespace Web.Base.SysLog
         {
             int count = 0;
             DataTable dt = bll.GetSysLoginLogPage(txt_Search.Value.Trim(), BeginTime.Value.Trim(), endTime.Value.Trim(), PageControl1.PageIndex, PageControl1.PageSize, ref count);
-            dt = Bll.BaseService.ReturnRightData(dt);
+            if (!BaseService.IsAdmin())
+                dt = Bll.BaseService.ReturnRightData(dt);
             ControlBindHelper.BindRepeaterList(dt, rp_Item);
             this.PageControl1.RecordCount = Convert.ToInt32(dt.Rows.Count);
         }

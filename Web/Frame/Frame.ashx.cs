@@ -7,6 +7,7 @@ using Bll.Sys;
 using System.Web.SessionState;
 using System.Data;
 using System.Text;
+using Bll;
 
 namespace Web.Frame
 {
@@ -34,10 +35,10 @@ namespace Web.Frame
                     #region 用户登录
                     UserInfoService bll = new UserInfoService();
                     LogService bll_log = new LogService();
-                    IList<Model.Base_UserInfo> list = bll.UserLogin(_UserId, _UserPwd);
-                    if (list.Count > 0)
+                    Model.Base_UserInfo model_user = bll.UserLogin(_UserId, _UserPwd);
+                    if (model_user != null)
                     {
-                        if (list[0].IsState == 0)
+                        if (model_user.IsState == 0)
                         {
                             //if (!IsLogin(context, _UserId))
                             //{
@@ -45,17 +46,17 @@ namespace Web.Frame
                             Model.Base_UserDept model = bll_dept.GetModel(_UserId);
                             SessionUser user = new SessionUser();
                             user.Id = CommonHelper.GetGuid;
-                            user.UserId = list[0].UserId;
-                            user.UserName = list[0].UserName;
-                            user.UserPwd = list[0].UserPwd;
+                            user.UserId = model_user.UserId;
+                            user.UserName = model_user.UserName;
+                            user.UserPwd = model_user.UserPwd;
                             user.RoleId = bll.GetUserRoleId(_UserId);
                             user.DeptId = model.DeptId;
-                            user.Theme = list[0].Theme;
-                            user.IsAdmin = list[0].IsAdmin;
+                            user.Theme = model_user.Theme;
+                            user.IsAdmin = model_user.IsAdmin;
                             user.DeptName = bll_dept.GetDepartment(model.DeptId).DeptName;
                             RequestSession.AddSessionUser(user);
                             bll_log.SysLoginLog(user, true);  //新增登录日志
-                            CookieHelper.WriteCookie("Menu_Type", list[0].Theme); //记录当前用户的系统主题
+                            CookieHelper.WriteCookie("Menu_Type", model_user.Theme); //记录当前用户的系统主题
                             context.Response.Write("4");//验证成功
                             context.Response.End();
                             //}
