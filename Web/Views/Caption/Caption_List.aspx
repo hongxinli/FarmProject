@@ -18,6 +18,15 @@
             divresize(90);
             FixedTableHeader("#table1", $(window).height() - 118);
         })
+
+        //地图预览
+        function MapPreview() {
+            var key = CheckboxValue();
+            if (IsEditdata(key)) {
+                var url = "/Views/Caption/MapMain.html?key="+ key;
+                parent.document.getElementById("main").src = url;
+            }
+        }
     </script>
 </head>
 <body>
@@ -55,7 +64,7 @@
                         <ItemTemplate>
                             <tr>
                                 <td style="width: 20px; text-align: left;">
-                                    <input type="checkbox" value="<%#Eval("Id")%>" name="checkbox" />
+                                    <input type="checkbox" value="<%#Eval("CaptionUrl")%>" name="checkbox" />
                                 </td>
                                 <td style="width: 120px; text-align: center;">
                                     <%#Eval("CaptionName")%>

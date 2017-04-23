@@ -5,7 +5,7 @@
 }
 body
 {
-    background: #1493D6 url(/Themes/images/Login/bg.jpg) no-repeat center top;
+    background: #1493D6 url(/Themes/Images/Login/bg.jpg) no-repeat center top;
     padding: 0;
     margin: 0;
     font-size: 12px;
@@ -15,7 +15,7 @@ body
     width: 502px;
     height: 274px;
     margin: 0 auto;
-    background: url(/Themes/images/Login/bg2.png) no-repeat;
+    background: url(/Themes/Images/Login/bg2.png) no-repeat;
     color: #000000;
     position: relative;
 }
@@ -114,7 +114,7 @@ dl, dd
     height: 40px;
     border-style: none;
     background: none;
-    background-image: url("/Themes/images/Login/137.png" );
+    background-image: url("/Themes/Images/Login/137.png" );
     cursor: pointer;
 }
 .sign:hover
@@ -140,5 +140,5 @@ dl, dd
     height: 40px;
     border-style: none;
     background: none;
-    background-image: url("/Themes/images/Login/login-v2-load.png" );
+    background-image: url("/Themes/Images/Login/login-v2-load.png" );
 }

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>专题图查看</title>
+    <link href="/Themes/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://js.arcgis.com/3.20/esri/css/esri.css">
+    <script src="https://js.arcgis.com/3.20/"></script>
+    <style>
+        html, body, #map {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script type="text/javascript">
+        dojo.require("esri.map");
+        function init() {
+            var dataLayerUrl = GetQueryString('key');
+            var map = new esri.Map("map", { logo: false, nav: false });
+            var dataLayer = new esri.layers.ArcGISDynamicMapServiceLayer(dataLayerUrl, { id: "dataLayer" });
+            map.addLayer(dataLayer);
+        }
+        dojo.addOnLoad(init);
+
+        //返回
+        function back() {
+            var url = "/Views/Caption/Caption_List.aspx?r=" + Math.random();
+            Urlhref(url);
+        }
+        //获取url参数
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    </script>
+</head>
+<body>
+    <div class="btnbarcontetn">
+        <div style="text-align: right">
+            <a title="返回" onclick="back();" class="button green">
+                <span class="icon-botton" style="background: url('/Themes/images/16/back.png') no-repeat scroll 0px 4px;"></span>
+                返回
+            </a>
+        </div>
+    </div>
+    <div id="map"></div>
+</body>
+</html>
