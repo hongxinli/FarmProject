@@ -106,6 +106,7 @@
     <Content Include="Base\SysUser\UserInfo_Left.aspx" />
     <Content Include="Base\SysUser\UserInfo_List.aspx" />
     <Content Include="Base\SysUser\User_Info.aspx" />
+    <Content Include="Demo\KindEditor.aspx" />
     <Content Include="dll\ASIM2.dll" />
     <Content Include="dll\Aspose.Cells.dll" />
     <Content Include="dll\Newtonsoft.Json.dll" />
@@ -1301,6 +1302,13 @@
     <Compile Include="Base\SysUser\User_Info.aspx.designer.cs">
       <DependentUpon>User_Info.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Demo\KindEditor.aspx.cs">
+      <DependentUpon>KindEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Demo\KindEditor.aspx.designer.cs">
+      <DependentUpon>KindEditor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Error\ErrorPage.aspx.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1490,6 +1498,7 @@
     <Folder Include="uploads\word\节能站\" />
     <Folder Include="uploads\word\计量站\" />
     <Folder Include="uploads\word\锅检站\" />
+    <Folder Include="Views\Crop\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bll\Bll.csproj">
