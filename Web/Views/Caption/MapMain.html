@@ -22,11 +22,10 @@
             map.addLayer(dataLayer);
         }
         dojo.addOnLoad(init);
-
         //返回
         function back() {
             var url = "/Views/Caption/Caption_List.aspx?r=" + Math.random();
-            Urlhref(url);
+            window.location.href = url;
         }
         //获取url参数
         function GetQueryString(name) {
@@ -39,7 +38,7 @@
 <body>
     <div class="btnbarcontetn">
         <div style="text-align: right">
-            <a title="返回" onclick="back();" class="button green">
+            <a title="返回" onclick="back()" class="button green">
                 <span class="icon-botton" style="background: url('/Themes/images/16/back.png') no-repeat scroll 0px 4px;"></span>
                 返回
             </a>

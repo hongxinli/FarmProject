@@ -112,57 +112,5 @@ namespace Bll.Sys
             }
             return Login_InfoHtml.ToString();
         }
-        //赵志鹏  2017年3月2日09:59:13  添加安全阀校验站校验报告提示功能
-        public StringBuilder ReportMessage()
-        {
-            string userDepartId = RequestSession.GetSessionUser().DeptId.ToString();
-            StringBuilder reportMessage = new StringBuilder();
-            if (userDepartId == "101101112")
-            {
-                string userName = RequestSession.GetSessionUser().UserName.ToString();
-
-                //string sql =
-                //    "select t.*,a.jyy from report_aqf_jybg_state t,report_aqf_jyjl a where t.fid=a.fid(+) and a.jyy='" +
-                //    userName + "' and t.stepaction='待审批' ";
-                string sql =
-                    "select t.*,a.jyy from report_aqf_jybg_state t,report_aqf_jyjl a where t.fid=a.fid(+) and t.stepaction='待审批' ";
-                DataSet set = dal.Query(sql);
-                DataTable table = set.Tables[0];
-                if (table.Rows.Count == 0)
-                {
-                    reportMessage.Append("待审批的报告：<br/>");
-                    reportMessage.Append("<label style=\"color:red\">暂无！！！</label><br/>");
-                }
-                else
-                {
-                    reportMessage.Append("待审批的报告：<br/>");
-                    for (int i = 0; i < table.Rows.Count; i++)
-                    {
-                        reportMessage.Append("<label style=\" color:green \">" + table.Rows[i]["BGBH"] + "</label>||");
-                    }
-                }
-                //string sql1 =
-                //    "select t.*,a.jyy from report_aqf_jybg_state t,report_aqf_jyjl a where t.fid=a.fid(+) and a.jyy='" +
-                //    userName + "' and t.stepaction='未通过' ";
-                string sql1 =
-                    "select t.*,a.jyy from report_aqf_jybg_state t,report_aqf_jyjl a where t.fid=a.fid(+) and t.stepaction='未通过' ";
-                DataSet set1 = dal.Query(sql1);
-                DataTable table1 = set1.Tables[0];
-                if (table1.Rows.Count == 0)
-                {
-                    reportMessage.Append("<br/>未通过的报告：<br/>");
-                    reportMessage.Append("<label style=\" color:red \">暂无！！！</label><br/>");
-                }
-                else
-                {
-                    reportMessage.Append("<br/>未通过的报告：<br/>");
-                    for (int i = 0; i < table1.Rows.Count; i++)
-                    {
-                        reportMessage.Append("<label style=\"color:red \">" + table1.Rows[i]["BGBH"] + "</label>||");
-                    }
-                }
-            }
-            return reportMessage;
-        }
     }
 }

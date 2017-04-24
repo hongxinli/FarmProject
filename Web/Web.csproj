@@ -1364,6 +1364,9 @@
     <Compile Include="UserControl\SubmitCheck.ascx.designer.cs">
       <DependentUpon>SubmitCheck.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Caption\Caption.ashx.cs">
+      <DependentUpon>Caption.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Caption\Caption_Form.aspx.cs">
       <DependentUpon>Caption_Form.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1437,6 +1440,7 @@
     <Content Include="uploads\excel\流量站\金属量器检定数据模板20161031.xls" />
     <Content Include="Themes\Scripts\kindeditor\file_manager_json.ashx" />
     <Content Include="Themes\Scripts\kindeditor\upload_json.ashx" />
+    <Content Include="Views\Caption\Caption.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

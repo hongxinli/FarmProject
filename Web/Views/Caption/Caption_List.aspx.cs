@@ -7,10 +7,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Bll.Agriculture;
+using Web.App_Code;
 
 namespace Web.Views.Caption
 {
-    public partial class Caption_List : System.Web.UI.Page
+    public partial class Caption_List : PageBase
     {
         protected CaptionService _Service = new CaptionService();
         protected void Page_Load(object sender, EventArgs e)

@@ -21,10 +21,45 @@
 
         //地图预览
         function MapPreview() {
+            var key = $(".grid tbody td:eq(4)").text();
+            if (IsEditdata(key)) {
+                var url = "/Views/Caption/MapMain.html?key=" + key;
+                parent.document.getElementById("main").src = url;
+            }
+        }
+        //新增
+        function add() {
+            var url = "/Views/Caption/Caption_Form.aspx";
+            top.openDialog(url, 'Caption_Form', '专题图信息 - 添加', 700, 160, 50, 50);
+        }
+        //编辑
+        function edit() {
             var key = CheckboxValue();
             if (IsEditdata(key)) {
-                var url = "/Views/Caption/MapMain.html?key="+ key;
-                parent.document.getElementById("main").src = url;
+                var url = "/Views/Caption/Caption_Form.aspx?key=" + key;
+                top.openDialog(url, 'Caption_Form', '专题图信息 - 编辑', 700, 160, 50, 50);
+            }
+        }
+        //删除
+        function Delete() {
+            var key = CheckboxValue();
+            if (IsDelData(key)) {
+                var url = 'Caption.ashx';
+                var parm = "action=delete&key=" + key;
+                showConfirmMsg('注：您确认要删除此数据吗？', function (r) {
+                    if (r) {
+                        getAjax(url, parm, function (rs) {
+                            if (parseInt(rs) == 0) {
+                                showTipsMsg("<span style='color:red'>删除失败，请稍后重试！</span>", 4000, 5);
+                                return false;
+                            }
+                            else if (parseInt(rs) == 1) {
+                                showTipsMsg("删除成功！", 2000, 4);
+                                windowload();
+                            }
+                        });
+                    }
+                });
             }
         }
     </script>
@@ -64,7 +99,7 @@
                         <ItemTemplate>
                             <tr>
                                 <td style="width: 20px; text-align: left;">
-                                    <input type="checkbox" value="<%#Eval("CaptionUrl")%>" name="checkbox" />
+                                    <input type="checkbox" value="<%#Eval("Id")%>" name="checkbox" />
                                 </td>
                                 <td style="width: 120px; text-align: center;">
                                     <%#Eval("CaptionName")%>

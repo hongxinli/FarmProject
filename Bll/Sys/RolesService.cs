@@ -633,10 +633,12 @@ namespace Bll.Sys
         /// <returns></returns>
         public bool GetPermission_URL(string _UserId, string _RequestPath)
         {
-            string strSql = @"select t.navigateurl from Base_ModuleInfo t
+            string strSql = @"select distinct t.navigateurl from Base_ModuleInfo t
                               left join Base_RoleRight t1 on t.ModuleId=t1.ModuleId
                               left join Base_UserRole t2 on t1.RolesId=t2.RolesId
-                              where t.ModuleType!=3 and t2.UserId='" + _UserId + "'";
+                              where t.ModuleType!=3 ";
+            if (!BaseService.IsAdmin())
+                strSql = strSql + "and t2.UserId='" + _UserId + "'";
             DataTable dt = dal.Query(strSql).Tables[0];
             DataView dv = new DataView(dt);
             dv.RowFilter = "NavigateUrl = '" + _RequestPath + "'";
@@ -646,10 +648,13 @@ namespace Bll.Sys
 
         public string GetButtonHtml(string _UserId)
         {
-            string strSql = @"select t.ModuleId,t.ParentId,t.ModuleName,t.ModuleTitle,t.ModuleImg,t.ModuleType,t.NavigateUrl,t.SortCode from Base_ModuleInfo t
+            string strSql = @"select distinct t.ModuleId,t.ParentId,t.ModuleName,t.ModuleTitle,t.ModuleImg,t.ModuleType,t.NavigateUrl,t.SortCode from Base_ModuleInfo t
                             left join Base_RoleRight t1 on t.ModuleId=t1.ModuleId
                             left join Base_UserRole t2 on t1.RolesId=t2.RolesId
-                            where t.DeleteMark=0 and t2.UserId='" + _UserId + "'  order by t.moduletype,  t.sortcode";
+                            where t.DeleteMark=0 ";
+            if (!BaseService.IsAdmin())
+                strSql = strSql + " and t2.UserId='" + _UserId + "'";
+            strSql = strSql + "  order by t.moduletype,  t.sortcode";
             DataTable dt = dal.Query(strSql).Tables[0];
             string URL = RequestHelper.GetScriptName;
             dt = DataTableHelper.GetNewDataTable(dt, "ParentId='" + GetMenuByNavigateUrl(URL, dt) + "' AND ModuleType = 3");

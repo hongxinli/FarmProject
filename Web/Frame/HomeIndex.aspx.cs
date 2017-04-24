@@ -20,15 +20,8 @@ namespace Web.Frame
             if (!IsPostBack)
             {
                 _UserName = RequestSession.GetSessionUser().UserName.ToString();
-                BindLogin_Info();
             }
         }
 
-        public void BindLogin_Info()
-        {
-            Bll.Sys.LogService bll = new Bll.Sys.LogService();
-            Login_InfoHtml = bll.BindLogInfo();
-            sbHomeShortcouHtml = bll.ReportMessage();
-        }
     }
 }
