@@ -1152,6 +1152,8 @@
     <Content Include="Views\Caption\Caption_Form.aspx" />
     <Content Include="Views\Caption\Caption_List.aspx" />
     <Content Include="Views\Caption\MapMain.html" />
+    <Content Include="Views\Info\Info_From.aspx" />
+    <Content Include="Views\Info\Info_List.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1392,6 +1394,23 @@
     <Compile Include="Views\Caption\Caption_List.aspx.designer.cs">
       <DependentUpon>Caption_List.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Info\Info.ashx.cs">
+      <DependentUpon>Info.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Info\Info_From.aspx.cs">
+      <DependentUpon>Info_From.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Info\Info_From.aspx.designer.cs">
+      <DependentUpon>Info_From.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Info\Info_List.aspx.cs">
+      <DependentUpon>Info_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Info\Info_List.aspx.designer.cs">
+      <DependentUpon>Info_List.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Base\SysModule\SysModule.ashx" />
@@ -1452,6 +1471,7 @@
     <Content Include="Themes\Scripts\kindeditor\file_manager_json.ashx" />
     <Content Include="Themes\Scripts\kindeditor\upload_json.ashx" />
     <Content Include="Views\Caption\Caption.ashx" />
+    <Content Include="Views\Info\Info.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

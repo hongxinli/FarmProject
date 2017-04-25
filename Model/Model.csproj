@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agriculture\A_Caption.cs" />
+    <Compile Include="Agriculture\A_Crop.cs" />
+    <Compile Include="Agriculture\A_Info.cs" />
+    <Compile Include="Agriculture\A_Pest.cs" />
     <Compile Include="Base_Button.cs" />
     <Compile Include="Base_Code.cs" />
     <Compile Include="Base_Department.cs" />
