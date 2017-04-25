@@ -23,6 +23,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +34,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,6 +43,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aspose.Cells, Version=8.3.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -68,22 +71,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Tincher_2016_dg_gis\dgA4gis.Web\bin\NPOI.POIFS.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\ServiceConfig.xml" />
@@ -127,6 +129,7 @@
     <Content Include="dll\Aspose.Words.dll" />
     <Content Include="dll\Aspose.Words.idl" />
     <Content Include="dll\Aspose.Words.xml" />
+    <Content Include="Error\Product.html" />
     <Content Include="Frame\HomeIndex.aspx" />
     <Content Include="Themes\Images\16\1168905.png" />
     <Content Include="Themes\Images\16\moveReport.png" />
@@ -1512,6 +1515,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{d1691785-4a93-48a8-9ca9-592cda490bce}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tincher.Interop\Tincher.Interop.csproj">
+      <Project>{18d0c428-ad1b-4f9b-82fa-3eee991be7ad}</Project>
+      <Name>Tincher.Interop</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

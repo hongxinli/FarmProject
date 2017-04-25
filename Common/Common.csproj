@@ -87,6 +87,7 @@
     <Compile Include="CacheHelper.cs" />
     <Compile Include="CommonHelper.cs" />
     <Compile Include="ConfigHelper.cs" />
+    <Compile Include="Constant\DefineName.cs" />
     <Compile Include="ControlBindHelper.cs" />
     <Compile Include="ConvertionExtensions.cs" />
     <Compile Include="CookieHelper.cs" />

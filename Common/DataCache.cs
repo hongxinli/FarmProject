@@ -32,7 +32,11 @@ namespace Common
             System.Web.Caching.Cache objCache = HttpRuntime.Cache;
             objCache.Insert(CacheKey, objObject);
         }
-
+        public static void SetCache(string CacheKey, object objObject, int minutesToCache)
+        {
+            System.Web.Caching.Cache objCache = HttpRuntime.Cache;
+            objCache.Insert(CacheKey, objObject);
+        }
         /// <summary>
         /// 设置当前应用程序指定CacheKey的Cache值
         /// </summary>

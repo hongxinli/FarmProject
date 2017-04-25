@@ -1,6 +1,8 @@
 ﻿using Common;
+using Common.Constant;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -16,6 +18,8 @@ namespace Web.App_Code
     {
         protected override void OnLoad(EventArgs e)
         {
+           
+
             GetReferer(true);
 
             #region 当Session过期自动跳出登录画面
@@ -100,5 +104,7 @@ namespace Web.App_Code
 
         }
         #endregion
+
+        
     }
 }
