@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using System.Data.OracleClient;
 using System.Collections;
+using System.IO;
 
 namespace Common
 {
@@ -581,5 +582,56 @@ namespace Common
                 return ds;
             }
         }
+        /// <summary>
+        /// 读取大字段数据
+        /// </summary>
+        /// <param name="idData"></param>
+        /// <param name="fileName"></param>
+        /// <param name="id"></param>
+        /// <param name="blob"></param>
+        /// <param name="tableName"></param>
+        /// <returns></returns>
+        public static string ReadBlob(string idData, string fileName, string id, string blob, string tableName)
+        {
+            int actual = 0;
+            string str = "";
+            using (var conn = new OracleConnection(OracleHelper.Conn))
+            {
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = conn;
+                string strSql = "select " + blob + " from " + tableName + "  where  " + id + "= '" + idData + "'";
+                cmd.CommandText = strSql;
+                cmd.CommandType = CommandType.Text;
+                try
+                {
+                    conn.Open();
+                    OracleDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        OracleLob myOracleClob = reader.GetOracleLob(0);
+                        using (StreamReader streamreader = new StreamReader(myOracleClob, Encoding.Unicode))
+                        {
+                            char[] cbuffer = new char[1048576];
+                            while ((actual = streamreader.Read(cbuffer, 0, cbuffer.Length)) > 0)
+                            {
+                                str += new string(cbuffer, 0, actual);
+                            }
+                            break;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+                finally
+                {
+                    // 释放占有资源
+                    conn.Close();
+                }
+            }
+            return str;
+        }
+
     }
 }

@@ -777,7 +777,7 @@ namespace OracleDal
         /// <param name="whereStr"></param>
         /// <param name="orderStr"></param>
         /// <returns></returns>
-        public DataTable GetDataTable(string sql, string whereStr,string orderStr)
+        public DataTable GetDataTable(string sql, string whereStr, string orderStr)
         {
             if (string.IsNullOrWhiteSpace(whereStr))
             {

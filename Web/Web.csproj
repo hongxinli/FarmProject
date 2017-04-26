@@ -1152,7 +1152,8 @@
     <Content Include="Views\Caption\Caption_Form.aspx" />
     <Content Include="Views\Caption\Caption_List.aspx" />
     <Content Include="Views\Caption\MapMain.html" />
-    <Content Include="Views\Info\Info_From.aspx" />
+    <Content Include="Views\Info\Info.html" />
+    <Content Include="Views\Info\Info_Form.aspx" />
     <Content Include="Views\Info\Info_List.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1397,12 +1398,12 @@
     <Compile Include="Views\Info\Info.ashx.cs">
       <DependentUpon>Info.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Info\Info_From.aspx.cs">
-      <DependentUpon>Info_From.aspx</DependentUpon>
+    <Compile Include="Views\Info\Info_Form.aspx.cs">
+      <DependentUpon>Info_Form.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Info\Info_From.aspx.designer.cs">
-      <DependentUpon>Info_From.aspx</DependentUpon>
+    <Compile Include="Views\Info\Info_Form.aspx.designer.cs">
+      <DependentUpon>Info_Form.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Info\Info_List.aspx.cs">
       <DependentUpon>Info_List.aspx</DependentUpon>

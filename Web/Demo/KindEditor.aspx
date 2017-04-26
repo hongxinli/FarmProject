@@ -5,9 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="../Themes/Scripts/kindeditor/js/themes/default/default.css" rel="stylesheet" />
-    <script src="../Themes/Scripts/kindeditor/js/kindeditor-min.js"></script>
-    <script src="../Themes/Scripts/kindeditor/js/lang/zh_CN.js"></script>
+    <link href="/Themes/Scripts/kindeditor/js/themes/default/default.css" rel="stylesheet" />
+    <script src="/Themes/Scripts/kindeditor/js/kindeditor-min.js"></script>
+    <script src="/Themes/Scripts/kindeditor/js/lang/zh_CN.js"></script>
     <title></title>
     <style>
         form {
