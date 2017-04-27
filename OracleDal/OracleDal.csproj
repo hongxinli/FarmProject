@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agriculture\CaptionRepository.cs" />
+    <Compile Include="Agriculture\CropRepository.cs" />
     <Compile Include="Agriculture\InfoRepository.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="Sys\ModuleDeptRepsitory.cs" />

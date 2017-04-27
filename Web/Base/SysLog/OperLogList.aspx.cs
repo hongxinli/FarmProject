@@ -31,11 +31,10 @@ namespace Web.Base.SysLog
         /// </summary>
         private void DataBindGrid()
         {
-            int count = 0; 
+            int count = 0;
             DataTable dt = bll.GetOperLogPage(txt_Search.Value.Trim(), BeginTime.Value.Trim(), endTime.Value.Trim(), PageControl1.PageIndex, PageControl1.PageSize, ref count);
-            dt = Bll.BaseService.ReturnRightData(dt);
             ControlBindHelper.BindRepeaterList(dt, rp_Item);
-            this.PageControl1.RecordCount = Convert.ToInt32(dt.Rows.Count); 
+            this.PageControl1.RecordCount = count;
         }
         /// <summary>
         /// 筛选

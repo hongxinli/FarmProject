@@ -36,10 +36,8 @@ namespace Web.Base.SysLog
         {
             int count = 0;
             DataTable dt = bll.GetSysLoginLogPage(txt_Search.Value.Trim(), BeginTime.Value.Trim(), endTime.Value.Trim(), PageControl1.PageIndex, PageControl1.PageSize, ref count);
-            if (!BaseService.IsAdmin())
-                dt = Bll.BaseService.ReturnRightData(dt);
             ControlBindHelper.BindRepeaterList(dt, rp_Item);
-            this.PageControl1.RecordCount = Convert.ToInt32(dt.Rows.Count);
+            this.PageControl1.RecordCount = count;
         }
         /// <summary>
         /// 筛选

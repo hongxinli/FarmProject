@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agriculture\ICaption.cs" />
+    <Compile Include="Agriculture\ICrop.cs" />
     <Compile Include="Agriculture\IInfo.cs" />
     <Compile Include="IBaseRepository.cs" />
     <Compile Include="Sys\IModuleDept.cs" />

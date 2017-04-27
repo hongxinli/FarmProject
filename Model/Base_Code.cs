@@ -72,5 +72,13 @@ namespace Model
             get;
             set;
         }
+        /// <summary>
+        ///创建用户
+        /// </summary>
+        public string CreateUserName
+        {
+            get;
+            set;
+        }
     }
 }

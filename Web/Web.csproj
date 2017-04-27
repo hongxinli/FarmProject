@@ -89,6 +89,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\ServiceConfig.xml" />
+    <Content Include="Base\SysCode\Code_Form.aspx" />
+    <Content Include="Base\SysCode\Code_List.aspx" />
     <Content Include="Base\SysDept\Dept_Form.aspx" />
     <Content Include="Base\SysDept\Dept_List.aspx" />
     <Content Include="Base\SysLog\LoginList.aspx" />
@@ -1152,6 +1154,9 @@
     <Content Include="Views\Caption\Caption_Form.aspx" />
     <Content Include="Views\Caption\Caption_List.aspx" />
     <Content Include="Views\Caption\MapMain.html" />
+    <Content Include="Views\Crop\Crop.html" />
+    <Content Include="Views\Crop\Crop_Form.aspx" />
+    <Content Include="Views\Crop\Crop_List.aspx" />
     <Content Include="Views\Info\Info.html" />
     <Content Include="Views\Info\Info_Form.aspx" />
     <Content Include="Views\Info\Info_List.aspx" />
@@ -1162,6 +1167,23 @@
   <ItemGroup>
     <Compile Include="App_Code\PageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Base\SysCode\Code.ashx.cs">
+      <DependentUpon>Code.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Base\SysCode\Code_Form.aspx.cs">
+      <DependentUpon>Code_Form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Base\SysCode\Code_Form.aspx.designer.cs">
+      <DependentUpon>Code_Form.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Base\SysCode\Code_List.aspx.cs">
+      <DependentUpon>Code_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Base\SysCode\Code_List.aspx.designer.cs">
+      <DependentUpon>Code_List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Base\SysDept\Dept_Form.aspx.cs">
       <DependentUpon>Dept_Form.aspx</DependentUpon>
@@ -1395,6 +1417,23 @@
     <Compile Include="Views\Caption\Caption_List.aspx.designer.cs">
       <DependentUpon>Caption_List.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Crop\Crop.ashx.cs">
+      <DependentUpon>Crop.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Crop\Crop_Form.aspx.cs">
+      <DependentUpon>Crop_Form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Crop\Crop_Form.aspx.designer.cs">
+      <DependentUpon>Crop_Form.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Crop\Crop_List.aspx.cs">
+      <DependentUpon>Crop_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Crop\Crop_List.aspx.designer.cs">
+      <DependentUpon>Crop_List.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Info\Info.ashx.cs">
       <DependentUpon>Info.ashx</DependentUpon>
     </Compile>
@@ -1458,6 +1497,7 @@
     <Content Include="uploads\pdf\流量站\检定证书2e5f3034-dfd6-4897-a613-4aefa2967f87.pdf" />
     <Content Include="uploads\pdf\安全阀\安全阀校验委托单.pdf" />
     <Content Include="uploads\word\安全阀\安全阀校验委托单.doc" />
+    <Content Include="Base\SysCode\Code.ashx" />
     <None Include="Properties\PublishProfiles\jsjczx.pubxml" />
     <Content Include="uploads\pdf\环境监测站\45960dc4-f0e4-4a5c-9261-7680738d692a.pdf" />
     <Content Include="uploads\word\环境监测站\45960dc4-f0e4-4a5c-9261-7680738d692a.doc" />
@@ -1473,6 +1513,7 @@
     <Content Include="Themes\Scripts\kindeditor\upload_json.ashx" />
     <Content Include="Views\Caption\Caption.ashx" />
     <Content Include="Views\Info\Info.ashx" />
+    <Content Include="Views\Crop\Crop.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1522,7 +1563,6 @@
     <Folder Include="uploads\word\节能站\" />
     <Folder Include="uploads\word\计量站\" />
     <Folder Include="uploads\word\锅检站\" />
-    <Folder Include="Views\Crop\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bll\Bll.csproj">

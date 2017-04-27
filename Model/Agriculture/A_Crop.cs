@@ -81,5 +81,9 @@ namespace Model.Agriculture
             get;
             set;
         }
+        /// <summary>
+        /// 备注
+        /// </summary>
+        public string Remarks { get; set; }
     }
 }

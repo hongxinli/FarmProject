@@ -57,6 +57,11 @@ namespace Bll.Sys
             {
                 SqlWhere.Append(" and UserId='" + _UserId + "'");
             }
+            if (!BaseService.IsAdmin())
+            {
+                string deptids = BaseService.ReturnAuthority();
+                SqlWhere.Append(" and deptid in (" + deptids + ")");
+            }
             return dal.DataTableByPage(_PageSize, _PageIndex, SqlStr.ToString(), SqlWhere.ToString(), ref count, " logintime desc");
         }
 
@@ -82,6 +87,11 @@ namespace Bll.Sys
             if (!string.IsNullOrEmpty(_UserId))
             {
                 SqlWhere.Append(" and UserId='" + _UserId + "'");
+            }
+            if (!BaseService.IsAdmin())
+            {
+                string deptids = BaseService.ReturnAuthority();
+                SqlWhere.Append(" and deptid in (" + deptids + ")");
             }
             return dal.DataTableByPage(_PageSize, _PageIndex, SqlStr.ToString(), SqlWhere.ToString(), ref count, "  OperationTime desc");
         }
