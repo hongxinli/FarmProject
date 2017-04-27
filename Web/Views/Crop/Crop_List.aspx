@@ -69,7 +69,7 @@
     <form id="form1" runat="server">
         <div class="btnbartitle">
             <div>
-                专题图信息列表
+                农作物信息列表
             </div>
         </div>
         <div class="btnbarcontetn">
