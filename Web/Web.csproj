@@ -1160,6 +1160,9 @@
     <Content Include="Views\Info\Info.html" />
     <Content Include="Views\Info\Info_Form.aspx" />
     <Content Include="Views\Info\Info_List.aspx" />
+    <Content Include="Views\Pest\Pest.html" />
+    <Content Include="Views\Pest\Pest_Form.aspx" />
+    <Content Include="Views\Pest\Pest_List.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1451,6 +1454,23 @@
     <Compile Include="Views\Info\Info_List.aspx.designer.cs">
       <DependentUpon>Info_List.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pest\Pest.ashx.cs">
+      <DependentUpon>Pest.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pest\Pest_Form.aspx.cs">
+      <DependentUpon>Pest_Form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Pest\Pest_Form.aspx.designer.cs">
+      <DependentUpon>Pest_Form.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pest\Pest_List.aspx.cs">
+      <DependentUpon>Pest_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Pest\Pest_List.aspx.designer.cs">
+      <DependentUpon>Pest_List.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Base\SysModule\SysModule.ashx" />
@@ -1514,6 +1534,7 @@
     <Content Include="Views\Caption\Caption.ashx" />
     <Content Include="Views\Info\Info.ashx" />
     <Content Include="Views\Crop\Crop.ashx" />
+    <Content Include="Views\Pest\Pest.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

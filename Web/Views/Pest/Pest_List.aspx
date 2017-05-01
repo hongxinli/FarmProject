@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Crop_List.aspx.cs" Inherits="Web.Views.Crop.Crop_List" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Pest_List.aspx.cs" Inherits="Web.Views.Pest.Pest_List" %>
 
 <%@ Register Src="../../UserControl/PageControl.ascx" TagName="PageControl" TagPrefix="uc1" %>
 <%@ Register Src="../../UserControl/LoadButton.ascx" TagName="LoadButton" TagPrefix="uc2" %>
@@ -6,8 +6,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>农作物信息</title>
+    <title>病虫害信息</title>
     <link href="/Themes/Styles/Site.css" rel="stylesheet" type="text/css" />
     <script src="/Themes/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
     <script src="/Themes/Scripts/jquery.pullbox.js" type="text/javascript"></script>
@@ -18,18 +19,16 @@
             divresize(90);
             FixedTableHeader("#table1", $(window).height() - 118);
         })
-
         //新增
         function add() {
-            var url = "/Views/Crop/Crop_Form.aspx";
+            var url = "/Views/Pest/Pest_Form.aspx";
             Urlhref(url);
-
         }
         //编辑
         function edit() {
             var key = CheckboxValue();
             if (IsEditdata(key)) {
-                var url = "/Views/Crop/Crop_Form.aspx?key=" + key;
+                var url = "/Views/Pest/Pest_Form.aspx?key=" + key;
                 Urlhref(url);
             }
         }
@@ -37,7 +36,7 @@
         function Delete() {
             var key = CheckboxValue();
             if (IsDelData(key)) {
-                var url = 'Crop.ashx';
+                var url = 'Pest.ashx';
                 var parm = "action=delete&key=" + key;
                 showConfirmMsg('注：您确认要删除此数据吗？', function (r) {
                     if (r) {
@@ -55,12 +54,11 @@
                 });
             }
         }
-
         //详细
         function detail() {
             var key = CheckboxValue();
             if (IsEditdata(key)) {
-                var url = "/Views/Crop/Crop.html?key=" + key;
+                var url = "/Views/Pest/Pest.html?key=" + key;
                 Urlhref(url);
             }
         }
@@ -70,19 +68,10 @@
     <form id="form1" runat="server">
         <div class="btnbartitle">
             <div>
-                农作物信息列表
+                病虫害信息列表
             </div>
         </div>
         <div class="btnbarcontetn">
-            <div style="float: left;">
-                <select id="CropType" class="Searchwhere" runat="server">
-                    
-                </select>
-                <input type="text" id="txt_Search" class="txtSearch SearchImg" runat="server" style="width: 100px;" />
-                <asp:LinkButton ID="lbtSearch" runat="server" class="button green" OnClick="lbtSearch_Click">
-                <span class="icon-botton" style="background: url('/Themes/images/Search.png') no-repeat scroll 0px 4px;">
-        </span>查 询</asp:LinkButton>
-            </div>
             <div style="text-align: right">
                 <uc2:LoadButton ID="LoadButton1" runat="server" />
             </div>
@@ -95,15 +84,13 @@
                             <label id="checkAllOff" onclick="CheckAllLine()" title="全选">
                                 &nbsp;</label>
                         </td>
-                        <td style="width: 120px; text-align: center;">作物名称
+                        <td style="width: 150px; text-align: center;">病虫害名称
                         </td>
-                        <td style="width: 120px; text-align: center;">作物种类
+                        <td style="width: 150px; text-align: center;">受影响作物
                         </td>
-                        <td style="width: 120px; text-align: center;">创建人员
+                        <td style="width: 150px; text-align: center;">发布人
                         </td>
-                        <td style="width: 200px; text-align: center;">创建时间
-                        </td>
-                        <td>备注
+                        <td>发布时间
                         </td>
                     </tr>
                 </thead>
@@ -114,20 +101,17 @@
                                 <td style="width: 20px; text-align: left;">
                                     <input type="checkbox" value="<%#Eval("Id")%>" name="checkbox" />
                                 </td>
-                                <td style="width: 120px; text-align: left;">
-                                 <a href="Crop.html?key=<%#Eval("Id")%>"> <%#Eval("CropName")%></a> 
+                                <td style="width: 150px; text-align: left;">
+                                    <a href="Pest.html?key=<%#Eval("Id")%>"><%#Eval("PestName")%></a> 
                                 </td>
-                                <td style="width: 120px; text-align: center;">
-                                    <%#Eval("CropType")%> 
+                                <td style="width: 150px; text-align: left;">
+                                    <%#Eval("CropType")%>
                                 </td>
-                                <td style="width: 120px; text-align: center;">
+                                <td style="width: 150px; text-align: center;">
                                     <%#Eval("CreateUserName")%>
                                 </td>
-                                <td style="width: 200px; text-align: center;">
-                                    <%#Eval("CreateDate")%>
-                                </td>
                                 <td>
-                                    <%#Eval("Remarks")%>
+                                    <%#Eval("CreateDate")%>
                                 </td>
                             </tr>
                         </ItemTemplate>

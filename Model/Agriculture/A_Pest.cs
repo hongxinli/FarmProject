@@ -31,7 +31,7 @@ namespace Model.Agriculture
         /// <summary>
         ///病虫名称
         /// </summary>
-        public string CropName
+        public string PestName
         {
             get;
             set;
@@ -40,7 +40,7 @@ namespace Model.Agriculture
         /// <summary>
         ///病虫详细介绍
         /// </summary>
-        public string CropContent
+        public string PestContent
         {
             get;
             set;
@@ -72,5 +72,9 @@ namespace Model.Agriculture
             get;
             set;
         }
+        /// <summary>
+        /// 农作物类型
+        /// </summary>
+        public string CropType { get; set; }
     }
 }

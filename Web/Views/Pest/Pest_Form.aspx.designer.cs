@@ -7,10 +7,10 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace Web.Views.Crop {
+namespace Web.Views.Pest {
     
     
-    public partial class Crop_List {
+    public partial class Pest_Form {
         
         /// <summary>
         /// form1 控件。
@@ -22,6 +22,15 @@ namespace Web.Views.Crop {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// Id 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden Id;
+        
+        /// <summary>
         /// CropType 控件。
         /// </summary>
         /// <remarks>
@@ -31,48 +40,30 @@ namespace Web.Views.Crop {
         protected global::System.Web.UI.HtmlControls.HtmlSelect CropType;
         
         /// <summary>
-        /// txt_Search 控件。
+        /// PestName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_Search;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText PestName;
         
         /// <summary>
-        /// lbtSearch 控件。
+        /// PestContent 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtSearch;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden PestContent;
         
         /// <summary>
-        /// LoadButton1 控件。
+        /// Save 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Web.UserControl.LoadButton LoadButton1;
-        
-        /// <summary>
-        /// rp_Item 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rp_Item;
-        
-        /// <summary>
-        /// PageControl1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Web.UserControl.PageControl PageControl1;
+        protected global::System.Web.UI.WebControls.LinkButton Save;
     }
 }

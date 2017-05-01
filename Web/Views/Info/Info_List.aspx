@@ -85,7 +85,7 @@
                         </td>
                         <td style="width: 120px; text-align: center;">新闻类型
                         </td>
-                        <td style="width: 220px; text-align: center;">新闻标题
+                        <td style="width: 400px; text-align: center;">新闻标题
                         </td>
                         <td style="width: 120px; text-align: center;">发布人
                         </td>
@@ -103,8 +103,8 @@
                                 <td style="width: 120px; text-align: center;">
                                     <%#Eval("InfoType")%>
                                 </td>
-                                <td style="width: 220px; text-align: center;">
-                                    <%#Eval("InfoTitle")%>
+                                <td style="width: 400px; text-align: left;">
+                                    <a href="Info.html?key=<%#Eval("Id")%>"><%#Eval("InfoTitle")%></a>
                                 </td>
                                 <td style="width: 120px; text-align: center;">
                                     <%#Eval("CreateUserName")%>

@@ -47,6 +47,7 @@
     <Compile Include="Agriculture\ICaption.cs" />
     <Compile Include="Agriculture\ICrop.cs" />
     <Compile Include="Agriculture\IInfo.cs" />
+    <Compile Include="Agriculture\IPest.cs" />
     <Compile Include="IBaseRepository.cs" />
     <Compile Include="Sys\IModuleDept.cs" />
     <Compile Include="Sys\IOperLog.cs" />

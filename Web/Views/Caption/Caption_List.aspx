@@ -22,7 +22,7 @@
         //地图预览
         function MapPreview() {
             var key = $(".grid tbody td:eq(4)").text();
-            if (IsEditdata(key)) {
+            if (IsEditdata(CheckboxValue())) {
                 var url = "/Views/Caption/MapMain.html?key=" + key;
                 parent.document.getElementById("main").src = url;
             }

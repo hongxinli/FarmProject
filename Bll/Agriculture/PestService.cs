@@ -1,33 +1,33 @@
-﻿using System;
+﻿using Common;
+using IDal.Agriculture;
+using OracleDal;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
-using IDal.Agriculture;
 using OracleDal.Agriculture;
-using System.Data;
-using Common;
+using System.Web.UI.HtmlControls;
 
 namespace Bll.Agriculture
 {
-    public class InfoService
+    public class PestService 
     {
-        IInfo dal = new InfoRepository();
-
-
+        IPest dal = new PestRepository();
         public System.Data.DataTable DataTableByPage(int pageIndex, int pageSize, ref int count)
         {
-            string strSql = "select * from a_info";
+            string strSql = "select * from a_pest";
             DataTable dt = dal.DataTableByPage(pageSize, pageIndex, strSql, "", ref count, " CreateDate desc");
             return dt;
         }
         public void InitData(System.Web.UI.Page page, string _key)
         {
-            Model.Agriculture.A_Info model = dal.Get("Id", _key);
+            Model.Agriculture.A_Pest model = dal.Get("Id", _key);
             ControlBindHelper.SetWebControls(page, model);
         }
         public bool Submit_AddOrEdit(System.Web.UI.Page page, string _key)
         {
-            Model.Agriculture.A_Info model = ControlBindHelper.GetWebControls<Model.Agriculture.A_Info>(page, new Model.Agriculture.A_Info());
+            Model.Agriculture.A_Pest model = ControlBindHelper.GetWebControls<Model.Agriculture.A_Pest>(page, new Model.Agriculture.A_Pest());
             if (string.IsNullOrEmpty(_key))
             {
                 model.Id = CommonHelper.GetGuid;
@@ -50,18 +50,17 @@ namespace Bll.Agriculture
             return dal.Delete("Id", _key);
         }
 
-        public string GetInfoContent(string _key)
+        public string GetPestContent(string _key)
         {
-            return dal.Get("Id", _key).InfoContent;
+            return dal.Get("Id", _key).PestContent;
         }
-
-        public void InitInfoType(System.Web.UI.HtmlControls.HtmlSelect InfoType, string _key)
+        public void InitCropType(HtmlSelect CropType, string _key)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select * from base_code where domainname='A_INFO_TYPE' order by scode");
+            strSql.Append("select * from base_code where domainname='A_CROP_TYPE' order by scode");
             DataTable dt = dal.Query(strSql.ToString()).Tables[0];
 
-            ControlBindHelper.BindHtmlSelectFirstShow(dt, InfoType, "SName", "SName", _key);
+            ControlBindHelper.BindHtmlSelectFirstShow(dt, CropType, "SName", "SName", _key);
         }
     }
 }
