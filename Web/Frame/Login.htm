@@ -13,6 +13,15 @@
             var w = $(document.body).width();
             //alert(h + "&" + w);
             $(document.body).css("background-size", w + "px " + h + "px ");
+
+            //判断cookie中是否保存
+            var _userName = getCookie("userName");
+            var _userPwd = getCookie("userPwd");
+            if (_userName != undefined && _userPwd != undefined) {
+                $("#txtUserName").val(_userName);
+                $("#txtUserPwd").val(_userPwd);
+                $("#ckRemember").attr("checked", true);
+            }
         })
         window.onresize = function () {
             var h = $(document.body).height(); //浏览器当前窗口文档的高度
@@ -112,6 +121,17 @@
                 $(".load").hide();
             }
         }
+        //记住我
+        function RememberMe() {
+            var status = $("#ckRemember").attr("checked");
+            if (status == "checked") {
+                setCookie("userName", $("#txtUserName").val());
+                setCookie("userPwd", $("#txtUserPwd").val());
+            } else {
+                delCookie("userName");
+                delCookie("userPwd");
+            }
+        }
     </script>
 
 </head>
@@ -124,7 +144,7 @@
                         账&nbsp;&nbsp;&nbsp;户：
                     </div>
                     <div class="s2">
-                        <input type="text" id="txtUserName" value="system" class="txt" style="width: 122px;" />
+                        <input type="text" id="txtUserName" class="txt" style="width: 122px;" />
                         <span id="errorMsg0" class="errorMsg"></span>
                     </div>
                 </dd>
@@ -133,9 +153,15 @@
                         密&nbsp;&nbsp;&nbsp;码：
                     </div>
                     <div class="s4">
-                        <input type="password" onpaste="return false;" id="txtUserPwd" value="system" class="txt" onpaste="return false;"
+                        <input type="password" onpaste="return false;" id="txtUserPwd" class="txt" onpaste="return false;"
                                style="width: 122px;" />&nbsp;<span id="errorMsg1" class="errorMsg"></span>
                     </div>
+                </dd>
+                <dd>
+                    <div style="position:absolute; left: 300px;top: 170px;">
+                        <input type="checkbox" id="ckRemember" onclick="return RememberMe();" class="tree-checkbox" />
+                    </div>
+                    <div style="position:absolute; left: 320px;top: 168px; padding:0px;margin:0px;">记住我</div>
                 </dd>
                 <dd>
                     <div class="load">

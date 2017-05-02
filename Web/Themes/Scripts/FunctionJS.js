@@ -537,19 +537,35 @@ function ckbValueChildren(e) {
         $(_lis[i]).find(":checkbox").attr("checked", ck);
     }
 }
-
-function ckbTableValueChildren(e) {
-    //var ck = $("#" + e).attr("checked") == undefined ? false : true;
-    //var _ckbs = $("#" + e).parents("tr").siblings("tr").find(":checkbox");
-    //for (var i = 0; i < _ckbs.length; i++) {
-    //    var val = $(_ckbs[i]).attr("id");
-    //    if (val.indexOf(e) >= 0)
-    //        $(_ckbs[i]).attr("checked", ck);
-    //}
-}
 //获取url参数
 function getQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
     var r = window.location.search.substr(1).match(reg);
     if (r != null) return unescape(r[2]); return null;
+}
+//设置cookie
+function setCookie(name, value) {
+    var Days = 30;
+    var exp = new Date();
+    exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+}
+//获取cookie
+function getCookie(name) {
+    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)"); //正则匹配
+    if (arr = document.cookie.match(reg)) {
+        return unescape(arr[2]);
+    }
+    else {
+        return null;
+    }
+}
+//删除cookie
+function delCookie(name) {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval = getCookie(name);
+    if (cval != null) {
+        document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+    }
 }
