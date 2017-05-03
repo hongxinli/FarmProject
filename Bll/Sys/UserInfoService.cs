@@ -70,7 +70,7 @@ namespace Bll.Sys
             }
             if (string.IsNullOrEmpty(UserId))
             {
-                model.Creator = RequestSession.GetSessionUser().UserId.ToString();
+                model.Creator = RequestCookie.GetCookieUser().UserId.ToString();
                 model.CreateDate = DateTime.Now;
                 #region 操作日志记录
                 string actStr = "该用户对-用户编号：[" + model.UserId + "]进行了新增操作。";

@@ -33,7 +33,7 @@ namespace Web.Base.SysUser
                 }
                 else
                 {
-                    Creator.Value = RequestSession.GetSessionUser().UserName.ToString();
+                    Creator.Value = RequestCookie.GetCookieUser().UserName.ToString();
                     CreateDate.Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 }
             }

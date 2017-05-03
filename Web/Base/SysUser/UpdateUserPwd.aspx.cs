@@ -16,8 +16,8 @@ namespace Web.Base.SysUser
         UserInfoService bll = new UserInfoService();
         protected void Page_Load(object sender, EventArgs e)
         {
-            txtUserName.Value = RequestSession.GetSessionUser().UserId.ToString();
-            _PasPwd = RequestSession.GetSessionUser().UserPwd.ToString();
+            txtUserName.Value = RequestCookie.GetCookieUser().UserId.ToString();
+            _PasPwd = RequestCookie.GetCookieUser().UserPwd.ToString();
         }
         /// <summary>
         /// 保存事件

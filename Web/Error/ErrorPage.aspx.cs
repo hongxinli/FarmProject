@@ -12,7 +12,7 @@ namespace Web.Error
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (RequestSession.GetSessionUser() == null) {
+            if (RequestCookie.GetCookieUser() == null) {
                 Label1.Text = "用户登录超时，请重新登录。";
             }
             else

@@ -55,7 +55,7 @@ namespace Web
             Application.Lock();
             Application["CurrentUsers"] = (int)Application["CurrentUsers"] - 1;
             Application.UnLock();
-            // bll_log.SysLoginLog(RequestSession.GetSessionUser(), false);
+            // bll_log.SysLoginLog(RequestCookie.GetCookieUser(), false);
         }
 
         protected void Application_End(object sender, EventArgs e)

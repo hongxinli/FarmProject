@@ -310,7 +310,7 @@ namespace Bll.Sys
             model = ControlBindHelper.GetWebControls<Model.Base_Roles>(page, model);
             if (string.IsNullOrEmpty(roleId))
             {
-                model.Creator = RequestSession.GetSessionUser().UserId.ToString();
+                model.Creator = RequestCookie.GetCookieUser().UserId.ToString();
                 model.CreateDate = DateTime.Now;
                 model.RolesId = CommonHelper.GetGuid;
                 _roleId = model.RolesId;
@@ -410,7 +410,7 @@ namespace Bll.Sys
             #region 过滤非超级管理员信息
             if (!BaseService.IsAdmin())
             {
-                IList<Model.Base_RoleRight> rights = dal_right.List(" RolesId='" + RequestSession.GetSessionUser().RoleId.ToString() + "'");
+                IList<Model.Base_RoleRight> rights = dal_right.List(" RolesId='" + RequestCookie.GetCookieUser().RoleId.ToString() + "'");
                 foreach (Model.Base_RoleRight model in rights)
                 {
                     List<Model.Base_ModuleInfo> newList = list.Where(t => t.ModuleId.Equals(model.ModuleId) && t.ModuleType != 3).ToList();
@@ -515,7 +515,7 @@ namespace Bll.Sys
             IList<Model.Base_Department> newList = new List<Model.Base_Department>();
             if (!BaseService.IsAdmin())
             {
-                IList<Model.Base_RoleDept> rights = dal_roleDept.List(" RolesId='" + RequestSession.GetSessionUser().RoleId + "'");
+                IList<Model.Base_RoleDept> rights = dal_roleDept.List(" RolesId='" + RequestCookie.GetCookieUser().RoleId + "'");
                 foreach (Model.Base_RoleDept model in rights)
                 {
                     newList = BaseService.ReturnParentNode(model.DeptId, list_dept, newList);

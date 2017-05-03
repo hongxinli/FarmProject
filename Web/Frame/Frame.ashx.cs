@@ -40,8 +40,6 @@ namespace Web.Frame
                     {
                         if (model_user.IsState == 0)
                         {
-                            //if (!IsLogin(context, _UserId))
-                            //{
                             DepartmentService bll_dept = new DepartmentService();
                             Model.Base_UserDept model = bll_dept.GetModel(_UserId);
                             SessionUser user = new SessionUser();
@@ -54,17 +52,11 @@ namespace Web.Frame
                             user.Theme = model_user.Theme;
                             user.IsAdmin = model_user.IsAdmin;
                             user.DeptName = bll_dept.GetDepartment(model.DeptId).DeptName;
-                            RequestSession.AddSessionUser(user);
+                            RequestCookie.AddCookieUser(user);
                             bll_log.SysLoginLog(user, true);  //新增登录日志
                             CookieHelper.WriteCookie("Menu_Type", model_user.Theme); //记录当前用户的系统主题
                             context.Response.Write("4");//验证成功
                             context.Response.End();
-                            //}
-                            //else
-                            //{
-                            //    context.Response.Write("3");//该用户已经登录，不允许重复登录
-                            //    context.Response.End();
-                            //}
                         }
                         else
                         {
@@ -93,7 +85,7 @@ namespace Web.Frame
                     context.Response.End();
                     break;
                 case "logout":
-                    RequestSession.RemoveSessionUser();
+                    RequestCookie.RemoveCookieUser();
                     break;
                 default:
                     break;

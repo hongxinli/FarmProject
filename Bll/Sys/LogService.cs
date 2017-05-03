@@ -99,7 +99,7 @@ namespace Bll.Sys
         {
             int count = 0;
             StringBuilder Login_InfoHtml = new StringBuilder();
-            string _UserId = RequestSession.GetSessionUser().UserId.ToString();
+            string _UserId = RequestCookie.GetCookieUser().UserId.ToString();
             string strSql = "select * from(select rownum num, t.* from (Select * from Base_Loginlog where UserId='" + _UserId + "'  order by logintime desc) t) where num<=2";
             DataTable dt = dal.Query(strSql).Tables[0];
             //d1是本月的第一天，d2本月的最后一天，

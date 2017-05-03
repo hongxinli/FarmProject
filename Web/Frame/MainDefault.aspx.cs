@@ -15,8 +15,8 @@ namespace Web.Frame
         protected string DepartName = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            UserName = RequestSession.GetSessionUser().UserName.ToString();
-            DepartName = RequestSession.GetSessionUser().DeptName.ToString();
+            UserName = RequestCookie.GetCookieUser().UserName.ToString();
+            DepartName = RequestCookie.GetCookieUser().DeptName.ToString();
         }
     }
 }

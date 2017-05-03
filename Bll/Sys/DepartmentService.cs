@@ -202,7 +202,7 @@ namespace Bll.Sys
             model = ControlBindHelper.GetWebControls<Model.Base_Department>(page, model);
             if (string.IsNullOrEmpty(DeptId))
             {
-                model.Creator = RequestSession.GetSessionUser().UserId.ToString();
+                model.Creator = RequestCookie.GetCookieUser().UserId.ToString();
                 model.CreateDate = DateTime.Now;
                 string actStr = "该用户对-[" + model.DeptName + "]进行了新增操作。";
                 BaseService.WriteLogEvent(actStr, moduleId);

@@ -16,7 +16,7 @@ namespace Web.UserControl
         RolesService bll = new RolesService();
         protected void Page_Load(object sender, EventArgs e)
         {
-            string _UserId = RequestSession.GetSessionUser().UserId.ToString();//用户ID
+            string _UserId = RequestCookie.GetCookieUser().UserId.ToString();//用户ID
             sb_Button = bll.GetButtonHtml(_UserId);
         }
     }

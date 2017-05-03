@@ -190,7 +190,7 @@ namespace Bll.Sys
             if (string.IsNullOrEmpty(ModuleId))
             {
                 model.ModuleId = CommonHelper.GetGuid;
-                model.Creator = RequestSession.GetSessionUser().UserId.ToString();
+                model.Creator = RequestCookie.GetCookieUser().UserId.ToString();
                 model.CreateDate = DateTime.Now;
                 #region 操作日志记录
                 string actStr = "该用户对-模块名称：[" + model.ModuleName + "]进行了新增操作。";
@@ -263,7 +263,7 @@ namespace Bll.Sys
             int i = CommonHelper.GetInt(dal.Max("SortCode", " ParentId='" + ParentId + "' and DeleteMark=0 and ModuleType=3"));
             model_ModuleInfo.SortCode = i + 1;
             model_ModuleInfo.Target = "Onclick";
-            model_ModuleInfo.Creator = RequestSession.GetSessionUser().UserId.ToString();
+            model_ModuleInfo.Creator = RequestCookie.GetCookieUser().UserId.ToString();
             model_ModuleInfo.CreateDate = DateTime.Now;
             return string.IsNullOrEmpty(dal.Add(model_ModuleInfo)) ? 0 : 1;
         }
@@ -284,7 +284,7 @@ namespace Bll.Sys
         {
             string sqlStr="select * from  base_moduleinfo  where deleteMark=0 and target='Iframe' and moduletype in ('0','1','2')";
             if (!BaseService.IsAdmin()) {
-                string roleid = RequestSession.GetSessionUser().RoleId.ToString();
+                string roleid = RequestCookie.GetCookieUser().RoleId.ToString();
                 sqlStr = sqlStr + " and  moduleid in(select m.moduleid from base_roleright m where m.rolesid='" + roleid + "') ";
             }
             sqlStr = sqlStr + " order by moduleType,sortcode";
@@ -297,7 +297,7 @@ namespace Bll.Sys
         /// <returns></returns>
         public string GetAdminMenu()
         {
-            string roleid = RequestSession.GetSessionUser().RoleId.ToString();
+            string roleid = RequestCookie.GetCookieUser().RoleId.ToString();
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * from (");
             strSql.Append("select t.moduleid,case when t.deptid is null then t.parentid else t.deptid end parentid,t.modulename,t.moduletitle,t.moduleimg,t.moduletype,t.navigateurl,t.target,t.sortcode,'0' menuType ");

@@ -30,14 +30,14 @@ namespace Bll.Agriculture
             if (string.IsNullOrEmpty(_key))
             {
                 model.Id = CommonHelper.GetGuid;
-                model.CreateUserName = RequestSession.GetSessionUser().UserName.ToString();
+                model.CreateUserName = RequestCookie.GetCookieUser().UserName.ToString();
                 model.CreateDate = DateTime.Now;
                 model.DeleteMark = "0";
                 return dal.AddModel(model) > 0 ? true : false;
             }
             else
             {
-                model.CreateUserName = RequestSession.GetSessionUser().UserName.ToString();
+                model.CreateUserName = RequestCookie.GetCookieUser().UserName.ToString();
                 model.CreateDate = DateTime.Now;
                 model.DeleteMark = "0";
                 return dal.UpateModel(model) > 0 ? true : false;

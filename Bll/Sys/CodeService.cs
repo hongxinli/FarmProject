@@ -31,13 +31,13 @@ namespace Bll.Sys
             if (string.IsNullOrEmpty(_key))
             {
                 model.Id = CommonHelper.GetGuid;
-                model.CreateUserName = RequestSession.GetSessionUser().UserName.ToString();
+                model.CreateUserName = RequestCookie.GetCookieUser().UserName.ToString();
                 model.CreateDate = DateTime.Now;
                 return string.IsNullOrEmpty(DAL.Add(model)) ? false : true;
             }
             else
             {
-                model.CreateUserName = RequestSession.GetSessionUser().UserName.ToString();
+                model.CreateUserName = RequestCookie.GetCookieUser().UserName.ToString();
                 model.CreateDate = DateTime.Now;
                 return DAL.Update(model, " Id='" + _key + "'") > 0 ? true : false;
             }

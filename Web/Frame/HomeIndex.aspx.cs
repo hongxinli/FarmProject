@@ -19,7 +19,7 @@ namespace Web.Frame
         {
             if (!IsPostBack)
             {
-                _UserName = RequestSession.GetSessionUser().UserName.ToString();
+                _UserName = RequestCookie.GetCookieUser().UserName.ToString();
             }
         }
 

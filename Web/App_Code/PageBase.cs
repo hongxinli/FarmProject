@@ -23,7 +23,7 @@ namespace Web.App_Code
             GetReferer(true);
 
             #region 当Session过期自动跳出登录画面
-            if (RequestSession.GetSessionUser() == null)
+            if (RequestCookie.GetCookieUser() == null)
             {
                 Session.Abandon();  //取消当前会话
                 Session.Clear();
@@ -89,7 +89,7 @@ namespace Web.App_Code
             }
             if (!IsOK)
             {
-                string UserId = RequestSession.GetSessionUser().UserId.ToString();//用户ID
+                string UserId = RequestCookie.GetCookieUser().UserId.ToString();//用户ID
                 Bll.Sys.RolesService bll = new Bll.Sys.RolesService();
                 bool IsOk = bll.GetPermission_URL(UserId, requestPath);
                 if (!IsOk)

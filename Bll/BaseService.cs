@@ -21,7 +21,7 @@ namespace Bll
         /// <param name="moduleId">模块编号</param>
         public static void WriteLogEvent(string actStr, string moduleId)
         {
-            SessionUser currentUser = RequestSession.GetSessionUser();
+            CookieUser currentUser = RequestCookie.GetCookieUser();
             Model.Base_OperLog model = new Model.Base_OperLog();
             model.Id = CommonHelper.GetGuid;
             model.UserId = currentUser.UserId.ToString();
@@ -41,7 +41,7 @@ namespace Bll
         /// <returns></returns>
         public static List<T> ReturnRightData<T>(IList<T> list)
         {
-            string rolesid = RequestSession.GetSessionUser().RoleId.ToString();
+            string rolesid = RequestCookie.GetCookieUser().RoleId.ToString();
             IList<Model.Base_RoleDept> list_RoleDept = dal_RoleDept.List("RolesId='" + rolesid + "'");
             var newlist = (from e in list join o in list_RoleDept on e.GetType().GetProperty("DeptId").GetValue(e, null) equals o.DeptId select e).ToList();
             return newlist;
@@ -53,7 +53,7 @@ namespace Bll
         /// <returns></returns>
         public static DataTable ReturnRightData(DataTable dt)
         {
-            string rolesid = RequestSession.GetSessionUser().RoleId.ToString();
+            string rolesid = RequestCookie.GetCookieUser().RoleId.ToString();
             IList<Model.Base_RoleDept> list_RoleDept = dal_RoleDept.List("RolesId='" + rolesid + "'");
             string str = "";
             foreach (Model.Base_RoleDept model in list_RoleDept)
@@ -74,11 +74,11 @@ namespace Bll
         public static DataTable ReturnUserRightData(DataTable dt)
         {
 
-            if (Convert.ToInt32(RequestSession.GetSessionUser().IsAdmin) == 0)
+            if (Convert.ToInt32(RequestCookie.GetCookieUser().IsAdmin) == 0)
             {
                 DataView dv = new DataView();
                 dv.Table = dt;
-                dv.RowFilter = ("nextuserid='" + RequestSession.GetSessionUser().UserId + "' or stepaction<>'待审批'");
+                dv.RowFilter = ("nextuserid='" + RequestCookie.GetCookieUser().UserId + "' or stepaction<>'待审批'");
                 dt = dv.ToTable();
             }
             return dt;
@@ -89,7 +89,7 @@ namespace Bll
         /// <returns></returns>
         public static string ReturnAuthority()
         {
-            string rolesid = RequestSession.GetSessionUser().RoleId.ToString();
+            string rolesid = RequestCookie.GetCookieUser().RoleId.ToString();
             IList<Model.Base_RoleDept> list_RoleDept = dal_RoleDept.List("RolesId='" + rolesid + "'");
             string str = "";
             foreach (Model.Base_RoleDept model in list_RoleDept)
@@ -188,7 +188,7 @@ namespace Bll
         /// <returns></returns>
         public static bool IsAdmin()
         {
-            string isAdmin = RequestSession.GetSessionUser().IsAdmin.ToString();
+            string isAdmin = RequestCookie.GetCookieUser().IsAdmin.ToString();
             switch (isAdmin)
             {
                 case "0":
