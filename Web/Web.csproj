@@ -114,6 +114,7 @@
     <Content Include="dll\ASIM2.dll" />
     <Content Include="dll\Aspose.Cells.dll" />
     <Content Include="dll\Newtonsoft.Json.dll" />
+    <Content Include="dll\Newtonsoft.Json.xml" />
     <Content Include="dll\NPOI.DDF.dll" />
     <Content Include="dll\NPOI.DDF.xml" />
     <Content Include="dll\NPOI.dll" />
@@ -1166,6 +1167,7 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="WebService\topic.asmx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\PageBase.cs">
@@ -1340,6 +1342,8 @@
     <Compile Include="Demo\KindEditor.aspx.designer.cs">
       <DependentUpon>KindEditor.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dto\CaptionDto.cs" />
+    <Compile Include="Dto\jsonData.cs" />
     <Compile Include="Error\ErrorPage.aspx.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1470,6 +1474,10 @@
     </Compile>
     <Compile Include="Views\Pest\Pest_List.aspx.designer.cs">
       <DependentUpon>Pest_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebService\topic.asmx.cs">
+      <DependentUpon>topic.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
