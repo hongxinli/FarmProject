@@ -91,7 +91,6 @@
     <Content Include="App_Code\ServiceConfig.xml" />
     <Content Include="Base\SysCode\Code_Form.aspx" />
     <Content Include="Base\SysCode\Code_List.aspx" />
-    <Content Include="Base\SysCode\ImagePage.html" />
     <Content Include="Base\SysDept\Dept_Form.aspx" />
     <Content Include="Base\SysDept\Dept_List.aspx" />
     <Content Include="Base\SysLog\LoginList.aspx" />
@@ -1168,6 +1167,8 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="WebService\knowledge.asmx" />
+    <Content Include="WebService\news.asmx" />
     <Content Include="WebService\topic.asmx" />
   </ItemGroup>
   <ItemGroup>
@@ -1344,7 +1345,11 @@
       <DependentUpon>KindEditor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dto\CaptionDto.cs" />
+    <Compile Include="Dto\CropDto.cs" />
+    <Compile Include="Dto\CropTypeDto.cs" />
+    <Compile Include="Dto\InfoDto.cs" />
     <Compile Include="Dto\jsonData.cs" />
+    <Compile Include="Dto\pageData.cs" />
     <Compile Include="Error\ErrorPage.aspx.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1475,6 +1480,14 @@
     </Compile>
     <Compile Include="Views\Pest\Pest_List.aspx.designer.cs">
       <DependentUpon>Pest_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebService\knowledge.asmx.cs">
+      <DependentUpon>knowledge.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebService\news.asmx.cs">
+      <DependentUpon>news.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebService\topic.asmx.cs">
       <DependentUpon>topic.asmx</DependentUpon>

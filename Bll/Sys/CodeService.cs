@@ -47,5 +47,10 @@ namespace Bll.Sys
         {
             return DAL.Delete("Id", _key);
         }
+
+        public IList<Model.Base_Code> List(string where)
+        {
+            return DAL.List(where);
+        }
     }
 }

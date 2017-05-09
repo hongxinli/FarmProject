@@ -40,7 +40,6 @@
         //新增
         function add() {
             var url = "/Base/SysCode/Code_Form.aspx";
-            //top.openDialog(url, 'Code_Form', '配置信息 - 添加', 700, 160, 50, 50);
             Urlhref(url);
         }
         //编辑
@@ -48,7 +47,6 @@
             var key = CheckboxValue();
             if (IsEditdata(key)) {
                 var url = "/Base/SysCode/Code_Form.aspx?key=" + key;
-                // top.openDialog(url, 'Code_Form', '配置信息 - 编辑', 700, 160, 50, 50);
                 Urlhref(url);
             }
         }
@@ -142,7 +140,6 @@
                                 <td style="text-align: left;">
                                     <%#Eval("CreateDate")%>
                                 </td>
-
                             </tr>
                         </ItemTemplate>
                         <FooterTemplate>

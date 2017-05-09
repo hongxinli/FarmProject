@@ -13,11 +13,16 @@ namespace Bll.Agriculture
     public class CropService
     {
         ICrop dal = new CropRepository();
-        public System.Data.DataTable DataTableByPage(int pageIndex, int pageSize,string strWhere, ref int count)
+        public System.Data.DataTable DataTableByPage(int pageIndex, int pageSize, string strWhere, ref int count)
         {
             string strSql = "select * from a_crop";
             DataTable dt = dal.DataTableByPage(pageSize, pageIndex, strSql, strWhere, ref count, " CreateDate desc,CropType");
             return dt;
+        }
+        public IList<Model.Agriculture.A_Crop> ListByPage(int pageIndex, int pageSize, string strWhere, ref int count)
+        {
+            count = dal.Count(strWhere);
+          return  dal.ListByPage(pageSize, pageIndex, strWhere, " CreateDate desc,CropType");
         }
         public void InitData(System.Web.UI.Page page, string _key)
         {

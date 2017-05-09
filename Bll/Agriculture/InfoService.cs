@@ -20,6 +20,11 @@ namespace Bll.Agriculture
             DataTable dt = dal.DataTableByPage(pageSize, pageIndex, strSql, "", ref count, " CreateDate desc");
             return dt;
         }
+        public IList<Model.Agriculture.A_Info> ListByPage(int pageIndex, int pageSize, ref int count)
+        {
+            count = dal.Count();
+            return dal.ListByPage(pageSize, pageIndex, "", " CreateDate desc");
+        }
         public void InitData(System.Web.UI.Page page, string _key)
         {
             Model.Agriculture.A_Info model = dal.Get("Id", _key);

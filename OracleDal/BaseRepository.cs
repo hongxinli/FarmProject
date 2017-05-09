@@ -56,7 +56,9 @@ namespace OracleDal
 
         public int Count(string whereStr)
         {
-            var sqlStr = "select count(1) from " + GetTableName<T>() + " where " + whereStr;
+            var sqlStr = "select count(1) from " + GetTableName<T>() ;
+            if (!string.IsNullOrEmpty(whereStr))
+                sqlStr = sqlStr + " where " + whereStr;
             var count = OracleHelper.ExecuteScalar(OracleHelper.Conn, CommandType.Text, sqlStr);
             return int.Parse(count.ToString());
         }
