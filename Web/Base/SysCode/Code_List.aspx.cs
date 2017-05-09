@@ -34,5 +34,26 @@ namespace Web.Base.SysCode
             ControlBindHelper.BindRepeaterList(dt, rp_Item);
             this.PageControl1.RecordCount = count;
         }
+
+        /// <summary>
+        /// 绑定后激发事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void rp_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                Image lb_img = e.Item.FindControl("lb_img") as Image;
+                if (lb_img != null && !string.IsNullOrEmpty(lb_img.ImageUrl))
+                {
+                    lb_img.Visible = true;
+                }
+                else
+                {
+                    lb_img.Visible = false;
+                }
+            }
+        }
     }
 }

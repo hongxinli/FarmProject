@@ -91,6 +91,7 @@
     <Content Include="App_Code\ServiceConfig.xml" />
     <Content Include="Base\SysCode\Code_Form.aspx" />
     <Content Include="Base\SysCode\Code_List.aspx" />
+    <Content Include="Base\SysCode\ImagePage.html" />
     <Content Include="Base\SysDept\Dept_Form.aspx" />
     <Content Include="Base\SysDept\Dept_List.aspx" />
     <Content Include="Base\SysLog\LoginList.aspx" />

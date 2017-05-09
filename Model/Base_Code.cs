@@ -80,5 +80,9 @@ namespace Model
             get;
             set;
         }
+        /// <summary>
+        /// 图标路径
+        /// </summary>
+        public string ImageUrl { get; set; }
     }
 }

@@ -12,23 +12,44 @@
     <script src="/Themes/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
     <script src="/Themes/Scripts/jquery.pullbox.js" type="text/javascript"></script>
     <script src="/Themes/Scripts/FunctionJS.js" type="text/javascript"></script>
+    <style type="text/css">
+        .smallImg {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+    </style>
     <script type="text/javascript">
         $(function () {
             $(".div-body").PullBox({ dv: $(".div-body"), obj: $("#table1").find("tr") });
             divresize(90);
             FixedTableHeader("#table1", $(window).height() - 118);
+
+            $(".grid image").click(function () {
+                $("#container").html("<img src=\""+$(this).attr("src")+"\" style=\"width:450px;height:450px;cursor:pointer;\" />");
+                top.art.dialog({
+                    id: 'warningId',
+                    title: '图标信息',
+                    content: $("#container").html(),
+                    background: '#000',
+                    opacity: 0.1,
+                    lock: true
+                });
+            });
         })
         //新增
         function add() {
             var url = "/Base/SysCode/Code_Form.aspx";
-            top.openDialog(url, 'Code_Form', '配置信息 - 添加', 700, 160, 50, 50);
+            //top.openDialog(url, 'Code_Form', '配置信息 - 添加', 700, 160, 50, 50);
+            Urlhref(url);
         }
         //编辑
         function edit() {
             var key = CheckboxValue();
             if (IsEditdata(key)) {
                 var url = "/Base/SysCode/Code_Form.aspx?key=" + key;
-                top.openDialog(url, 'Code_Form', '配置信息 - 编辑', 700, 160, 50, 50);
+                // top.openDialog(url, 'Code_Form', '配置信息 - 编辑', 700, 160, 50, 50);
+                Urlhref(url);
             }
         }
         //删除
@@ -63,6 +84,9 @@
             </div>
         </div>
         <div class="btnbarcontetn">
+            <div style="float: left; margin-left: 10px; margin-top: 5px;">
+                <label style="color: red;">注：系统配置，谨慎操作！</label>
+            </div>
             <div style="text-align: right">
                 <uc2:LoadButton ID="LoadButton1" runat="server" />
             </div>
@@ -79,18 +103,19 @@
                         </td>
                         <td style="width: 120px; text-align: center;">域名称
                         </td>
-                        <td style="width: 120px; text-align: center;">名称编码
+                        <td style="width: 80px; text-align: center;">名称编码
                         </td>
                         <td style="width: 120px; text-align: center;">名称
                         </td>
+                        <td style="width: 80px; text-align: center;">图标</td>
                         <td style="width: 120px; text-align: center;">创建人员
                         </td>
-                        <td style=" text-align: left;">创建时间
+                        <td>创建时间
                         </td>
                     </tr>
                 </thead>
                 <tbody>
-                    <asp:Repeater ID="rp_Item" runat="server">
+                    <asp:Repeater ID="rp_Item" OnItemDataBound="rp_ItemDataBound" runat="server">
                         <ItemTemplate>
                             <tr>
                                 <td style="width: 20px; text-align: left;">
@@ -102,18 +127,22 @@
                                 <td style="width: 120px; text-align: center;">
                                     <%#Eval("DomainAliasName")%>
                                 </td>
-                                <td style="width: 120px; text-align: center;">
+                                <td style="width: 80px; text-align: center;">
                                     <%#Eval("SCode")%>
                                 </td>
                                 <td style="width: 120px; text-align: center;">
                                     <%#Eval("SName")%>
                                 </td>
+                                <td style="width: 80px; text-align: center;">
+                                    <asp:Image ID="lb_img" ImageUrl='<%#Eval("ImageUrl")%>' CssClass="smallImg" runat="server" />
+                                </td>
                                 <td style="width: 120px; text-align: center;">
                                     <%#Eval("CreateUserName")%>
                                 </td>
-                                <td>
+                                <td style="text-align: left;">
                                     <%#Eval("CreateDate")%>
                                 </td>
+
                             </tr>
                         </ItemTemplate>
                         <FooterTemplate>
@@ -130,6 +159,7 @@
             </table>
         </div>
         <uc1:PageControl ID="PageControl1" runat="server" />
+        <div id="container"></div>
     </form>
 </body>
 </html>

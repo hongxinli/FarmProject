@@ -42,7 +42,7 @@ namespace Web.WebService
                 var jsonModel = new Dto.jsonData<Dto.CaptionDto>()
                 {
                     status = true,
-                    list = entitys
+                    details = entitys
                 };
                 var result = JsonConvert.SerializeObject(jsonModel);
                 return result;
@@ -52,7 +52,7 @@ namespace Web.WebService
                 var jsonModel = new Dto.jsonData<Dto.CaptionDto>()
                 {
                     status = false,
-                    list = null
+                    details = null
                 };
                 var result = JsonConvert.SerializeObject(jsonModel);
                 return result;
