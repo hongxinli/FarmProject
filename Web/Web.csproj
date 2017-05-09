@@ -1169,6 +1169,7 @@
     </Content>
     <Content Include="WebService\knowledge.asmx" />
     <Content Include="WebService\news.asmx" />
+    <Content Include="WebService\splash.asmx" />
     <Content Include="WebService\topic.asmx" />
   </ItemGroup>
   <ItemGroup>
@@ -1350,6 +1351,7 @@
     <Compile Include="Dto\InfoDto.cs" />
     <Compile Include="Dto\jsonData.cs" />
     <Compile Include="Dto\pageData.cs" />
+    <Compile Include="Dto\SplashDto.cs" />
     <Compile Include="Error\ErrorPage.aspx.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1487,6 +1489,10 @@
     </Compile>
     <Compile Include="WebService\news.asmx.cs">
       <DependentUpon>news.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebService\splash.asmx.cs">
+      <DependentUpon>splash.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebService\topic.asmx.cs">
