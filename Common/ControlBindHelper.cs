@@ -560,6 +560,12 @@ namespace Common
                     HtmlTextArea area = (HtmlTextArea)control;
                     area.Value = val.ToString();
                 }
+                if (control is HtmlInputCheckBox)
+                {
+                    HtmlInputCheckBox cb = (HtmlInputCheckBox)control;
+                    if (val == "1")
+                        cb.Checked = true;
+                }
             }
         }
 

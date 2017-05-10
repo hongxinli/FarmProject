@@ -29,6 +29,16 @@ namespace Web.Views.Info
                     context.Response.Write(infoContent);
                     context.Response.End();
                     break;
+                case "up":
+                    int i = _Service.Up(key);
+                    context.Response.Write(i);
+                    context.Response.End();
+                    break;
+                case "down":
+                    i = _Service.Down(key);
+                    context.Response.Write(i);
+                    context.Response.End();
+                    break;
                 default:
                     break;
             }

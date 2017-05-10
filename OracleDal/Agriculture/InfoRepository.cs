@@ -21,7 +21,8 @@ namespace OracleDal.Agriculture
                 new OracleParameter(":InfoType",OracleType.VarChar),
                 new OracleParameter(":DeleteMark",OracleType.VarChar),
                 new OracleParameter(":CreateUserName",OracleType.VarChar),
-                new OracleParameter(":CreateDate",OracleType.DateTime)
+                new OracleParameter(":CreateDate",model.CreateDate),
+                new OracleParameter(":Top",model.Top)
                                      };
             param[0].Value = model.Id;
             param[1].Value = model.InfoTitle;
@@ -30,9 +31,10 @@ namespace OracleDal.Agriculture
             param[4].Value = model.DeleteMark;
             param[5].Value = model.CreateUserName;
             param[6].Value = model.CreateDate;
+            param[7].Value = model.Top;
             StringBuilder sb = new StringBuilder();
-            sb.Append("insert into A_Info(Id,InfoTitle,InfoContent,InfoType,DeleteMark,CreateUserName,CreateDate)");
-            sb.Append("values(:Id,:InfoTitle,:InfoContent,:InfoType,:DeleteMark,:CreateUserName,:CreateDate)");
+            sb.Append("insert into A_Info(Id,InfoTitle,InfoContent,InfoType,DeleteMark,CreateUserName,CreateDate,Top)");
+            sb.Append("values(:Id,:InfoTitle,:InfoContent,:InfoType,:DeleteMark,:CreateUserName,:CreateDate,:Top)");
             return OracleHelper.ExecuteNonQuery(OracleHelper.Conn, CommandType.Text, sb.ToString(), param);
         }
 
@@ -45,7 +47,8 @@ namespace OracleDal.Agriculture
                 new OracleParameter(":InfoType",model.InfoType),
                 new OracleParameter(":DeleteMark",model.DeleteMark),
                 new OracleParameter(":CreateUserName",model.CreateUserName),
-                new OracleParameter(":CreateDate",model.CreateDate)
+                new OracleParameter(":CreateDate",model.CreateDate),
+                new OracleParameter(":Top",model.Top)
                                      };
             StringBuilder sb = new StringBuilder();
             sb.Append("update A_Info set ");
@@ -54,7 +57,8 @@ namespace OracleDal.Agriculture
             sb.Append("InfoType=:InfoType,");
             sb.Append("DeleteMark=:DeleteMark,");
             sb.Append("CreateUserName=:CreateUserName,");
-            sb.Append("CreateDate=:CreateDate");
+            sb.Append("CreateDate=:CreateDate,");
+            sb.Append("Top=:Top");
             sb.Append(" where Id=:Id");
             return OracleHelper.ExecuteNonQuery(OracleHelper.Conn, CommandType.Text, sb.ToString(), param);
         }

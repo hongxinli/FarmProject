@@ -34,5 +34,21 @@ namespace Web.Views.Info
             ControlBindHelper.BindRepeaterList(dt, rp_Item);
             this.PageControl1.RecordCount = count;
         }
+        /// <summary>
+        /// 绑定后激发事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void rp_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                Label lblIsState = e.Item.FindControl("lb_status") as Label;
+                string mark = lblIsState.Text;
+                mark = mark.Replace("0", "<span style='color:Blue'> </span>");
+                mark = mark.Replace("1", "<span style='color:red'>置 顶</span>");
+                lblIsState.Text = mark;
+            }
+        }
     }
 }

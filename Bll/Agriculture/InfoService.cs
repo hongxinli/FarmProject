@@ -17,7 +17,7 @@ namespace Bll.Agriculture
         public System.Data.DataTable DataTableByPage(int pageIndex, int pageSize, ref int count)
         {
             string strSql = "select * from a_info";
-            DataTable dt = dal.DataTableByPage(pageSize, pageIndex, strSql, "", ref count, " CreateDate desc");
+            DataTable dt = dal.DataTableByPage(pageSize, pageIndex, strSql, "", ref count, " top desc, CreateDate desc");
             return dt;
         }
         public IList<Model.Agriculture.A_Info> ListByPage(int pageIndex, int pageSize, ref int count)
@@ -60,6 +60,14 @@ namespace Bll.Agriculture
             return dal.Get("Id", _key).InfoContent;
         }
 
+        public int Up(string id)
+        {
+            return dal.ExecuteNonQuery(" update a_info set top=1 where id='" + id + "'");
+        }
+        public int Down(string id)
+        {
+            return dal.ExecuteNonQuery(" update a_info set top=0 where id='" + id + "'");
+        }
         public void InitInfoType(System.Web.UI.HtmlControls.HtmlSelect InfoType, string _key)
         {
             StringBuilder strSql = new StringBuilder();

@@ -61,6 +61,41 @@
                 Urlhref(url);
             }
         }
+
+        function up() {
+            var key = CheckboxValue();
+            if (IsDelData(key)) {
+                var url = 'Info.ashx';
+                var parm = "action=up&key=" + key;
+                getAjax(url, parm, function (rs) {
+                    if (parseInt(rs) == 0) {
+                        showTipsMsg("<span style='color:red'>操作失败，请稍后重试！</span>", 4000, 5);
+                        return false;
+                    }
+                    else if (parseInt(rs) == 1) {
+                        showTipsMsg("操作成功", 2000, 4);
+                        windowload();
+                    }
+                });
+            }
+        }
+        function down() {
+            var key = CheckboxValue();
+            if (IsDelData(key)) {
+                var url = 'Info.ashx';
+                var parm = "action=down&key=" + key;
+                getAjax(url, parm, function (rs) {
+                    if (parseInt(rs) == 0) {
+                        showTipsMsg("<span style='color:red'>操作失败，请稍后重试！</span>", 4000, 5);
+                        return false;
+                    }
+                    else if (parseInt(rs) == 1) {
+                        showTipsMsg("操作成功", 2000, 4);
+                        windowload();
+                    }
+                });
+            }
+        }
     </script>
 </head>
 <body>
@@ -87,6 +122,8 @@
                         </td>
                         <td style="width: 400px; text-align: center;">新闻标题
                         </td>
+                        <td style="width: 100px; text-align: center;">是否置顶
+                        </td>
                         <td style="width: 120px; text-align: center;">发布人
                         </td>
                         <td>发布时间
@@ -94,7 +131,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <asp:Repeater ID="rp_Item" runat="server">
+                    <asp:Repeater ID="rp_Item" runat="server" OnItemDataBound="rp_ItemDataBound">
                         <ItemTemplate>
                             <tr>
                                 <td style="width: 20px; text-align: left;">
@@ -105,6 +142,10 @@
                                 </td>
                                 <td style="width: 400px; text-align: left;">
                                     <a href="Info.html?key=<%#Eval("Id")%>"><%#Eval("InfoTitle")%></a>
+                                </td>
+                                <td style="width: 100px; text-align: center;">
+
+                                    <asp:Label ID="lb_status" Text='<%#Eval("Top")%>' runat="server"> </asp:Label>
                                 </td>
                                 <td style="width: 120px; text-align: center;">
                                     <%#Eval("CreateUserName")%>

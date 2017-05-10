@@ -81,5 +81,9 @@ namespace Model.Agriculture
             get;
             set;
         }
+        /// <summary>
+        /// 是否推荐 1 推荐
+        /// </summary>
+        public int Top { get; set; } 
     }
 }
