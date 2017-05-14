@@ -25,6 +25,11 @@ namespace Bll.Agriculture
             count = dal.Count();
             return dal.ListByPage(pageSize, pageIndex, "", " CreateDate desc");
         }
+        public IList<Model.Agriculture.A_Info> BarsList(int pageIndex, int pageSize, ref int count)
+        {
+            count = dal.Count();
+            return dal.ListByPage(pageSize, pageIndex, " deletemark=0 ", " top desc,createdate desc");
+        }
         public void InitData(System.Web.UI.Page page, string _key)
         {
             Model.Agriculture.A_Info model = dal.Get("Id", _key);

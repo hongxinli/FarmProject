@@ -414,9 +414,7 @@
     <Content Include="Themes\Images\login-v2-load.png" />
     <Content Include="Themes\Images\Login\137.png" />
     <Content Include="Themes\Images\Login\bg.jpg" />
-    <Content Include="Themes\Images\Login\bg.png" />
     <Content Include="Themes\Images\Login\bg2.png" />
-    <Content Include="Themes\Images\Login\bg_08.png" />
     <Content Include="Themes\Images\Login\loading.gif" />
     <Content Include="Themes\Images\Login\login-v2-load.png" />
     <Content Include="Themes\Images\Max_arrow_left.png" />
@@ -905,7 +903,6 @@
     <Content Include="Themes\Scripts\jquery.freezeheader.js" />
     <Content Include="Themes\Scripts\jquery.md5.js" />
     <Content Include="Themes\Scripts\jquery.pullbox.js" />
-    <Content Include="Themes\Scripts\kindeditor\attached\image\20150722\20150722163748_0113.jpg" />
     <Content Include="Themes\Scripts\kindeditor\js\kindeditor-all-min.js" />
     <Content Include="Themes\Scripts\kindeditor\js\kindeditor-all.js" />
     <Content Include="Themes\Scripts\kindeditor\js\kindeditor-min.js" />
@@ -1345,6 +1342,7 @@
     <Compile Include="Demo\KindEditor.aspx.designer.cs">
       <DependentUpon>KindEditor.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dto\BarDto.cs" />
     <Compile Include="Dto\CaptionDto.cs" />
     <Compile Include="Dto\CropDto.cs" />
     <Compile Include="Dto\CropTypeDto.cs" />
@@ -1599,6 +1597,7 @@
     <Folder Include="Themes\Scripts\DatePicker\开发包\skin\whyGreen\.svn\tmp\props\" />
     <Folder Include="Themes\Scripts\DatePicker\开发包\skin\whyGreen\.svn\tmp\text-base\" />
     <Folder Include="Themes\Scripts\kindeditor\attached\file\" />
+    <Folder Include="Themes\Scripts\kindeditor\attached\image\20150722\" />
     <Folder Include="Themes\Scripts\kindeditor\attached\media\" />
     <Folder Include="uploads\excel\安全阀\" />
     <Folder Include="uploads\pdf\无损检测\" />
