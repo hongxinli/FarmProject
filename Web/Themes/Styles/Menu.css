@@ -46,7 +46,7 @@ div, ul, li, dl, dt, dd, img, h1, h2 {
     margin-left: 20px;
     background: url(../images/bmslogo.png);
     height: 52px;
-    width: 420px;
+    width: 446px;
     display: inline;
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='bmslogo.png', sizingMethod='crop');
 }
