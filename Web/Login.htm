@@ -71,7 +71,7 @@
                 $.ajax({
                     type: 'post',
                     dataType: "text",
-                    url: 'Frame.ashx',
+                    url: 'Frame/Frame.ashx',
                     data: parm,
                     cache: false,
                     async: false,
@@ -92,7 +92,7 @@
                             CheckingLogin(0);
                             return false;
                         } else if (parseInt(rs) == 4) {
-                            window.location.href = "MainSwitch.aspx";
+                            window.location.href = "Frame/MainSwitch.aspx";
                             // Load();
                         }
                     }
@@ -101,7 +101,7 @@
         }
         //登陆加载
         function Load() {
-            window.location.href = 'MainSwitch.aspx';
+            window.location.href = 'Frame/MainSwitch.aspx';
             return false;
         }
         //清空

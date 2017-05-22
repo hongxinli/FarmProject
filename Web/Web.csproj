@@ -136,7 +136,7 @@
     <Content Include="Frame\HomeIndex.aspx" />
     <Content Include="Themes\Images\16\1168905.png" />
     <Content Include="Themes\Images\16\moveReport.png" />
-    <Content Include="Frame\Login.htm" />
+    <Content Include="Login.htm" />
     <Content Include="Frame\MainDefault.aspx" />
     <Content Include="Frame\MainFrame.js" />
     <Content Include="Frame\MainIndex.aspx" />

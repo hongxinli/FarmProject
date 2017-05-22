@@ -82,7 +82,7 @@
                 </div>
                 <div id="weather">
                 </div>
-                <div id="Headermenu" style="font-size: larger; font-weight: 700; color: white; margin-top: 25px;width:150px;">
+                <div id="Headermenu" style="font-size: larger; font-weight: 700; color: white; margin-top: 25px;width:180px;">
                   <%=DepartName.ToString()%> &nbsp;&nbsp;&nbsp;&nbsp; <%=UserName.ToString()%>
                 </div>
             </div>

@@ -6,7 +6,7 @@
 <head runat="server">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>欢迎使用技术检测中心数据综合管理系统</title>
+    <title>池州市贵池区精准施肥公共服务平台</title>
     <link href="/Themes/Styles/Site.css" rel="stylesheet" type="text/css" />
     <link href="/Themes/Styles/Menu.css" rel="stylesheet" type="text/css" />
     <script src="/Themes/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
