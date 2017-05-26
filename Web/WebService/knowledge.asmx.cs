@@ -26,8 +26,9 @@ namespace Web.WebService
         /// <param name="type"> 0 为请求作物， 1为请求虫害</param>
         /// <returns></returns>
         [WebMethod]
-        public string crops(int type)
+        public void crops(int type)
         {
+           
             if (type == 0)
             {
                 CodeService _codeService = new CodeService();
@@ -45,7 +46,7 @@ namespace Web.WebService
                         details = entitys
                     };
                     var result = JsonConvert.SerializeObject(jsonModel);
-                    return result;
+                    Common.ResponseHelper.Write(result);
                 }
                 else
                 {
@@ -55,12 +56,8 @@ namespace Web.WebService
                         details = null
                     };
                     var result = JsonConvert.SerializeObject(jsonModel);
-                    return result;
+                    Common.ResponseHelper.Write(result);
                 }
-            }
-            else
-            {
-                return "";
             }
         }
         /// <summary>
@@ -72,7 +69,7 @@ namespace Web.WebService
         /// <param name="typeid"></param>
         /// <returns></returns>
         [WebMethod]
-        public string breed(int page, int count, string search, string typeid)
+        public void breed(int page, int count, string search, string typeid)
         {
             CropService _Service = new CropService();
             StringBuilder sb = new StringBuilder();
@@ -95,7 +92,7 @@ namespace Web.WebService
             var entity = new Dto.pageData<Web.Dto.CropDto>() { totalRow = total, pageNumber = page, pageSize = count, list = cropList };
             var jsonModel = new Dto.jsonModelData<Dto.pageData<Web.Dto.CropDto>>() { status = true, details = entity };
             var result = JsonConvert.SerializeObject(jsonModel);
-            return result;
+            Common.ResponseHelper.Write(result);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Web.WebService
         /// <param name="count"></param>
         /// <returns></returns>
         [WebMethod]
-        public string newsList(int page, int count)
+        public void newsList(int page, int count)
         {
             Bll.Agriculture.InfoService _Service = new Bll.Agriculture.InfoService();
             int total = 0;
@@ -38,14 +38,14 @@ namespace Web.WebService
             var model = new Dto.pageData<Dto.InfoDto>() { totalRow = total, pageNumber = page, pageSize = count, list = list };
             var jsonModel = new Dto.jsonModelData<Dto.pageData<Dto.InfoDto>>() { status = true, details = model };
             var result = JsonConvert.SerializeObject(jsonModel);
-            return result;
+            Common.ResponseHelper.Write(result);
         }
         /// <summary>
         /// 广告条列表
         /// </summary>
         /// <returns></returns>
         [WebMethod]
-        public string bars()
+        public void bars()
         {
             Bll.Agriculture.InfoService _Service = new Bll.Agriculture.InfoService();
             int total = 0;
@@ -65,7 +65,7 @@ namespace Web.WebService
             }
             var jsonModel = new Dto.jsonModelData<List<Web.Dto.BarDto>>() { status = true, details = list };
             var result = JsonConvert.SerializeObject(jsonModel);
-            return result;
+            Common.ResponseHelper.Write(result);
         }
     }
 }

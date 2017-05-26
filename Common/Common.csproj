@@ -104,6 +104,7 @@
     <Compile Include="RequestCookie.cs" />
     <Compile Include="RequestHelper.cs" />
     <Compile Include="RequestSession.cs" />
+    <Compile Include="ResponseHelper.cs" />
     <Compile Include="SessionUser.cs" />
     <Compile Include="ShowMsgHelper.cs" />
     <Compile Include="StringHelper.cs" />

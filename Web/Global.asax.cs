@@ -13,14 +13,13 @@ namespace Web
 {
     public class Global : System.Web.HttpApplication
     {
-        static LogService bll_log = new LogService();
         protected void Application_Start(object sender, EventArgs e)
         {
             // 计算人数
             Application.Lock();
             Application["CurrentUsers"] = 0;
             Application.UnLock();
-           
+
         }
 
         protected void Session_Start(object sender, EventArgs e)

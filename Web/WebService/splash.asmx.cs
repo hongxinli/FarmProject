@@ -20,7 +20,7 @@ namespace Web.WebService
     {
 
         [WebMethod]
-        public string pic()
+        public void pic()
         {
             CodeService _Service = new CodeService();
             var list = _Service.List(" DOMAINNAME='A_CODE_WELCOME'");
@@ -31,7 +31,7 @@ namespace Web.WebService
             }
             var jsonData = new Dto.jsonData<Dto.SplashDto>() { status = true, details = entitys };
             var result = JsonConvert.SerializeObject(jsonData);
-            return result;
+            Common.ResponseHelper.Write(result);
         }
     }
 }

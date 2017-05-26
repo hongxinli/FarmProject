@@ -23,7 +23,7 @@ namespace Web.WebService
         /// </summary>
         /// <returns></returns>
         [WebMethod]
-        public string type()
+        public void type()
         {
             CaptionService _Service = new CaptionService();
             IList<Model.Agriculture.A_Caption> list = _Service.List();
@@ -45,17 +45,7 @@ namespace Web.WebService
                     details = entitys
                 };
                 var result = JsonConvert.SerializeObject(jsonModel);
-                return result;
-            }
-            else
-            {
-                var jsonModel = new Dto.jsonData<Dto.CaptionDto>()
-                {
-                    status = false,
-                    details = null
-                };
-                var result = JsonConvert.SerializeObject(jsonModel);
-                return result;
+                Common.ResponseHelper.Write(result);
             }
         }
     }
