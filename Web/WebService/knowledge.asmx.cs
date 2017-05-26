@@ -28,8 +28,8 @@ namespace Web.WebService
         [WebMethod]
         public void crops(int type)
         {
-           
-            if (type == 0)
+
+            if (type == 0) //农作物
             {
                 CodeService _codeService = new CodeService();
                 var list = _codeService.List("domainname='A_CROP_TYPE'");
@@ -48,16 +48,10 @@ namespace Web.WebService
                     var result = JsonConvert.SerializeObject(jsonModel);
                     Common.ResponseHelper.Write(result);
                 }
-                else
-                {
-                    var jsonModel = new Dto.jsonData<Dto.CropTypeDto>()
-                    {
-                        status = false,
-                        details = null
-                    };
-                    var result = JsonConvert.SerializeObject(jsonModel);
-                    Common.ResponseHelper.Write(result);
-                }
+            }
+            else if (type == 1) //病虫害
+            {
+
             }
         }
         /// <summary>
@@ -91,6 +85,34 @@ namespace Web.WebService
             }
             var entity = new Dto.pageData<Web.Dto.CropDto>() { totalRow = total, pageNumber = page, pageSize = count, list = cropList };
             var jsonModel = new Dto.jsonModelData<Dto.pageData<Web.Dto.CropDto>>() { status = true, details = entity };
+            var result = JsonConvert.SerializeObject(jsonModel);
+            Common.ResponseHelper.Write(result);
+        }
+        /// <summary>
+        /// 获取病虫害信息
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="count"></param>
+        [WebMethod]
+        public void pest(int page, int count)
+        {
+            PestService _Service = new PestService();
+            int total = 0;
+            var list = _Service.ListByPage(page, count, ref total);
+            var pestList = new List<Web.Dto.PestDto>();
+            foreach (var item in list)
+            {
+                pestList.Add(new Dto.PestDto()
+                {
+                    id = item.Id,
+                    name = item.PestName,
+                    time = item.CreateDate.ToString("yyyy-mm-dd"),
+                    url = "/Views/Pest/Pest.html?key=" + item.Id,
+                    img = item.PestContent.Contains("img") ? Common.StringHelper.GetHtmlImageUrlList(item.PestContent)[0] : "/Themes/Images/news.jpg"
+                });
+            }
+            var entity = new Dto.pageData<Web.Dto.PestDto>() { totalRow = total, pageNumber = page, pageSize = count, list = pestList };
+            var jsonModel = new Dto.jsonModelData<Dto.pageData<Web.Dto.PestDto>>() { status = true, details = entity };
             var result = JsonConvert.SerializeObject(jsonModel);
             Common.ResponseHelper.Write(result);
         }

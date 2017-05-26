@@ -111,27 +111,9 @@
     <Content Include="Base\SysUser\UserInfo_List.aspx" />
     <Content Include="Base\SysUser\User_Info.aspx" />
     <Content Include="Demo\KindEditor.aspx" />
-    <Content Include="dll\ASIM2.dll" />
-    <Content Include="dll\Aspose.Cells.dll" />
     <Content Include="dll\Newtonsoft.Json.dll" />
     <Content Include="dll\Newtonsoft.Json.xml" />
-    <Content Include="dll\NPOI.DDF.dll" />
-    <Content Include="dll\NPOI.DDF.xml" />
-    <Content Include="dll\NPOI.dll" />
-    <Content Include="dll\NPOI.HPSF.dll" />
-    <Content Include="dll\NPOI.HPSF.xml" />
-    <Content Include="dll\NPOI.HSSF.dll" />
-    <Content Include="dll\NPOI.HSSF.xml" />
-    <Content Include="dll\NPOI.POIFS.dll" />
-    <Content Include="dll\NPOI.POIFS.xml" />
-    <Content Include="dll\NPOI.Util.dll" />
-    <Content Include="dll\NPOI.Util.xml" />
-    <Content Include="dll\NPOI.xml" />
-    <Content Include="dll\SendAMMsgCom.dll" />
     <Content Include="Error\ErrorPage.aspx" />
-    <Content Include="dll\Aspose.Words.dll" />
-    <Content Include="dll\Aspose.Words.idl" />
-    <Content Include="dll\Aspose.Words.xml" />
     <Content Include="Error\Product.html" />
     <Content Include="Frame\HomeIndex.aspx" />
     <Content Include="Themes\Images\16\1168905.png" />
@@ -399,6 +381,8 @@
     <Content Include="Themes\Images\disk.png" />
     <Content Include="Themes\Images\exclamation_octagon_fram.png" />
     <Content Include="Themes\Images\first.gif" />
+    <Content Include="Themes\Images\news.jpg" />
+    <Content Include="Themes\Images\pest.jpg" />
     <Content Include="Themes\Images\preload.png" />
     <Content Include="Themes\Images\Headerbotton.png" />
     <Content Include="Themes\Images\illustration.png" />
@@ -1349,6 +1333,7 @@
     <Compile Include="Dto\InfoDto.cs" />
     <Compile Include="Dto\jsonData.cs" />
     <Compile Include="Dto\pageData.cs" />
+    <Compile Include="Dto\PestDto.cs" />
     <Compile Include="Dto\SplashDto.cs" />
     <Compile Include="Error\ErrorPage.aspx.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
@@ -1500,7 +1485,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Base\SysModule\SysModule.ashx" />
-    <Content Include="dll\Aspose.Words.tlb" />
     <Content Include="Frame\Frame.ashx" />
     <Content Include="Themes\Scripts\DatePicker\skin\default\.svn\all-wcprops" />
     <Content Include="Themes\Scripts\DatePicker\skin\default\.svn\entries" />
@@ -1629,9 +1613,6 @@
       <Project>{18d0c428-ad1b-4f9b-82fa-3eee991be7ad}</Project>
       <Name>Tincher.Interop</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="ADODB">

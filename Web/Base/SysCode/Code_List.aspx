@@ -25,7 +25,7 @@
             divresize(90);
             FixedTableHeader("#table1", $(window).height() - 118);
 
-            $(".grid image").click(function () {
+            $(".grid img").click(function () {
                 $("#container").html("<img src=\""+$(this).attr("src")+"\" style=\"width:450px;height:450px;cursor:pointer;\" />");
                 top.art.dialog({
                     id: 'warningId',

@@ -11,7 +11,7 @@ using System.Web.UI.HtmlControls;
 
 namespace Bll.Agriculture
 {
-    public class PestService 
+    public class PestService
     {
         IPest dal = new PestRepository();
         public System.Data.DataTable DataTableByPage(int pageIndex, int pageSize, ref int count)
@@ -19,6 +19,11 @@ namespace Bll.Agriculture
             string strSql = "select * from a_pest";
             DataTable dt = dal.DataTableByPage(pageSize, pageIndex, strSql, "", ref count, " CreateDate desc");
             return dt;
+        }
+        public IList<Model.Agriculture.A_Pest> ListByPage(int pageIndex, int pageSize, ref int count)
+        {
+            count = dal.Count();
+            return dal.ListByPage(pageSize, pageIndex," deleteMark=0 "," croptype desc");
         }
         public void InitData(System.Web.UI.Page page, string _key)
         {
@@ -62,5 +67,6 @@ namespace Bll.Agriculture
 
             ControlBindHelper.BindHtmlSelectFirstShow(dt, CropType, "SName", "SName", _key);
         }
+
     }
 }

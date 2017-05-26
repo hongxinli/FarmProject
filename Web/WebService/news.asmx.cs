@@ -60,7 +60,7 @@ namespace Web.WebService
                     id = item.Id,
                     title = item.InfoTitle,
                     url = "/Views/Info/Info.html?key=" + item.Id,
-                    img = item.InfoContent.Contains("img") ? Common.StringHelper.GetHtmlImageUrlList(item.InfoContent)[0] : "/Themes/Scripts/kindeditor/attached/image/20170510/20170510134832_2344.jpg"
+                    img = item.InfoContent.Contains("img") ? Common.StringHelper.GetHtmlImageUrlList(item.InfoContent)[0] : "/Themes/Images/news.jpg"
                 });
             }
             var jsonModel = new Dto.jsonModelData<List<Web.Dto.BarDto>>() { status = true, details = list };
