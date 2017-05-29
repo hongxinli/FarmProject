@@ -4,8 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>专题图查看</title>
     <link href="/Themes/Styles/Site.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://js.arcgis.com/3.20/esri/css/esri.css">
-    <script src="https://js.arcgis.com/3.20/"></script>
+    <link href="http://36.7.89.33:8081/arcgis_js_api/library/3.18/dijit/themes/claro/claro.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://36.7.89.33:8081/arcgis_js_api/library/3.18/esri/css/esri.css" />
+    <script type="text/javascript" src="http://36.7.89.33:8081/arcgis_js_api/library/3.18/init.js"></script>
     <style>
         html, body, #map {
             height: 100%;
@@ -16,7 +17,7 @@
     <script type="text/javascript">
         dojo.require("esri.map");
         function init() {
-            var dataLayerUrl = GetQueryString('key');
+            var dataLayerUrl =GetQueryString('key');
             var map = new esri.Map("map", { logo: false, nav: false });
             var dataLayer = new esri.layers.ArcGISDynamicMapServiceLayer(dataLayerUrl, { id: "dataLayer" });
             map.addLayer(dataLayer);

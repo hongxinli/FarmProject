@@ -1123,13 +1123,6 @@
     <Content Include="Themes\Styles\pagination.css" />
     <Content Include="Themes\Styles\Reporttable.css" />
     <Content Include="Themes\Styles\Site.css" />
-    <Content Include="uploads\pic\环境监测\5ccd47a0-9ed9-440b-978c-eb2ff8b7772a.png" />
-    <Content Include="uploads\pic\环境监测\DefaultImg.png" />
-    <Content Include="uploads\pic\管道检测\DefaultImg.png" />
-    <Content Include="uploads\pic\锅检站\DefaultImg.png" />
-    <Content Include="uploads\swf\2e5f3034-dfd6-4897-a613-4aefa2967f87.swf" />
-    <Content Include="uploads\swf\aqfjywtd.swf" />
-    <Content Include="uploads\swf\安全阀校验委托单.swf" />
     <Content Include="UserControl\LoadButton.ascx" />
     <Content Include="UserControl\PageControl.ascx" />
     <Content Include="UserControl\SubmitCheck.ascx" />
@@ -1150,6 +1143,7 @@
     </Content>
     <Content Include="WebService\knowledge.asmx" />
     <Content Include="WebService\news.asmx" />
+    <Content Include="WebService\projectService.asmx" />
     <Content Include="WebService\splash.asmx" />
     <Content Include="WebService\topic.asmx" />
   </ItemGroup>
@@ -1474,6 +1468,10 @@
       <DependentUpon>news.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WebService\projectService.asmx.cs">
+      <DependentUpon>projectService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WebService\splash.asmx.cs">
       <DependentUpon>splash.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -1523,22 +1521,9 @@
     <Content Include="Base\SysRole\SysRole.ashx" />
     <Content Include="Base\SysUser\SysUser.ashx" />
     <Content Include="Base\SysDept\SysDept.ashx" />
-    <Content Include="uploads\pdf\流量站\2e5f3034-dfd6-4897-a613-4aefa2967f87.pdf" />
-    <Content Include="uploads\pdf\流量站\检定证书2e5f3034-dfd6-4897-a613-4aefa2967f87.pdf" />
-    <Content Include="uploads\pdf\安全阀\安全阀校验委托单.pdf" />
-    <Content Include="uploads\word\安全阀\安全阀校验委托单.doc" />
     <Content Include="Base\SysCode\Code.ashx" />
     <None Include="Properties\PublishProfiles\jsjczx.pubxml" />
-    <Content Include="uploads\pdf\环境监测站\45960dc4-f0e4-4a5c-9261-7680738d692a.pdf" />
-    <Content Include="uploads\word\环境监测站\45960dc4-f0e4-4a5c-9261-7680738d692a.doc" />
     <Content Include="Themes\Scripts\jquery-easyui-1.4.5\themes\material\images\Thumbs.db" />
-    <Content Include="uploads\excel\环境监测站\2016-10-25.xls" />
-    <Content Include="uploads\excel\环境监测站\注水水质月度计划20161029.xls" />
-    <Content Include="uploads\excel\环境监测站\注水水质月度计划20161031.xls" />
-    <Content Include="uploads\excel\环境监测站\环境监测年度计划20161025.xls" />
-    <Content Include="uploads\excel\环境监测站\环境监测年度计划20161101.xls" />
-    <Content Include="uploads\excel\环境监测站\锅炉水质监测年度计划20161029.xls" />
-    <Content Include="uploads\excel\流量站\金属量器检定数据模板20161031.xls" />
     <Content Include="Themes\Scripts\kindeditor\file_manager_json.ashx" />
     <Content Include="Themes\Scripts\kindeditor\upload_json.ashx" />
     <Content Include="Views\Caption\Caption.ashx" />
@@ -1583,18 +1568,7 @@
     <Folder Include="Themes\Scripts\kindeditor\attached\file\" />
     <Folder Include="Themes\Scripts\kindeditor\attached\image\20150722\" />
     <Folder Include="Themes\Scripts\kindeditor\attached\media\" />
-    <Folder Include="uploads\excel\安全阀\" />
-    <Folder Include="uploads\pdf\无损检测\" />
-    <Folder Include="uploads\pdf\管道检测\" />
-    <Folder Include="uploads\pdf\节能站\" />
-    <Folder Include="uploads\pdf\计量站\" />
-    <Folder Include="uploads\pdf\锅检站\" />
-    <Folder Include="uploads\word\无损检测\" />
-    <Folder Include="uploads\word\流量站\" />
-    <Folder Include="uploads\word\管道检测\" />
-    <Folder Include="uploads\word\节能站\" />
-    <Folder Include="uploads\word\计量站\" />
-    <Folder Include="uploads\word\锅检站\" />
+    <Folder Include="uploads\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bll\Bll.csproj">
