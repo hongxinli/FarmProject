@@ -1,0 +1,14 @@
+﻿html, body, #map {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+/*地图与影像图切换*/
+#map_change_div {
+    position: absolute;
+    z-index: 99;
+    right: 15px;
+    top: 50px;
+    width: 49px;
+    height: 51px;
+}

@@ -4,25 +4,44 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>专题图查看</title>
     <link href="/Themes/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="/Themes/Styles/map.css" rel="stylesheet" />
     <link href="http://36.7.89.33:8081/arcgis_js_api/library/3.18/dijit/themes/claro/claro.css" rel="stylesheet" />
     <link rel="stylesheet" href="http://36.7.89.33:8081/arcgis_js_api/library/3.18/esri/css/esri.css" />
     <script type="text/javascript" src="http://36.7.89.33:8081/arcgis_js_api/library/3.18/init.js"></script>
-    <style>
-        html, body, #map {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
     <script type="text/javascript">
         dojo.require("esri.map");
+        var map, dataLayerUrl, imageLayerUrl;
         function init() {
-            var dataLayerUrl =GetQueryString('key');
-            var map = new esri.Map("map", { logo: false, nav: false });
+            dataLayerUrl = "http://36.7.89.33:6081/arcgis/rest/services/耕地地力等级图/MapServer";//GetQueryString('key');
+            imageLayerUrl = "http://36.7.89.33:6081/arcgis/rest/services/土壤图/MapServer";
+            map = new esri.Map("map", { logo: false, nav: false });
             var dataLayer = new esri.layers.ArcGISDynamicMapServiceLayer(dataLayerUrl, { id: "dataLayer" });
             map.addLayer(dataLayer);
         }
         dojo.addOnLoad(init);
+        function changeMap() {
+            if (dojo.byId("map_img").title == "影像图") {
+                dojo.byId("map_img").src = "/Themes/Images/map/general.png";
+                dojo.byId("map_img").title = "地图";
+
+                var dlayer = map.getLayer("dataLayer");
+                map.removeLayer(dlayer);
+
+                //新增现在的地图服务
+                var imageLayer = new esri.layers.ArcGISDynamicMapServiceLayer(imageLayerUrl, { id: "dataLayer" });
+                map.addLayer(imageLayer);
+            } else {
+                dojo.byId("map_img").src = "/Themes/Images/map/striograph.png";
+                dojo.byId("map_img").title = "影像图";
+
+                var dlayer = map.getLayer("dataLayer");
+                map.removeLayer(dlayer);
+
+                //新增现在的地图服务
+                var dataLayer = new esri.layers.ArcGISDynamicMapServiceLayer(dataLayerUrl, { id: "dataLayer" });
+                map.addLayer(dataLayer);
+            }
+        }
         //返回
         function back() {
             var url = "/Views/Caption/Caption_List.aspx?r=" + Math.random();
@@ -46,5 +65,9 @@
         </div>
     </div>
     <div id="map"></div>
+    <!--地图与影像图切换-->
+    <div id="map_change_div">
+        <img id="map_img" src="/Themes/Images/map/striograph.png" title="影像图" style="cursor: pointer;" onclick="changeMap();" />
+    </div>
 </body>
 </html>

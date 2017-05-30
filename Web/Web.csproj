@@ -381,6 +381,8 @@
     <Content Include="Themes\Images\disk.png" />
     <Content Include="Themes\Images\exclamation_octagon_fram.png" />
     <Content Include="Themes\Images\first.gif" />
+    <Content Include="Themes\Images\map\general.png" />
+    <Content Include="Themes\Images\map\striograph.png" />
     <Content Include="Themes\Images\news.jpg" />
     <Content Include="Themes\Images\pest.jpg" />
     <Content Include="Themes\Images\preload.png" />
@@ -1119,6 +1121,7 @@
     <Content Include="Themes\Scripts\TreeView\treeview.pack.js" />
     <Content Include="Themes\Scripts\Validator\JValidator.js" />
     <Content Include="Themes\Styles\login.css" />
+    <Content Include="Themes\Styles\map.css" />
     <Content Include="Themes\Styles\Menu.css" />
     <Content Include="Themes\Styles\pagination.css" />
     <Content Include="Themes\Styles\Reporttable.css" />
