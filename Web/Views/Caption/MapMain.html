@@ -10,10 +10,11 @@
     <script type="text/javascript" src="http://36.7.89.33:8081/arcgis_js_api/library/3.18/init.js"></script>
     <script type="text/javascript">
         dojo.require("esri.map");
+        dojo.require("esri.layers.ArcGISImageServiceLayer");
         var map, dataLayerUrl, imageLayerUrl;
         function init() {
             dataLayerUrl = "http://36.7.89.33:6081/arcgis/rest/services/耕地地力等级图/MapServer";//GetQueryString('key');
-            imageLayerUrl = "http://36.7.89.33:6081/arcgis/rest/services/土壤图/MapServer";
+            imageLayerUrl = "http://36.7.89.33:6081/arcgis/rest/services/md/ImageServer";
             map = new esri.Map("map", { logo: false, nav: false });
             var dataLayer = new esri.layers.ArcGISDynamicMapServiceLayer(dataLayerUrl, { id: "dataLayer" });
             map.addLayer(dataLayer);
@@ -28,7 +29,7 @@
                 map.removeLayer(dlayer);
 
                 //新增现在的地图服务
-                var imageLayer = new esri.layers.ArcGISDynamicMapServiceLayer(imageLayerUrl, { id: "dataLayer" });
+                var imageLayer = new esri.layers.ArcGISImageServiceLayer(imageLayerUrl, { id: "dataLayer" });
                 map.addLayer(imageLayer);
             } else {
                 dojo.byId("map_img").src = "/Themes/Images/map/striograph.png";
