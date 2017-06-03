@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Agriculture\ICaption.cs" />
     <Compile Include="Agriculture\ICrop.cs" />
+    <Compile Include="Agriculture\ICropsEnvironment.cs" />
     <Compile Include="Agriculture\IFarmLandLevel.cs" />
     <Compile Include="Agriculture\IInfo.cs" />
     <Compile Include="Agriculture\IPest.cs" />

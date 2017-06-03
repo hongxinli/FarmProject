@@ -11,13 +11,24 @@
     <script type="text/javascript">
         dojo.require("esri.map");
         dojo.require("esri.layers.ArcGISImageServiceLayer");
-        var map, dataLayerUrl, imageLayerUrl;
+        dojo.require("esri.dijit.Scalebar");
+        var map, dataLayerUrl, imageLayerUrl,baseLayerUrl;
         function init() {
-            dataLayerUrl = "http://36.7.89.33:6081/arcgis/rest/services/耕地地力等级图/MapServer";//GetQueryString('key');
+            dataLayerUrl = "http://36.7.89.33:6081/arcgis/rest/services/耕地地力等级图/MapServer"; //GetQueryString('key');
             imageLayerUrl = "http://36.7.89.33:6081/arcgis/rest/services/md/ImageServer";
+            baseLayerUrl = "http://36.7.89.33:6081/arcgis/rest/services/贵池区行政区划图/MapServer";
             map = new esri.Map("map", { logo: false, nav: false });
             var dataLayer = new esri.layers.ArcGISDynamicMapServiceLayer(dataLayerUrl, { id: "dataLayer" });
+            var baseLayer = new esri.layers.ArcGISDynamicMapServiceLayer(baseLayerUrl, { id: "baseLayer" });
             map.addLayer(dataLayer);
+            map.addLayer(baseLayer);
+
+            //比例尺
+            var scalebar = new esri.dijit.Scalebar({
+                map: map,
+                scalebarStyle: "line",
+                scalebarUnit: "metric"
+            }, dojo.byId("scaleBarDiv"));
         }
         dojo.addOnLoad(init);
         function changeMap() {
@@ -27,6 +38,8 @@
 
                 var dlayer = map.getLayer("dataLayer");
                 map.removeLayer(dlayer);
+                var blayer = map.getLayer("baseLayer");
+                map.removeLayer(blayer);
 
                 //新增现在的地图服务
                 var imageLayer = new esri.layers.ArcGISImageServiceLayer(imageLayerUrl, { id: "dataLayer" });
@@ -37,10 +50,12 @@
 
                 var dlayer = map.getLayer("dataLayer");
                 map.removeLayer(dlayer);
-
+                
                 //新增现在的地图服务
                 var dataLayer = new esri.layers.ArcGISDynamicMapServiceLayer(dataLayerUrl, { id: "dataLayer" });
                 map.addLayer(dataLayer);
+                var baseLayer = new esri.layers.ArcGISDynamicMapServiceLayer(baseLayerUrl, { id: "baseLayer" });
+                map.addLayer(baseLayer);
             }
         }
         //返回
@@ -65,7 +80,10 @@
             </a>
         </div>
     </div>
+    <!--地图-->
     <div id="map"></div>
+    <!--比例尺-->
+    <div id="scaleBarDiv" style="position: absolute; left: 50px; bottom: 30px;"></div>
     <!--地图与影像图切换-->
     <div id="map_change_div">
         <img id="map_img" src="/Themes/Images/map/striograph.png" title="影像图" style="cursor: pointer;" onclick="changeMap();" />

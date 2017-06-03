@@ -81,7 +81,7 @@ namespace Web.WebService
             var cropList = new List<Web.Dto.CropDto>();
             foreach (var item in list)
             {
-                cropList.Add(new Dto.CropDto() { id = item.Id, name = item.CropName, time = item.CreateDate.ToString("yyyy-mm-dd"), url = "/Views/Crop/Crop.html?key=" + item.Id });
+                cropList.Add(new Dto.CropDto() { id = item.Id, name = item.CropName, time = item.CreateDate.ToString("yyyy-MM-dd"), url = "/Views/Crop/Crop.html?key=" + item.Id });
             }
             var entity = new Dto.pageData<Web.Dto.CropDto>() { totalRow = total, pageNumber = page, pageSize = count, list = cropList };
             var jsonModel = new Dto.jsonModelData<Dto.pageData<Web.Dto.CropDto>>() { status = true, details = entity };
@@ -106,7 +106,7 @@ namespace Web.WebService
                 {
                     id = item.Id,
                     name = item.PestName,
-                    time = item.CreateDate.ToString("yyyy-mm-dd"),
+                    time = item.CreateDate.ToString("yyyy-MM-dd"),
                     url = "/Views/Pest/Pest.html?key=" + item.Id,
                     img = item.PestContent.Contains("img") ? Common.StringHelper.GetHtmlImageUrlList(item.PestContent)[0] : "/Themes/Images/news.jpg"
                 });

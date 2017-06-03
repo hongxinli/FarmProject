@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agriculture\CaptionService.cs" />
+    <Compile Include="Agriculture\CropsEnvironmentService.cs" />
     <Compile Include="Agriculture\CropService.cs" />
     <Compile Include="Agriculture\FarmLandLevelService.cs" />
     <Compile Include="Agriculture\InfoService.cs" />

@@ -1326,6 +1326,7 @@
     <Compile Include="Dto\BarDto.cs" />
     <Compile Include="Dto\CaptionDto.cs" />
     <Compile Include="Dto\CropDto.cs" />
+    <Compile Include="Dto\CropsEnvironmentDto.cs" />
     <Compile Include="Dto\CropTypeDto.cs" />
     <Compile Include="Dto\InfoDto.cs" />
     <Compile Include="Dto\jsonData.cs" />

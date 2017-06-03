@@ -33,7 +33,7 @@ namespace Web.WebService
             var list = new List<Web.Dto.InfoDto>();
             foreach (var item in dt)
             {
-                list.Add(new Dto.InfoDto() { id = item.Id, time = item.CreateDate.ToString("yyyy-mm-dd"), title = item.InfoTitle, type = item.InfoType, url = "/Views/Info/Info.html?key=" + item.Id });
+                list.Add(new Dto.InfoDto() { id = item.Id, time = item.CreateDate.ToString("yyyy-MM-dd"), title = item.InfoTitle, type = item.InfoType, url = "/Views/Info/Info.html?key=" + item.Id });
             }
             var model = new Dto.pageData<Dto.InfoDto>() { totalRow = total, pageNumber = page, pageSize = count, list = list };
             var jsonModel = new Dto.jsonModelData<Dto.pageData<Dto.InfoDto>>() { status = true, details = model };

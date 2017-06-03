@@ -21,11 +21,11 @@
 
         //地图预览
         function MapPreview() {
-            var key = $(".grid tbody td:eq(4)").text();
-            if (IsEditdata(CheckboxValue())) {
-                var url = "/Views/Caption/MapMain.html?key=" + key;
-                parent.document.getElementById("main").src = url;
-            }
+            var key =$(".grid tbody td:eq(4)").text();
+            //if (IsEditdata(CheckboxValue())) {
+            //    var url = "/Views/Caption/MapMain.html?key=" + key+"&r="+Math.random();
+            //    parent.document.getElementById("main").src = url;
+            //}
         }
         //新增
         function add() {
@@ -111,7 +111,7 @@
                                     <%#Eval("CreateDate")%>
                                 </td>
                                 <td>
-                                    <%#Eval("CaptionUrl")%>
+                                    <a href="/Views/Caption/MapMain.html?key=<%#Eval("CaptionUrl")%>"><%#Eval("CaptionUrl")%></a>
                                 </td>
                             </tr>
                         </ItemTemplate>
