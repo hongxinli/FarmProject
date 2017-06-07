@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <script src="/Themes/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="/Themes/Scripts/Chart.js"></script>
+    <title>农作物适应性专题图</title>
+    <style type="text/css">
+        .mytable {
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+
+            .mytable table {
+                width: 100%;
+                border: 1px solid #999;
+                padding: 0;
+                margin: 0;
+                border-collapse: collapse;
+            }
+
+            .mytable th {
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                border-bottom: 1px solid #999;
+                padding: 0;
+                margin: 0;
+            }
+
+            .mytable td {
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                border-bottom: 1px solid #999;
+                padding: 0;
+                margin: 0;
+            }
+
+            .mytable tr:hover {
+                background-color: #f8f8f8;
+            }
+
+            .mytable tr:nth-child(2n) {
+                background-color: #f8f8f8;
+            }
+
+            .mytable tfoot {
+                width: 100%;
+            }
+
+                .mytable tfoot a {
+                    text-decoration: none;
+                    color: #999;
+                }
+    </style>
+    <script type="text/javascript">
+        var url = "ProjectHandler.ashx";
+        var parm = "town=乌沙镇&village=幸福村";
+        var data;
+        $(function () {
+            $.ajax({
+                type: 'post',
+                dataType: "text",
+                url: url,
+                data: parm,
+                cache: false,
+                async: true,
+                success: function (msg) {
+                    var arr = msg.split("||");
+                    $("#tab").html(arr[0]);
+                    towndata = $.parseJSON(arr[1]);
+                    var ctx = document.getElementById("myTownChart").getContext("2d");;
+                    new Chart(ctx).Bar(towndata); //这种方式是只加载数据集，（缺省options）不修改默认参数（简称法一）
+
+                    villagedata = $.parseJSON(arr[2]);
+                    var ctx = document.getElementById("myVillageChart").getContext("2d");;
+                    new Chart(ctx).Bar(villagedata); //这种方式是只加载数据集，（缺省options）不修改默认参数（简称法一）
+                }
+            });
+
+        })
+    </script>
+</head>
+<body>
+    <div id="tab" class="mytable"></div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>乌沙镇农作物适应性数据报表</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <canvas id="myTownChart" data-type="Bar"></canvas>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>幸福村农作物适应性数据报表</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <canvas id="myVillageChart" data-type="Bar"></canvas>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

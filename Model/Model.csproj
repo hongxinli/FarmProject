@@ -47,6 +47,7 @@
     <Compile Include="Agriculture\A_Crop.cs" />
     <Compile Include="Agriculture\A_Info.cs" />
     <Compile Include="Agriculture\A_Pest.cs" />
+    <Compile Include="Agriculture\ChartData.cs" />
     <Compile Include="Agriculture\Topic_CropsEnvironment.cs" />
     <Compile Include="Agriculture\Topic_FarmLandLevel.cs" />
     <Compile Include="Base_Button.cs" />

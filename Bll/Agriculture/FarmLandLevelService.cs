@@ -24,15 +24,15 @@ namespace Bll.Agriculture
             strSql.Append(" sum(decode(type,'villageLevelArea',area,0)) villageLevelArea");
             strSql.Append(" from");
             strSql.Append("(");
-            strSql.Append(" select 'cityArea' type, sum(t.area) area from topic_farmlandlevel t");
+            strSql.Append(" select 'cityArea' type, sum(t.area) area from topic_farmlandlevel t where t.rank not in('非耕地','水体')");
             strSql.Append(" union");
             strSql.Append(" select 'cityLevelArea' type, sum(t.area) area from topic_farmlandlevel t where t.rank='" + farmLevel + "'");
             strSql.Append(" union");
-            strSql.Append(" select 'townArea' type, sum(t.area) area from topic_farmlandlevel t where t.town='" + town + "'");
+            strSql.Append(" select 'townArea' type, sum(t.area) area from topic_farmlandlevel t where t.town='" + town + "' and t.rank not in('非耕地','水体') ");
             strSql.Append(" union");
             strSql.Append(" select 'townLevelArea' type, sum(t.area) area from topic_farmlandlevel t where t.town='" + town + "' and t.rank='" + farmLevel + "'");
             strSql.Append(" union");
-            strSql.Append(" select 'villageArea' type, sum(t.area) area from topic_farmlandlevel t where t.village='" + village + "'");
+            strSql.Append(" select 'villageArea' type, sum(t.area) area from topic_farmlandlevel t where t.village='" + village + "' and t.rank not in('非耕地','水体')");
             strSql.Append(" union");
             strSql.Append(" select 'villageLevelArea' type, sum(t.area) area from topic_farmlandlevel t where t.village='" + village + "' and t.rank='" + farmLevel + "')");
             var dt = dal.Query(strSql.ToString()).Tables[0];

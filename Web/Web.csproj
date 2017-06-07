@@ -116,6 +116,7 @@
     <Content Include="Error\ErrorPage.aspx" />
     <Content Include="Error\Product.html" />
     <Content Include="Frame\HomeIndex.aspx" />
+    <Content Include="Html\Caption_Crops.html" />
     <Content Include="Themes\Images\16\1168905.png" />
     <Content Include="Themes\Images\16\moveReport.png" />
     <Content Include="Login.htm" />
@@ -456,6 +457,7 @@
     <Content Include="Themes\Scripts\artDialog\skins\icons\succeed.png" />
     <Content Include="Themes\Scripts\artDialog\skins\icons\warning.png" />
     <Content Include="Themes\Scripts\AuditJs.js" />
+    <Content Include="Themes\Scripts\Chart.js" />
     <Content Include="Themes\Scripts\fileDown.js" />
     <Content Include="Themes\Scripts\gdjcfunction.js" />
     <Content Include="Themes\Scripts\DatePicker\calendar.js" />
@@ -1325,6 +1327,7 @@
     </Compile>
     <Compile Include="Dto\BarDto.cs" />
     <Compile Include="Dto\CaptionDto.cs" />
+    <Compile Include="Dto\ChartData.cs" />
     <Compile Include="Dto\CropDto.cs" />
     <Compile Include="Dto\CropsEnvironmentDto.cs" />
     <Compile Include="Dto\CropTypeDto.cs" />
@@ -1373,6 +1376,9 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Html\ProjectHandler.ashx.cs">
+      <DependentUpon>ProjectHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControl\LoadButton.ascx.cs">
@@ -1526,6 +1532,7 @@
     <Content Include="Base\SysUser\SysUser.ashx" />
     <Content Include="Base\SysDept\SysDept.ashx" />
     <Content Include="Base\SysCode\Code.ashx" />
+    <Content Include="Html\ProjectHandler.ashx" />
     <None Include="Properties\PublishProfiles\jsjczx.pubxml" />
     <Content Include="Themes\Scripts\jquery-easyui-1.4.5\themes\material\images\Thumbs.db" />
     <Content Include="Themes\Scripts\kindeditor\file_manager_json.ashx" />
