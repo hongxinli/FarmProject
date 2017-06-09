@@ -112,6 +112,7 @@ namespace Web.Html
             };
             var villageJson = JsonConvert.SerializeObject(villageModel);
             sb.Append(villageJson);
+           // Common.ResponseHelper.Write(sb.ToString());
             context.Response.Write(sb.ToString());
             context.Response.End();
         }

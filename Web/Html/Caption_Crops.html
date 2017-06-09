@@ -63,7 +63,9 @@
     </style>
     <script type="text/javascript">
         var url = "ProjectHandler.ashx";
-        var parm = "town=乌沙镇&village=幸福村";
+        var town =decodeURI(GetQueryString('town'));
+        var village =decodeURI(GetQueryString('village'));
+        var parm = "town=" + town + "&village=" + village;
         var data;
         $(function () {
             $.ajax({
@@ -76,6 +78,8 @@
                 success: function (msg) {
                     var arr = msg.split("||");
                     $("#tab").html(arr[0]);
+                    $("#townTitle").text(town + "农作物适应性图表");
+                    $("#villageTitle").text(village + "农作物适应性图表");
                     towndata = $.parseJSON(arr[1]);
                     var ctx = document.getElementById("myTownChart").getContext("2d");;
                     new Chart(ctx).Bar(towndata); //这种方式是只加载数据集，（缺省options）不修改默认参数（简称法一）
@@ -87,6 +91,12 @@
             });
 
         })
+        //获取url参数
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return r[2]; return null;
+        }
     </script>
 </head>
 <body>
@@ -95,7 +105,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>乌沙镇农作物适应性数据报表</th>
+                    <th id="townTitle"></th>
                 </tr>
             </thead>
             <tbody>
@@ -109,7 +119,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>幸福村农作物适应性数据报表</th>
+                    <th id="villageTitle"></th>
                 </tr>
             </thead>
             <tbody>

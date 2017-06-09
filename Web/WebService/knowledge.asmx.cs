@@ -51,7 +51,23 @@ namespace Web.WebService
             }
             else if (type == 1) //病虫害
             {
-
+                CodeService _codeService = new CodeService();
+                var list = _codeService.List("domainname='A_CROP_TYPE'");
+                List<Web.Dto.CropTypeDto> entitys = new List<Dto.CropTypeDto>();
+                if (list.Count > 0)
+                {
+                    foreach (var item in list)
+                    {
+                        entitys.Add(new Dto.CropTypeDto() { id = item.Id, name = item.SName+"病虫", img = item.ImageUrl });
+                    }
+                    var jsonModel = new Dto.jsonData<Dto.CropTypeDto>()
+                    {
+                        status = true,
+                        details = entitys
+                    };
+                    var result = JsonConvert.SerializeObject(jsonModel);
+                    Common.ResponseHelper.Write(result);
+                }
             }
         }
         /// <summary>
