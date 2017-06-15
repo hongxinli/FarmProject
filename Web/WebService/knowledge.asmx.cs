@@ -58,7 +58,7 @@ namespace Web.WebService
                 {
                     foreach (var item in list)
                     {
-                        entitys.Add(new Dto.CropTypeDto() { id = item.Id, name = item.SName+"病虫", img = item.ImageUrl });
+                        entitys.Add(new Dto.CropTypeDto() { id = item.Id, name = item.SName + "病虫", img = item.ImageUrl });
                     }
                     var jsonModel = new Dto.jsonData<Dto.CropTypeDto>()
                     {
@@ -110,11 +110,12 @@ namespace Web.WebService
         /// <param name="page"></param>
         /// <param name="count"></param>
         [WebMethod]
-        public void pest(int page, int count)
+        public void pest(int page, int count, string typeid)
         {
             PestService _Service = new PestService();
             int total = 0;
-            var list = _Service.ListByPage(page, count, ref total);
+            typeid = typeid.Substring(0, typeid.Length - 2);
+            var list = _Service.ListByPage(page, count, typeid, ref total);
             var pestList = new List<Web.Dto.PestDto>();
             foreach (var item in list)
             {

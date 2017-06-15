@@ -20,10 +20,10 @@ namespace Bll.Agriculture
             DataTable dt = dal.DataTableByPage(pageSize, pageIndex, strSql, "", ref count, " CreateDate desc");
             return dt;
         }
-        public IList<Model.Agriculture.A_Pest> ListByPage(int pageIndex, int pageSize, ref int count)
+        public IList<Model.Agriculture.A_Pest> ListByPage(int pageIndex, int pageSize,string typeid, ref int count)
         {
             count = dal.Count();
-            return dal.ListByPage(pageSize, pageIndex," deleteMark=0 "," croptype desc");
+            return dal.ListByPage(pageSize, pageIndex," deleteMark=0 and croptype='"+typeid+"'"," croptype desc");
         }
         public void InitData(System.Web.UI.Page page, string _key)
         {

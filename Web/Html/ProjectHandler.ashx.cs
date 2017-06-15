@@ -67,29 +67,32 @@ namespace Web.Html
             var villageArea2 = Math.Round(list.Where(t => t.village.Equals(village)).Where(t => t.rice.Equals("勉强适宜") || t.wheat.Equals("勉强适宜") || t.cotton.Equals("勉强适宜") || t.rape.Equals("勉强适宜")).Sum(t => t.area), 2);
             var villageArea3 = Math.Round(list.Where(t => t.village.Equals(village)).Where(t => t.rice.Equals("不适宜") || t.wheat.Equals("不适宜") || t.cotton.Equals("不适宜") || t.rape.Equals("不适宜")).Sum(t => t.area), 2);
             StringBuilder sb = new StringBuilder();
-            sb.Append("<table >");
-            sb.Append("<thead><tr><th colspan=\"5\">" + town + "农作物适应性数据报表(单位：亩)<br />注：" + town + "的耕地总面积为：" + townArea + "亩</th></tr>");
-            sb.Append("<tr><td></td><td>高度适宜</td><td>适宜</td><td>勉强适宜</td><td>不适宜</td></tr></thead>");
-            sb.Append("<tbody>");
-            sb.Append("<tr><td>水稻</td><td>" + townAreaRice + "</td><td>" + townAreaRice1 + "</td><td>" + townAreaRice2 + "</td><td>" + townAreaRice3 + "</td></tr>");
-            sb.Append("<tr><td>小麦</td><td>" + townAreaWheat + "</td><td>" + townAreaWheat1 + "</td><td>" + townAreaWheat2 + "</td><td>" + townAreaWheat3 + "</td></tr>");
-            sb.Append("<tr><td>棉花</td><td>" + townAreaCotton + "</td><td>" + townAreaCotton1 + "</td><td>" + townAreaCotton2 + "</td><td>" + townAreaCotton3 + "</td></tr>");
-            sb.Append("<tr><td>油菜</td><td>" + townAreaRape + "</td><td>" + townAreaRape1 + "</td><td>" + townAreaRape2 + "</td><td>" + townAreaRape3 + "</td></tr>");
-            sb.Append("<tr><td>合计</td><td>" + townArea0 + "</td><td>" + townArea1 + "</td><td>" + townArea2 + "</td><td>" + townArea3 + "</td></tr>");
-            sb.Append("</tbody>");
-            sb.Append("</table>");
-            sb.Append("<hr style=\"width:100%;border:1px solid black;\" />");
-            sb.Append("<table >");
-            sb.Append("<thead><tr><th colspan=\"5\">" + village + "农作物适应性数据报表(单位：亩)<br />注：" + village + "的耕地总面积为：" + villageArea + "亩</th></tr>");
-            sb.Append("<tr><td></td><td>高度适宜</td><td>适宜</td><td>勉强适宜</td><td>不适宜</td></tr></thead>");
-            sb.Append("<tbody>");
-            sb.Append("<tr><td>水稻</td><td>" + villageAreaRice + "</td><td>" + villageAreaRice1 + "</td><td>" + villageAreaRice2 + "</td><td>" + villageAreaRice3 + "</td></tr>");
-            sb.Append("<tr><td>小麦</td><td>" + villageAreaWheat + "</td><td>" + villageAreaWheat1 + "</td><td>" + villageAreaWheat2 + "</td><td>" + villageAreaWheat3 + "</td></tr>");
-            sb.Append("<tr><td>棉花</td><td>" + villageAreaCotton + "</td><td>" + villageAreaCotton1 + "</td><td>" + villageAreaCotton2 + "</td><td>" + villageAreaCotton3 + "</td></tr>");
-            sb.Append("<tr><td>油菜</td><td>" + villageAreaRape + "</td><td>" + villageAreaRape1 + "</td><td>" + villageAreaRape2 + "</td><td>" + villageAreaRape3 + "</td></tr>");
-            sb.Append("<tr><td>合计</td><td>" + villageArea0 + "</td><td>" + villageArea1 + "</td><td>" + villageArea2 + "</td><td>" + villageArea3 + "</td></tr>");
-            sb.Append("</tbody>");
-            sb.Append("</table>");
+            #region table
+            //sb.Append("<table >");
+            //sb.Append("<thead><tr><th colspan=\"5\">" + town + "农作物适应性数据报表(单位：亩)<br />注：" + town + "的耕地总面积为：" + townArea + "亩</th></tr>");
+            //sb.Append("<tr><td></td><td>高度适宜</td><td>适宜</td><td>勉强适宜</td><td>不适宜</td></tr></thead>");
+            //sb.Append("<tbody>");
+            //sb.Append("<tr><td>水稻</td><td>" + townAreaRice + "</td><td>" + townAreaRice1 + "</td><td>" + townAreaRice2 + "</td><td>" + townAreaRice3 + "</td></tr>");
+            //sb.Append("<tr><td>小麦</td><td>" + townAreaWheat + "</td><td>" + townAreaWheat1 + "</td><td>" + townAreaWheat2 + "</td><td>" + townAreaWheat3 + "</td></tr>");
+            //sb.Append("<tr><td>棉花</td><td>" + townAreaCotton + "</td><td>" + townAreaCotton1 + "</td><td>" + townAreaCotton2 + "</td><td>" + townAreaCotton3 + "</td></tr>");
+            //sb.Append("<tr><td>油菜</td><td>" + townAreaRape + "</td><td>" + townAreaRape1 + "</td><td>" + townAreaRape2 + "</td><td>" + townAreaRape3 + "</td></tr>");
+            //sb.Append("<tr><td>合计</td><td>" + townArea0 + "</td><td>" + townArea1 + "</td><td>" + townArea2 + "</td><td>" + townArea3 + "</td></tr>");
+            //sb.Append("</tbody>");
+            //sb.Append("</table>");
+            //sb.Append("<hr style=\"width:100%;border:1px solid black;\" />");
+            //sb.Append("<table >");
+            //sb.Append("<thead><tr><th colspan=\"5\">" + village + "农作物适应性数据报表(单位：亩)<br />注：" + village + "的耕地总面积为：" + villageArea + "亩</th></tr>");
+            //sb.Append("<tr><td></td><td>高度适宜</td><td>适宜</td><td>勉强适宜</td><td>不适宜</td></tr></thead>");
+            //sb.Append("<tbody>");
+            //sb.Append("<tr><td>水稻</td><td>" + villageAreaRice + "</td><td>" + villageAreaRice1 + "</td><td>" + villageAreaRice2 + "</td><td>" + villageAreaRice3 + "</td></tr>");
+            //sb.Append("<tr><td>小麦</td><td>" + villageAreaWheat + "</td><td>" + villageAreaWheat1 + "</td><td>" + villageAreaWheat2 + "</td><td>" + villageAreaWheat3 + "</td></tr>");
+            //sb.Append("<tr><td>棉花</td><td>" + villageAreaCotton + "</td><td>" + villageAreaCotton1 + "</td><td>" + villageAreaCotton2 + "</td><td>" + villageAreaCotton3 + "</td></tr>");
+            //sb.Append("<tr><td>油菜</td><td>" + villageAreaRape + "</td><td>" + villageAreaRape1 + "</td><td>" + villageAreaRape2 + "</td><td>" + villageAreaRape3 + "</td></tr>");
+            //sb.Append("<tr><td>合计</td><td>" + villageArea0 + "</td><td>" + villageArea1 + "</td><td>" + villageArea2 + "</td><td>" + villageArea3 + "</td></tr>");
+            //sb.Append("</tbody>");
+            //sb.Append("</table>"); 
+            #endregion
+
             var model = new ChartData();
             model.labels = new List<string> { "水稻", "小麦", "棉花", "油菜" };
             model.datasets = new List<BarSets> { 
@@ -112,7 +115,6 @@ namespace Web.Html
             };
             var villageJson = JsonConvert.SerializeObject(villageModel);
             sb.Append(villageJson);
-           // Common.ResponseHelper.Write(sb.ToString());
             context.Response.Write(sb.ToString());
             context.Response.End();
         }

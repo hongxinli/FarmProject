@@ -20,7 +20,7 @@
 
             .mytable table {
                 width: 100%;
-                border: 1px solid #999;
+                /*border: 1px solid #999;*/
                 padding: 0;
                 margin: 0;
                 border-collapse: collapse;
@@ -30,7 +30,8 @@
                 height: 40px;
                 line-height: 40px;
                 text-align: center;
-                border-bottom: 1px solid #999;
+                font-size:13px;
+                /*border-bottom: 1px solid #999;*/
                 padding: 0;
                 margin: 0;
             }
@@ -39,7 +40,7 @@
                 height: 40px;
                 line-height: 40px;
                 text-align: center;
-                border-bottom: 1px solid #999;
+                /*border-bottom: 1px solid #999;*/
                 padding: 0;
                 margin: 0;
             }
@@ -78,8 +79,8 @@
                 success: function (msg) {
                     var arr = msg.split("||");
                     $("#tab").html(arr[0]);
-                    $("#townTitle").text(town + "农作物适应性图表");
-                    $("#villageTitle").text(village + "农作物适应性图表");
+                    $("#townTitle").text(town + "农作物适应性图");
+                    $("#villageTitle").text(village + "农作物适应性图");
                     towndata = $.parseJSON(arr[1]);
                     var ctx = document.getElementById("myTownChart").getContext("2d");;
                     new Chart(ctx).Bar(towndata); //这种方式是只加载数据集，（缺省options）不修改默认参数（简称法一）
@@ -100,12 +101,11 @@
     </script>
 </head>
 <body>
-    <div id="tab" class="mytable"></div>
-    <div>
+    <div class="mytable">
         <table>
             <thead>
                 <tr>
-                    <th id="townTitle"></th>
+                    <th><label id="townTitle"></label><label style="margin-left:15px; color:red;">单位:亩</label></th>
                 </tr>
             </thead>
             <tbody>
@@ -116,10 +116,10 @@
                 </tr>
             </tbody>
         </table>
-        <table>
+        <table style="margin-top:50px;">
             <thead>
                 <tr>
-                    <th id="villageTitle"></th>
+                    <th><label id="villageTitle"></label><label style="margin-left:15px; color:red;">单位:亩</label></th>
                 </tr>
             </thead>
             <tbody>
