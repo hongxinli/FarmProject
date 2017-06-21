@@ -7,6 +7,7 @@ using Bll.Agriculture;
 using Newtonsoft.Json;
 using Web.Dto;
 using System.Text;
+using System.Configuration;
 
 namespace Web.WebService
 {
@@ -124,6 +125,16 @@ namespace Web.WebService
             sb.Append("<p>不适宜种植油菜的耕地面积为<label style=\"color:red;\">" + villageAreaRape3 + "</label>亩，占全村耕地面积比例为<label style=\"color:red;\">" + Math.Round(Convert.ToDecimal(villageAreaRape3) / Convert.ToDecimal(villageArea), 4) * 100 + "%</label>；</p>");
             sb.Append("</div>");
             Common.ResponseHelper.Write(sb.ToString());
+        }
+
+        /// <summary>
+        /// 0打开  1关闭
+        /// </summary>
+        [WebMethod]
+        public void IsPay()
+        {
+            var result = ConfigurationManager.AppSettings["Switch"].ToString();
+            Common.ResponseHelper.Write(result);
         }
     }
 }

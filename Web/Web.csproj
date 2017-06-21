@@ -1135,6 +1135,8 @@
     <Content Include="UserControl\LoadButton.ascx" />
     <Content Include="UserControl\PageControl.ascx" />
     <Content Include="UserControl\SubmitCheck.ascx" />
+    <Content Include="Views\About\a.html" />
+    <Content Include="Views\About\Editor.aspx" />
     <Content Include="Views\Caption\Caption_Form.aspx" />
     <Content Include="Views\Caption\Caption_List.aspx" />
     <Content Include="Views\Caption\MapMain.html" />
@@ -1405,6 +1407,13 @@
     </Compile>
     <Compile Include="UserControl\SubmitCheck.ascx.designer.cs">
       <DependentUpon>SubmitCheck.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\About\Editor.aspx.cs">
+      <DependentUpon>Editor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\About\Editor.aspx.designer.cs">
+      <DependentUpon>Editor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Caption\Caption.ashx.cs">
       <DependentUpon>Caption.ashx</DependentUpon>

@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link href="/Themes/Images/f_32X32.ico" rel="shortcut icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>系统首页</title>
     <link href="../Themes/Styles/Site.css" rel="stylesheet" />
