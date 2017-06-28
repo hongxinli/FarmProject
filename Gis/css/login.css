@@ -1,0 +1,78 @@
+﻿body
+{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;    
+}
+
+#bgDiv
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+    #bgDiv img
+    {
+        width: 100%;
+        height: 100%;
+    }
+
+#container
+{
+    position: absolute;
+    z-index: 99;
+}
+
+    #container #logo
+    {
+        width: 475px;
+        height: 53px;
+        margin:0 auto;
+    }
+
+    #container #login
+    {
+        width: 261px;
+        height: 149px;
+        background:url(../images/login/login_bg.png) no-repeat;
+        margin:10px auto 0 auto;
+        padding-left:137px;
+        padding-top:88px; 
+    }
+        #container #login td
+        {
+           height:28px;
+           line-height:28px;
+        }
+        #container #login .td_title
+        {
+            color:#6a7878;
+            font-family:微软雅黑;
+            font-size:16px;
+        }
+        #container #login .input
+        {
+            border:1px solid #9ad3ff;
+            width:172px;
+            height:23px;
+            line-height:23px;
+        }
+        #container #login .savePwd
+        {
+            height:18px;
+            line-height:18px;
+        }
+
+#footer
+{
+    position: absolute;
+    left: 0px;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-family: 黑体;
+    font-size:12px;
+}

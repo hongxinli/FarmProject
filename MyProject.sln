@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleDal", "OracleDal\Orac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tincher.Interop", "Tincher.Interop\Tincher.Interop.csproj", "{18D0C428-AD1B-4F9B-82FA-3EEE991BE7AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gis", "Gis\Gis.csproj", "{050636CA-BDD0-4888-9448-895CD85DCACB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{18D0C428-AD1B-4F9B-82FA-3EEE991BE7AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18D0C428-AD1B-4F9B-82FA-3EEE991BE7AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18D0C428-AD1B-4F9B-82FA-3EEE991BE7AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{050636CA-BDD0-4888-9448-895CD85DCACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{050636CA-BDD0-4888-9448-895CD85DCACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{050636CA-BDD0-4888-9448-895CD85DCACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{050636CA-BDD0-4888-9448-895CD85DCACB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

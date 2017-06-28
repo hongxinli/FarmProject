@@ -36,7 +36,6 @@
                     alert(error);
                 }
             });
-            ;
         })
 
         function setHtml() {

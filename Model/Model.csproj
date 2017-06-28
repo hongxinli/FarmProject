@@ -54,21 +54,21 @@
     <Compile Include="Agriculture\ChartData.cs" />
     <Compile Include="Agriculture\Topic_CropsEnvironment.cs" />
     <Compile Include="Agriculture\Topic_FarmLandLevel.cs" />
-    <Compile Include="Base_Button.cs" />
-    <Compile Include="Base_Code.cs" />
-    <Compile Include="Base_Department.cs" />
-    <Compile Include="Base_Log.cs" />
-    <Compile Include="Base_LoginLog.cs" />
-    <Compile Include="Base_ModuleDept.cs" />
-    <Compile Include="Base_ModuleInfo.cs" />
-    <Compile Include="Base_RoleDept.cs" />
-    <Compile Include="Base_RoleRight.cs" />
-    <Compile Include="Base_Roles.cs" />
-    <Compile Include="Base_UserDept.cs" />
-    <Compile Include="Base_UserInfo.cs" />
-    <Compile Include="Base_UserRight.cs" />
-    <Compile Include="Base_UserRole.cs" />
-    <Compile Include="Base_OperLog.cs" />
+    <Compile Include="Base\Base_Button.cs" />
+    <Compile Include="Base\Base_Code.cs" />
+    <Compile Include="Base\Base_Department.cs" />
+    <Compile Include="Base\Base_Log.cs" />
+    <Compile Include="Base\Base_LoginLog.cs" />
+    <Compile Include="Base\Base_ModuleDept.cs" />
+    <Compile Include="Base\Base_ModuleInfo.cs" />
+    <Compile Include="Base\Base_RoleDept.cs" />
+    <Compile Include="Base\Base_RoleRight.cs" />
+    <Compile Include="Base\Base_Roles.cs" />
+    <Compile Include="Base\Base_UserDept.cs" />
+    <Compile Include="Base\Base_UserInfo.cs" />
+    <Compile Include="Base\Base_UserRight.cs" />
+    <Compile Include="Base\Base_UserRole.cs" />
+    <Compile Include="Base\Base_OperLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

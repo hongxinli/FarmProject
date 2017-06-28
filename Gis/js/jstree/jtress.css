@@ -1,0 +1,79 @@
+﻿#tt ul, li {
+    list-style: none outside none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+#tt span {
+    background: url("../../images/tree/icon.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    height: 20px;
+    vertical-align: top;
+    width: 20px;
+    display: inline-block;
+}
+
+#tt .root {
+    margin-left: -20px;
+}
+
+    #tt .root input {
+        vertical-align: middle;
+    }
+
+#tt ul {
+    padding-left: 20px;
+}
+
+#tt .folder {
+    background: url('../../images/tree/i.gif') repeat-y scroll 0 21px transparent;
+}
+
+#tt img {
+    background: url('../../images/tree/icon.png') no-repeat scroll 0 0 transparent;
+    border: medium none;
+    height: 20px;
+    vertical-align: top;
+    width: 20px;
+}
+
+#tt .tvicon-open {
+    background-position: -160px -40px;
+}
+
+#tt .tvdash-f {
+    background-position: -240px -40px;
+}
+
+#tt .tvdash-f-open {
+    background-position: -200px -40px;
+}
+
+#tt .tvdash-fl {
+    background-position: -100px -40px;
+}
+
+#tt .tvdash-fl-open {
+    background-position: -80px -40px;
+}
+
+#tt .tvdash-t {
+    background-position: -180px -40px;
+}
+
+#tt .tvdash-tl {
+    background-position: -60px -40px;
+}
+
+#tt .tvicon-f {
+    background-position: -120px -40px;
+}
+
+#tt .tvicon-f-open {
+    background-position: -140px -40px;
+}
+
+#tt .tvicon-tl {
+    background-position: -220px -40px;
+}

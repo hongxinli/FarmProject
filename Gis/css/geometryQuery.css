@@ -1,0 +1,76 @@
+﻿
+
+.dijitTabContainerBottom-container, .dijitTabContainerTop-container, .dijitTabContainerLeft-container, .dijitTabContainerRight-container {
+    border-bottom: solid 1px #D2D2D2;
+    border-left: solid 1px #D2D2D2;
+    border-right: solid 1px #D2D2D2;
+}
+
+.dijitTabContainerTop-tabs {
+    border: none;
+    border-bottom: solid 1px #D2D2D2;
+    background: url(../images/map/tab_head.png) 0px -1px repeat-x;
+}
+
+.dijitTabChecked {
+    background: url(../images/map/tab_head_select.png) 0px -1px repeat-x;
+    border-left: solid 1px #D2D2D2;
+    border-right: solid 1px #D2D2D2;
+    border-top: solid 1px #D2D2D2;
+    text-align: center;
+}
+
+.dijitContentPane {
+    background: #fff;
+}
+
+#query_result {
+    z-index: 999;
+    position: absolute;
+    left: 683px;
+    top: 130px;
+    visibility: hidden;
+    border-left:1px solid #ccc;
+    border-right:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+}
+#query_result_head {
+    background: #1d64bf;
+    padding-left: 10px;
+    width: 300px;
+    color:#FFF;
+    font-family: 微软雅黑;
+    font-size:14px;
+    filter: alpha(opacity = 80); /*IE滤镜，透明度50%*/
+    -moz-opacity: 0.8; /*Firefox私有，透明度50%*/
+    opacity: 0.8; /*其他，透明度50%*/
+}
+#query_result_head table td
+{
+    border:none;
+    height:25px;
+    line-height:25px;
+    vertical-align:middle;
+}
+
+#query_result_content
+{
+    overflow-y:auto;
+    height: 368px;
+    width:100%;
+    font-size:12px;
+    background:#fff;
+}
+#query_result_content table{ 
+    border-collapse:collapse;
+    width:100%;
+}
+#query_result_content table td{ 
+    width:50px; 
+    height:20px;  
+    border-bottom:solid 1px #D2D2D2;
+    border-right:1px solid #D2D2D2; 
+    padding-left:5px;
+    padding-right:5px;
+}
+

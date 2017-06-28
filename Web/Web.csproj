@@ -121,6 +121,7 @@
     <Content Include="Error\Product.html" />
     <Content Include="Frame\HomeIndex.aspx" />
     <Content Include="Html\Caption_Crops.html" />
+    <Content Include="Templets\About.html" />
     <Content Include="Themes\Images\16\1168905.png" />
     <Content Include="Themes\Images\16\moveReport.png" />
     <Content Include="Login.htm" />

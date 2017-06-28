@@ -1,0 +1,17 @@
+﻿.l-box-dateeditor
+{
+    position:absolute; padding:0px; overflow:hidden;
+    border:1px solid #A3C0E8; background:white;
+    width:364px;
+    margin-top:1px;
+    z-index:9999;
+}
+.l-box-dateeditor-body td{ width:52px; height:45px; line-height:30px; font-size:12px; }
+.l-box-dateeditor-body td .op-calendar-new-relative { position: relative; height:45px;line-height:20px;  width: 100%;}
+ 
+.l-box-dateeditor-toolbar .l-button-today {
+    float: left;
+    margin-left: 100px;
+    margin-top: 4px;
+}
+.l-button-today2 {margin-left: 100px;}
