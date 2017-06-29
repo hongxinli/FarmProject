@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LoginPage.aspx.cs" Inherits="LoginPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="WebGis.LoginPage" %>
 
 <!DOCTYPE html>
 
@@ -17,7 +17,7 @@
         </div>
         <div id="container">
             <div id="logo">
-                <span style="font-size: 30px; color: white; font-family:黑体;">新疆油田重油公司地理信息平台</span>
+                <span style="font-size: 30px; color: white; font-family: 黑体;">胜利采油厂管网分级预警管理系统</span>
                 <%--<img src="images/login/logo.png" />--%>
             </div>
             <div id="login">

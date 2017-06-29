@@ -20,10 +20,16 @@ namespace Bll.Agriculture
             DataTable dt = dal.DataTableByPage(pageSize, pageIndex, strSql, "", ref count, " top desc, CreateDate desc");
             return dt;
         }
-        public IList<Model.Agriculture.A_Info> ListByPage(int pageIndex, int pageSize, ref int count)
+        public IList<Model.Agriculture.A_Info> ListByPage(int pageIndex, int pageSize, string type, ref int count)
         {
             count = dal.Count();
-            return dal.ListByPage(pageSize, pageIndex, "", " CreateDate desc");
+            return dal.ListByPage(pageSize, pageIndex, "infotype='" + type + "'", " CreateDate desc");
+        }
+        public IList<Model.Agriculture.A_Info> newsList()
+        {
+            string strSql = "select * from(select ROW_NUMBER() over(partition by t.infotype order by t.createdate desc) num, t.id , t.infotitle,t.infocontent,t.infotype,t.createdate from a_info t) where num=1";
+            var list = dal.List(strSql, "");
+            return list;
         }
         public IList<Model.Agriculture.A_Info> BarsList(int pageIndex, int pageSize, ref int count)
         {

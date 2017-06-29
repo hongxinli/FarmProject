@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{050636CA-BDD0-4888-9448-895CD85DCACB}</ProjectGuid>
+    <ProjectGuid>{A52D5B37-B75B-4091-8C96-812DF0AE0932}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Gis</RootNamespace>
-    <AssemblyName>Gis</AssemblyName>
+    <RootNamespace>WebGis</RootNamespace>
+    <AssemblyName>WebGis</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -618,6 +618,10 @@
   <ItemGroup>
     <Compile Include="LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="MapPage.aspx.cs">
       <DependentUpon>MapPage.aspx</DependentUpon>
@@ -626,17 +630,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Data\PublishProfiles\web.pubxml" />
-    <Content Include="js\liger\themes\green\images\layout\tabs-tools.psd" />
-    <Content Include="js\liger\themes\green\images\layout\togglebar.psd" />
     <Content Include="proxy.ashx" />
     <Content Include="proxy.config" />
+    <Content Include="js\liger\themes\green\images\layout\tabs-tools.psd" />
+    <Content Include="js\liger\themes\green\images\layout\togglebar.psd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -651,9 +657,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>37238</DevelopmentServerPort>
+          <DevelopmentServerPort>42067</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:37238/</IISUrl>
+          <IISUrl>http://localhost:42067/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
