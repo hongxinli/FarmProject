@@ -27,7 +27,7 @@ function doCoord(geometry) {
 
     var content = "X:" + geometry.x + "<br/>Y:" + geometry.y;
     map.infoWindow.resize(210, 200);
-    map.infoWindow.setTitle("XY坐标：");
+    map.infoWindow.setTitle("坐标信息：");
     map.infoWindow.setContent(content);
     map.infoWindow.show(point);
     closeEvent = dojo.connect(map.infoWindow, "onHide", clearLayer);

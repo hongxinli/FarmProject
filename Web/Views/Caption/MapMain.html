@@ -14,7 +14,7 @@
         dojo.require("esri.dijit.Scalebar");
         var map, dataLayerUrl, imageLayerUrl,baseLayerUrl;
         function init() {
-            dataLayerUrl = GetQueryString('key');
+            dataLayerUrl =GetQueryString('key');
             imageLayerUrl = "http://36.7.89.33:6081/arcgis/rest/services/md/ImageServer";
             baseLayerUrl = "http://36.7.89.33:6081/arcgis/rest/services/贵池区行政区划图/MapServer";
             map = new esri.Map("map", { logo: false, nav: false });

@@ -99,7 +99,7 @@ namespace Web.WebService
             {
                 cropList.Add(new Dto.CropDto() { id = item.Id, name = item.CropName, time = item.CreateDate.ToString("yyyy-MM-dd"), url = "/Views/Crop/Crop.html?key=" + item.Id });
             }
-            var entity = new Dto.pageData<Web.Dto.CropDto>() { totalRow = total, pageNumber = page, pageSize = count, list = cropList };
+            var entity = new Dto.pageData<Web.Dto.CropDto>() { totalRow = total, pageNumber = page, pageSize = cropList.Count, list = cropList };
             var jsonModel = new Dto.jsonModelData<Dto.pageData<Web.Dto.CropDto>>() { status = true, details = entity };
             var result = JsonConvert.SerializeObject(jsonModel);
             Common.ResponseHelper.Write(result);
@@ -128,7 +128,7 @@ namespace Web.WebService
                     img = item.PestContent.Contains("img") ? Common.StringHelper.GetHtmlImageUrlList(item.PestContent)[0] : "/Themes/Images/news.jpg"
                 });
             }
-            var entity = new Dto.pageData<Web.Dto.PestDto>() { totalRow = total, pageNumber = page, pageSize = count, list = pestList };
+            var entity = new Dto.pageData<Web.Dto.PestDto>() { totalRow = total, pageNumber = page, pageSize = pestList.Count, list = pestList };
             var jsonModel = new Dto.jsonModelData<Dto.pageData<Web.Dto.PestDto>>() { status = true, details = entity };
             var result = JsonConvert.SerializeObject(jsonModel);
             Common.ResponseHelper.Write(result);

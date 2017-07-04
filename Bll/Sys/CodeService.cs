@@ -12,17 +12,18 @@ namespace Bll.Sys
     public class CodeService
     {
         ICode DAL = new CodeRepository();
+        private static Model.Base_Code _oldEntity;
         public DataTable DataTableByPage(int pageIndex, int pageSize, ref int count)
         {
 
             string strSql = "select * from BASE_CODE";
-            DataTable dt = DAL.DataTableByPage(pageSize, pageIndex, strSql, "", ref count, "");
+            DataTable dt = DAL.DataTableByPage(pageSize, pageIndex, strSql, "", ref count, " domainname ");
             return dt;
         }
         public void InitData(System.Web.UI.Page page, string _key)
         {
-            Model.Base_Code model = DAL.Get("Id", _key);
-            ControlBindHelper.SetWebControls(page, model);
+             _oldEntity = DAL.Get("Id", _key);
+             ControlBindHelper.SetWebControls(page, _oldEntity);
         }
 
         public bool Submit_AddOrEdit(System.Web.UI.Page page, string _key)
@@ -39,6 +40,12 @@ namespace Bll.Sys
             {
                 model.CreateUserName = RequestCookie.GetCookieUser().UserName.ToString();
                 model.CreateDate = DateTime.Now;
+                if (model.DomainName == "A_INFO_TYPE")
+                {
+                    Bll.Agriculture.InfoService _Ser = new Agriculture.InfoService();
+                    string strSql = "update a_info set INFOTYPE='" + model.SName + "' where INFOTYPE='"+_oldEntity.SName+"'";
+                    _Ser.Update(strSql);
+                }
                 return DAL.Update(model, " Id='" + _key + "'") > 0 ? true : false;
             }
         }

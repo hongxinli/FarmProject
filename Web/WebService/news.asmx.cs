@@ -35,7 +35,29 @@ namespace Web.WebService
             {
                 list.Add(new Dto.InfoDto() { id = item.Id, time = item.CreateDate.ToString("yyyy-MM-dd"), title = item.InfoTitle, type = item.InfoType, url = "/Views/Info/Info.html?key=" + item.Id });
             }
-            var model = new Dto.pageData<Dto.InfoDto>() { totalRow = total, pageNumber = page, pageSize = count, list = list };
+            var model = new Dto.pageData<Dto.InfoDto>() { totalRow = total, pageNumber = page, pageSize = list.Count, list = list };
+            var jsonModel = new Dto.jsonModelData<Dto.pageData<Dto.InfoDto>>() { status = true, details = model };
+            var result = JsonConvert.SerializeObject(jsonModel);
+            Common.ResponseHelper.Write(result);
+        }
+        /// <summary>
+        /// 新闻列表
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        [WebMethod]
+        public void newsList(int page, int count)
+        {
+            Bll.Agriculture.InfoService _Service = new Bll.Agriculture.InfoService();
+            int total = 0;
+            var dt = _Service.ListByPage(page, count, ref total);
+            var list = new List<Web.Dto.InfoDto>();
+            foreach (var item in dt)
+            {
+                list.Add(new Dto.InfoDto() { id = item.Id, time = item.CreateDate.ToString("yyyy-MM-dd"), title = item.InfoTitle, type = item.InfoType, url = "/Views/Info/Info.html?key=" + item.Id });
+            }
+            var model = new Dto.pageData<Dto.InfoDto>() { totalRow = total, pageNumber = page, pageSize = list.Count, list = list };
             var jsonModel = new Dto.jsonModelData<Dto.pageData<Dto.InfoDto>>() { status = true, details = model };
             var result = JsonConvert.SerializeObject(jsonModel);
             Common.ResponseHelper.Write(result);
@@ -44,7 +66,7 @@ namespace Web.WebService
         /// 新闻列表（首页）
         /// </summary>
         [WebMethod]
-        public void newsList()
+        public void topNewsList()
         {
             Bll.Agriculture.InfoService _Service = new Bll.Agriculture.InfoService();
             var entitys = _Service.newsList();

@@ -9,7 +9,7 @@ function navigationBar(navId) {
     navToolbar.activate(esri.toolbars.Navigation.PAN);
     switch (navId) {
         case "zoomfull":
-            navToolbar.zoomToFullExtent();
+             navToolbar.zoomToFullExtent();
             break;
         case "zoomprev":
             navToolbar.zoomToPrevExtent();

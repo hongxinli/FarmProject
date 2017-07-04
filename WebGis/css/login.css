@@ -27,9 +27,9 @@
 
     #container #logo
     {
-        width: 475px;
+        width: 480px;
         height: 53px;
-        margin:0 auto;
+        margin-left:30px;
     }
 
     #container #login

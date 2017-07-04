@@ -30,7 +30,7 @@ namespace WebGis
         protected void Login_btn_Click(object sender, ImageClickEventArgs e)
         {
             SavePwdFun(this.saveCookie.Checked);
-            Response.Redirect("MapPage.aspx");
+            Response.Redirect("MapPage.html");
         }
 
         protected void SavePwdFun(bool check)

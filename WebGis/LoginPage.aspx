@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>新疆油田重油公司地理信息平台</title>
+    <title>土壤养分监测与管理云平台</title>
     <link type="text/css" rel="stylesheet" href="css/login.css" />
     <script src="js/jquery-1.7.2.js"></script>
     <script src="js/login.js"></script>
@@ -17,8 +17,8 @@
         </div>
         <div id="container">
             <div id="logo">
-                <span style="font-size: 30px; color: white; font-family: 黑体;">胜利采油厂管网分级预警管理系统</span>
-                <%--<img src="images/login/logo.png" />--%>
+                <%--<span style="font-size: 30px; color: blue; font-family: 黑体;">土壤养分监测与管理云平台</span>--%>
+                <img src="images/login/title.png" style="height:50px;width:450px;" />
             </div>
             <div id="login">
                 <table>

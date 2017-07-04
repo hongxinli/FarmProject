@@ -61,10 +61,12 @@
     <Content Include="css\geometryQuery.css" />
     <Content Include="css\login.css" />
     <Content Include="css\map.css" />
+    <Content Include="favicon.ico" />
     <Content Include="images\login\bg.png" />
     <Content Include="images\login\btn_login.png" />
     <Content Include="images\login\login_bg.png" />
-    <Content Include="images\login\logo.png" />
+    <Content Include="images\login\title.png" />
+    <Content Include="images\map\bg.jpg" />
     <Content Include="images\map\btn_query.png" />
     <Content Include="images\map\close.png" />
     <Content Include="images\map\closeHover.png" />
@@ -613,6 +615,7 @@
     <Content Include="js\measure.js" />
     <Content Include="LoginPage.aspx" />
     <Content Include="MapPage.aspx" />
+    <Content Include="MapPage.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -626,6 +629,9 @@
     <Compile Include="MapPage.aspx.cs">
       <DependentUpon>MapPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MapPage.aspx.designer.cs">
+      <DependentUpon>MapPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

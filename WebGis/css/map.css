@@ -1,5 +1,3 @@
-﻿@import "http://127.0.0.1/arcgis_js_api/library/3.18/dijit/themes/claro/claro.css"; 
-@import "http://127.0.0.1/arcgis_js_api/library/3.18/esri/css/esri.css"; 
+﻿@import "http://36.7.89.33:8081/arcgis_js_api/library/3.18/dijit/themes/claro/claro.css"; 
+@import "http://36.7.89.33:8081/arcgis_js_api/library/3.18/esri/css/esri.css"; 
 @import "common.css";
-@import "geometryQuery.css";
-@import "../js/jstree/jtress.css";
