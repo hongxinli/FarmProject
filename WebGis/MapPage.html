@@ -7,6 +7,34 @@
     <script type="text/javascript">var dojoConfig = { parseOnLoad: true, isDebug: true };</script>
     <link type="text/css" rel="stylesheet" href="css/map.css" />
     <script src="js/map.js"></script>
+
+    <link href="js/liger/themes/blue/css/liger-all.css" rel="stylesheet" />
+    <script src="js/liger/jquery-1.7.2.min.js"></script>
+    <script src="js/liger/plugins/core.js"></script>
+    <script src="js/liger/plugins/ligerGrid.js"></script>
+    <script src="js/liger/plugins/ligerTab.js"></script>
+    <script src="js/liger/plugins/ligerDrag.js"></script>
+
+    <script type="text/javascript">
+        var navtab = null;
+        $(function () {
+            //tab
+            $("#tabContainer").ligerTab();
+            navtab = $("#tabContainer").ligerGetTabManager();
+
+            $("#sel_layer").change(function () {
+                var dlayer = map.getLayer("dataLayer");
+                map.removeLayer(dlayer);
+                //data图层添加
+                dataLayer = new esri.layers.ArcGISDynamicMapServiceLayer($(this).val(), { id: "dataLayer" });
+                map.addLayer(dataLayer, 0);
+            })
+        })
+
+        function showNav() {
+            $("#navQuery").attr("display","block");
+        }
+    </script>
 </head>
 <body>
     <!--header-->
@@ -76,11 +104,27 @@
             <li>
                 <img src="images/map/tools/clear.png" title="清除" onclick="clearGraphs();" id="clear" />
             </li>
-            <li style="width: 15px;">
+            <!--<li style="width: 15px;">
                 <img src="images/map/tools/tool_vertical.png" />
             </li>
             <li>
                 <img src="images/map/tools/layer.png" title="图层控制" onclick="showControlLayer();" id="controlLayer" />
+            </li>-->
+            <li style="width: 15px;">
+                <img src="images/map/tools/tool_vertical.png" />
+            </li>
+            <li style="width:150px;">
+                <select id="sel_layer" style="width:150px;height:25px;">
+                    <option selected="selected" value="http://36.7.89.33:6081/arcgis/rest/services/施肥分区图/MapServer">精准施肥</option>
+                    <option value="http://36.7.89.33:6081/arcgis/rest/services/耕地地力等级图/MapServer">耕地地力等级图</option>
+                    <option value="http://36.7.89.33:6081/arcgis/rest/services/土壤养分图/MapServer">土壤养分图</option>
+                </select>
+            </li>
+            <li style="width: 15px;">
+                <img src="images/map/tools/tool_vertical.png" />
+            </li>
+            <li>
+                <a style="cursor:pointer;" onclick="showNav();">导航</a>
             </li>
         </ul>
     </div>
@@ -111,7 +155,15 @@
                 </tr>
             </table>
         </div>
-        <div id="query_result_content" style="width: 300px;"></div>
+        <div id="query_result_content"></div>
+    </div>
+    <!--导航菜单-->
+    <div id="navQuery" dojotype="dojo.dnd.Moveable" style="position: absolute; left: 70px; top: 120px; z-index: 30; width: 450px; height: 307px; border: solid 1px blue; background-color: whitesmoke; display:none;">
+        <div id="dgQueryTitle" style="background-image: url('images/map/searchdataTitle.png'); width: 450px; height: 37px; position: relative; left: 0px;">
+            <div id="dgQueryClose" onclick="closeDgQuery();" class="close" style="margin-right: 15px; margin-top: 12px; float: right; cursor: pointer;"></div>
+        </div>
+        <div id="navContainer" style="width: 450px; height: 270px;" tabstrip="true">
+        </div>
     </div>
     <!--图层控制-->
     <div id="control_layer" dojotype="dojo.dnd.move.parentConstrainedMoveable" area="margin" within="true" handle="control_layer_head" class="funciton_div">
@@ -129,6 +181,7 @@
             <div id="tt" style="max-height: 300px; overflow: auto;"></div>
         </div>
     </div>
+
     <!--foot-->
     <div class="footer">
         <span id="coordinates" style="float: left; width: 300px;"></span>技术支持：安徽省农业科学院-土壤肥料研究所&nbsp;&nbsp;0551-65149155

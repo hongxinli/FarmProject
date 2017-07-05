@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\common.css" />
-    <Content Include="css\geometryQuery.css" />
     <Content Include="css\login.css" />
     <Content Include="css\map.css" />
     <Content Include="favicon.ico" />
@@ -614,7 +613,6 @@
     <Content Include="js\map.js" />
     <Content Include="js\measure.js" />
     <Content Include="LoginPage.aspx" />
-    <Content Include="MapPage.aspx" />
     <Content Include="MapPage.html" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -626,13 +624,6 @@
     <Compile Include="LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MapPage.aspx.cs">
-      <DependentUpon>MapPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MapPage.aspx.designer.cs">
-      <DependentUpon>MapPage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -640,6 +631,7 @@
     <Content Include="proxy.config" />
     <Content Include="js\liger\themes\green\images\layout\tabs-tools.psd" />
     <Content Include="js\liger\themes\green\images\layout\togglebar.psd" />
+    <None Include="Properties\PublishProfiles\web.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
