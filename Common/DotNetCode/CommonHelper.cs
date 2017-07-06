@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI.WebControls;
+using System.Net.Sockets;
 
 namespace Common
 {
@@ -385,41 +387,66 @@ namespace Common
             return ismatch;
         }
         #endregion
+
+        #region 获取Ip
         /// <summary>
-        /// 根据CheckBoxList中选中的项，获得字符串
+        /// 获取Ip
         /// </summary>
-        /// <param name="checkBoxList">CheckBoxList控件</param>
-        /// <returns>字符串，格式为“A,B,C”</returns>
-        public static string GetCheckBoxList(CheckBoxList checkBoxList)
+        public static string GetWebClientIP()
         {
-            string str = "";
-            foreach (ListItem li in checkBoxList.Items)
+            if (null != HttpContext.Current)
             {
-                if (li.Selected) str += li.Value + ",";
-            }
-            return str.TrimEnd(',');
-        }
-        /// <summary>
-        /// 根据字符串，自动勾选CheckBoxList对应项
-        /// </summary>
-        /// <param name="str">字符串，格式要求为“A,B,C”</param>
-        /// <param name="checkBoxList">CheckBoxList控件</param>
-        public static void FillCheckBoxList(string str, CheckBoxList checkBoxList)
-        {
-            string[] items = str.Split(',');
-            //遍历items
-            foreach (string item in items)
-            {
-                //如果值相等，则选中该项
-                foreach (ListItem listItem in checkBoxList.Items)
+                var hostAddress = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"] ?? HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+                if (string.IsNullOrEmpty(hostAddress))
                 {
-                    if (item == listItem.Value)
-                        listItem.Selected = true;
-                    else
-                        continue;
+                    hostAddress = HttpContext.Current.Request.UserHostAddress;
+                }
+                foreach (var address in Dns.GetHostAddresses(hostAddress))
+                {
+                    //取出IP V4的地址
+                    if (address.AddressFamily == AddressFamily.InterNetwork)
+                        return address.ToString();
                 }
             }
+            return "127.0.0.1";
+        } 
+        #endregion
+
+        #region 获取客户端信息
+
+        /// <summary>
+        /// 获取客户端信息
+        /// </summary>
+        public static string GetWebClientInfo()
+        {
+            var result = string.Empty;
+            if (null != HttpContext.Current)
+            {
+                var browser = HttpContext.Current.Request.Browser;
+                result = string.Format(" 浏览器版本：{0} -> {1},客户端名称 -> {2}", browser.Browser, browser.Version, GetWebClientHostName());
+            }
+            return result;
         }
+
+        
+        #endregion
+
+        #region 获取Web客户端主机名
+
+        /// <summary>
+        /// 获取Web客户端主机名
+        /// </summary>
+        public static string GetWebClientHostName()
+        {
+            if (!HttpContext.Current.Request.IsLocal)
+                return string.Empty;
+            var hostAddress = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"] ?? HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+            var result = Dns.GetHostEntry(IPAddress.Parse(hostAddress)).HostName;
+            if (result == "localhost.localdomain")
+                result = Dns.GetHostName();
+            return result;
+        } 
+        #endregion
 
     }
 }
