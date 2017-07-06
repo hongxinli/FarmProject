@@ -242,6 +242,19 @@ body {
             padding-right: 5px;
         }
 
+#navContainer div {
+    margin: 5px;
+}
+
+#navContainer a {
+    padding: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+    #navContainer a:hover {
+        color:black;
+    }
 
 .footer {
     background-color: #1d4e8c;

@@ -110,7 +110,7 @@ namespace Web.WebService
         public void type()
         {
             Bll.Sys.CodeService _Service = new Bll.Sys.CodeService();
-            IList<Model.Base_Code> entitys = _Service.List(" domainname='A_INFO_TYPE' ");
+            IList<Model.Base_Code> entitys = _Service.List(" domainname='A_INFO_TYPE' order by scode ");
             List<string> list = new List<string>();
             foreach (var item in entitys)
             {

@@ -78,6 +78,7 @@
     <Content Include="images\map\logo.png" />
     <Content Include="images\map\measure.cur" />
     <Content Include="images\map\measure_close.png" />
+    <Content Include="images\map\navQueryTitle.png" />
     <Content Include="images\map\point_coord.png" />
     <Content Include="images\map\search.png" />
     <Content Include="images\map\searchdataTitle.png" />

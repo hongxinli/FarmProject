@@ -32,7 +32,7 @@ namespace Bll.Agriculture
         }
         public IList<Model.Agriculture.A_Info> newsList()
         {
-            string strSql = "select * from(select ROW_NUMBER() over(partition by t.infotype order by t.createdate desc) num, t.id , t.infotitle,t.infocontent,t.infotype,t.DELETEMARK,t.CREATEUSERNAME, t.createdate,t.TOP from a_info t) where num=1";
+            string strSql = "select * from(select ROW_NUMBER() over(partition by t.infotype order by t.createdate desc) num, t.id , t.infotitle,t.infocontent,t.infotype,t.DELETEMARK,t.CREATEUSERNAME, t.createdate,t.TOP,m.scode from a_info t left join base_code m on t.infotype=m.sname) where num=1 order by scode";
             var list = dal.List(strSql, "");
             return list;
         }

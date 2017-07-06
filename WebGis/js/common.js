@@ -93,7 +93,8 @@ function clearGraphs() {
 
 // 设置图片为初始状态图片
 function initImage() {
-    var image = "zoompan,zoomin,zoomout,measure_coord,measure_length,measure_area,query_point,query_line,query_extent,query_polygon";
+    //var image = "zoompan,zoomin,zoomout,measure_coord,measure_length,measure_area,query_point,query_line,query_extent,query_polygon";
+    var image = "zoompan,zoomin,zoomout,measure_coord,measure_length,measure_area,query_point";
     var images = image.split(',');
     for (var i = 0; i < images.length; i++) {
         dojo.byId(images[i]).src = "images/map/tools/" + images[i] + ".png";
@@ -168,4 +169,58 @@ function exitFun() {
     if (confirm("您确定要退出系统吗？")) {
         window.location.href = "LoginPage.aspx";
     }
+}
+
+var cityNav = {
+    settings: {
+        version: "1.0.0.0",
+        title: "行政区域导航",
+        description: "行政区域导航面板信息获取、关闭、定位"
+    },
+    //获取安徽省行政区域内容
+    showNavContainer: function () {
+        $("#navContainer").empty();
+        dojo.byId("navQuery").style.visibility = "visible";
+        var queryTask = new esri.tasks.QueryTask(baseLayerUrl + "/0");
+        var query = new esri.tasks.Query();
+        query.where = "1=1";
+        query.returnGeometry = false;
+        queryTask.execute(query, function (results) {
+            var htmlStr = "";
+            for (var i = 1; i < results.features.length; i++) {
+                var city = results.features[i - 1].attributes['city'];
+                htmlStr = htmlStr + "<a onclick=cityNav.cityLocation('" + city + "')>" + city + "</a>";
+                if (i % 15 == 0)
+                    htmlStr = htmlStr + "<hr/>";
+                $("#navContainer").html(htmlStr);
+            }
+        });
+    },
+    //城市定位
+    cityLocation: function (msg) {
+        var queryTask = new esri.tasks.QueryTask(baseLayerUrl + "/0");
+        var query = new esri.tasks.Query();
+        query.where = "city='" + msg + "'";
+        query.returnGeometry = true;
+        queryTask.execute(query, function (results) {
+            map.graphics.clear();
+            var symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_DASH, new dojo.Color([255, 0, 0]), 2), new dojo.Color([255, 255, 0, 0.25]));
+            var graphic = results.features[0];
+            graphic.setSymbol(symbol);
+            map.graphics.add(graphic);
+            map.setExtent(graphic.geometry.getExtent());
+        });
+    },
+    //关闭面板
+    closeNavContainer: function () {
+        dojo.byId("navQuery").style.visibility = "hidden";
+    }
+}
+
+var mapTool = {
+    settings: {
+        version: "1.0.0.0",
+        title: "地图工具栏",
+        description: "地图工具栏包括"
+    },
 }

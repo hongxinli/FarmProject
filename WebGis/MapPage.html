@@ -30,10 +30,6 @@
                 map.addLayer(dataLayer, 0);
             })
         })
-
-        function showNav() {
-            $("#navQuery").attr("display","block");
-        }
     </script>
 </head>
 <body>
@@ -87,9 +83,9 @@
                 <img src="images/map/tools/tool_vertical.png" />
             </li>
             <li>
-                <img src="images/map/tools/query_point.png" title="点查询" onclick="queryEvent('point');" id="query_point" />
+                <img src="images/map/tools/query_point.png" title="图元查询" onclick="queryEvent('point');" id="query_point" />
             </li>
-            <li>
+            <!--<li>
                 <img src="images/map/tools/query_line.png" title="线查询" onclick="queryEvent('line');" id="query_line" />
             </li>
             <li>
@@ -97,7 +93,7 @@
             </li>
             <li>
                 <img src="images/map/tools/query_polygon.png" title="多边形查询" onclick="queryEvent('polygon');" id="query_polygon" />
-            </li>
+            </li>-->
             <li style="width: 15px;">
                 <img src="images/map/tools/tool_vertical.png" />
             </li>
@@ -109,7 +105,7 @@
             </li>
             <li>
                 <img src="images/map/tools/layer.png" title="图层控制" onclick="showControlLayer();" id="controlLayer" />
-            </li>-->
+            </li>
             <li style="width: 15px;">
                 <img src="images/map/tools/tool_vertical.png" />
             </li>
@@ -119,12 +115,12 @@
                     <option value="http://36.7.89.33:6081/arcgis/rest/services/耕地地力等级图/MapServer">耕地地力等级图</option>
                     <option value="http://36.7.89.33:6081/arcgis/rest/services/土壤养分图/MapServer">土壤养分图</option>
                 </select>
-            </li>
+            </li>-->
             <li style="width: 15px;">
                 <img src="images/map/tools/tool_vertical.png" />
             </li>
-            <li>
-                <a style="cursor:pointer;" onclick="showNav();">导航</a>
+            <li style ="width: 60px;">
+                <a style="cursor:pointer;" onclick="cityNav.showNavContainer();">区域导航</a>
             </li>
         </ul>
     </div>
@@ -136,7 +132,7 @@
     <!--测量工具-->
     <div id="measures"></div>
     <!--几何图形查询结果-->
-    <div id="dgQuery" dojotype="dojo.dnd.Moveable" style="position: absolute; left: 70px; top: 120px; z-index: 30; width: 450px; height: 307px; border: solid 1px blue; background-color: whitesmoke; visibility: hidden;">
+    <div id="dgQuery" dojotype="dojo.dnd.Moveable" style="position: absolute; left: 70px; top: 120px; z-index: 130; width: 450px; height: 307px; border: solid 1px whitesmoke; background-color: whitesmoke; visibility: hidden;">
         <div id="dgQueryTitle" style="background-image: url('images/map/searchdataTitle.png'); width: 450px; height: 37px; position: relative; left: 0px;">
             <div id="dgQueryClose" onclick="closeDgQuery();" class="close" style="margin-right: 15px; margin-top: 12px; float: right; cursor: pointer;"></div>
         </div>
@@ -158,11 +154,13 @@
         <div id="query_result_content"></div>
     </div>
     <!--导航菜单-->
-    <div id="navQuery" dojotype="dojo.dnd.Moveable" style="position: absolute; left: 70px; top: 120px; z-index: 30; width: 450px; height: 307px; border: solid 1px blue; background-color: whitesmoke; display:none;">
-        <div id="dgQueryTitle" style="background-image: url('images/map/searchdataTitle.png'); width: 450px; height: 37px; position: relative; left: 0px;">
-            <div id="dgQueryClose" onclick="closeDgQuery();" class="close" style="margin-right: 15px; margin-top: 12px; float: right; cursor: pointer;"></div>
+    <div id="navQuery" dojotype="dojo.dnd.Moveable" style="position: absolute; left: 70px; top: 120px; z-index: 30; width: 450px; height: 344px; border: solid 1px whitesmoke; background-color: whitesmoke; visibility:hidden;">
+        <div id="navQueryTitle" style="background-image: url('images/map/navQueryTitle.png'); width: 450px; height: 37px; position: relative; left: 0px;">
+            <div id="navQueryClose" onclick="cityNav.closeNavContainer();" class="close" style="margin-right: 15px; margin-top: 12px; float: right; cursor: pointer;"></div>
         </div>
-        <div id="navContainer" style="width: 450px; height: 270px;" tabstrip="true">
+        <div id="navContainer" style="width: 450px; height: 307px;" tabstrip="true">
+            <div><a>合肥市</a><a>灵璧县</a></div>
+            <div><a>合肥市</a><a>灵璧县</a></div>
         </div>
     </div>
     <!--图层控制-->

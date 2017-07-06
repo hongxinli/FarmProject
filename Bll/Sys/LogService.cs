@@ -27,6 +27,7 @@ namespace Bll.Sys
             model.IpAddress = RequestHelper.GetIP();
             model.Deptid = model_UserDept.DeptId;
             model.IsOnline = IsOnLine ? 1 : 0;
+            model.Remark = CommonHelper.GetWebClientInfo();
             if (IsOnLine)
             {
                 model.LoginTime = DateTime.Now;
