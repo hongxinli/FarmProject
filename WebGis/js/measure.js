@@ -1,7 +1,7 @@
 ﻿var pointToolbar = null;
 function coordInfo() {
-    deactivateControl();
-    initImage();
+    mapTool.deactivateControl();
+    mapTool.initImage();
     dojo.byId("measure_coord").src = "images/map/tools/measure_coord_hover.png";
 
     pointToolbar = new esri.toolbars.Draw(map, { tooltipOffset: 20, drawTime: 90, showTooltips: false });
@@ -45,8 +45,8 @@ var measureToolbar = null;
 var count = 1;
 var measurelayer;
 function measure_fun(name) {
-    deactivateControl();
-    initImage();
+    mapTool.deactivateControl();
+    mapTool.initImage();
     measureToolbar = new esri.toolbars.Draw(map, { tooltipOffset: 20, drawTime: 90, showTooltips: false });
     measureToolbar.on("draw-end", showMeasureResults);
 

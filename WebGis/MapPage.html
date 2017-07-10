@@ -18,10 +18,6 @@
     <script type="text/javascript">
         var navtab = null;
         $(function () {
-            //tab
-            $("#tabContainer").ligerTab();
-            navtab = $("#tabContainer").ligerGetTabManager();
-
             $("#sel_layer").change(function () {
                 var dlayer = map.getLayer("dataLayer");
                 map.removeLayer(dlayer);
@@ -47,68 +43,54 @@
     <div class="tool">
         <ul>
             <li>
-                <img src="images/map/tools/zoomin.png" title="放大" onclick="controlNav('zoomin');" id="zoomin" />
+                <img src="images/map/tools/zoom_in_OFF.png" title="放大" onclick="controlNav('zoom_in');" id="zoom_in" />
             </li>
             <li>
-                <img src="images/map/tools/zoomout.png" title="缩小" onclick="controlNav('zoomout');" id="zoomout" />
+                <img src="images/map/tools/zoom_out_OFF.png" title="缩小" onclick="controlNav('zoom_out');" id="zoom_out" />
             </li>
             <li>
-                <img src="images/map/tools/zoomfull.png" title="全图" onclick="navigationBar('zoomfull');" id="zoomfull" />
+                <img src="images/map/tools/zoom_full_extent_OFF.png" title="全图" onclick="navigationBar('zoom_full_extent');" id="zoom_full_extent" />
+            </li>
+            <li>
+                <img src="images/map/tools/zoom_pan_OFF.png" title="平移" onclick="navigationBar('zoom_pan');" id="zoom_pan" />
+            </li>
+            <li>
+                <img src="images/map/tools/zoom_backward_OFF.png" title="后退" onclick="navigationBar('zoom_backward');" id="zoom_backward" />
+            </li>
+            <li>
+                <img src="images/map/tools/zoom_forward_OFF.png" title="前进" onclick="navigationBar('zoom_forward');" id="zoom_forward" />
             </li>
             <li style="width: 15px;">
                 <img src="images/map/tools/tool_vertical.png" />
             </li>
             <li>
-                <img src="images/map/tools/zoompan.png" title="平移" onclick="navigationBar('zoompan');" id="zoompan" />
+                <img src="images/map/tools/measure_location_OFF.png" title="获取坐标" onclick="coordInfo();" id="measure_location" />
             </li>
             <li>
-                <img src="images/map/tools/zoomprev.png" title="后退" onclick="navigationBar('zoomprev');" id="zoomprev" />
+                <img src="images/map/tools/measure_length_OFF.png" title="长度测量" onclick="measure_fun('length');" id="measure_length" />
             </li>
             <li>
-                <img src="images/map/tools/zoomnext.png" title="前进" onclick="navigationBar('zoomnext');" id="zoomnext" />
-            </li>
-            <li style="width: 15px;">
-                <img src="images/map/tools/tool_vertical.png" />
+                <img src="images/map/tools/measure_area_OFF.png" title="面积测量" onclick="measure_fun('area');" id="measure_area" />
             </li>
             <li>
-                <img src="images/map/tools/measure_coord.png" title="获取坐标" onclick="coordInfo();" id="measure_coord" />
+                <img src="images/map/tools/identify_point_OFF.png" title="图元查询" onclick="mapTool.activeButton('point');" id="identify_point" />
             </li>
             <li>
-                <img src="images/map/tools/measure_length.png" title="长度测量" onclick="measure_fun('length');" id="measure_length" />
+                <img src="images/map/tools/identify_line_OFF.png" title="线查询" onclick="mapTool.activeButton('line');" id="identify_line" />
             </li>
             <li>
-                <img src="images/map/tools/measure_area.png" title="面积测量" onclick="measure_fun('area');" id="measure_area" />
-            </li>
-            <li style="width: 15px;">
-                <img src="images/map/tools/tool_vertical.png" />
+                <img src="images/map/tools/identify_rect_OFF.png" title="矩形查询" onclick="mapTool.activeButton('rect');" id="identify_rect" />
             </li>
             <li>
-                <img src="images/map/tools/query_point.png" title="图元查询" onclick="queryEvent('point');" id="query_point" />
-            </li>
-            <!--<li>
-                <img src="images/map/tools/query_line.png" title="线查询" onclick="queryEvent('line');" id="query_line" />
+                <img src="images/map/tools/identify_circle_OFF.png" title="圆形查询" onclick="mapTool.activeButton('circle');" id="identify_circle" />
             </li>
             <li>
-                <img src="images/map/tools/query_extent.png" title="矩形查询" onclick="queryEvent('extent');" id="query_extent" />
+                <img src="images/map/tools/identify_poly_OFF.png" title="多边形查询" onclick="mapTool.activeButton('poly');" id="identify_poly" />
             </li>
             <li>
-                <img src="images/map/tools/query_polygon.png" title="多边形查询" onclick="queryEvent('polygon');" id="query_polygon" />
-            </li>-->
-            <li style="width: 15px;">
-                <img src="images/map/tools/tool_vertical.png" />
+                <img src="images/map/tools/eraser_OFF.png" title="橡皮擦" onclick="clearGraphs();" id="eraser" />
             </li>
-            <li>
-                <img src="images/map/tools/clear.png" title="清除" onclick="clearGraphs();" id="clear" />
-            </li>
-            <!--<li style="width: 15px;">
-                <img src="images/map/tools/tool_vertical.png" />
-            </li>
-            <li>
-                <img src="images/map/tools/layer.png" title="图层控制" onclick="showControlLayer();" id="controlLayer" />
-            </li>
-            <li style="width: 15px;">
-                <img src="images/map/tools/tool_vertical.png" />
-            </li>
+            <!--
             <li style="width:150px;">
                 <select id="sel_layer" style="width:150px;height:25px;">
                     <option selected="selected" value="http://36.7.89.33:6081/arcgis/rest/services/施肥分区图/MapServer">精准施肥</option>
@@ -119,7 +101,13 @@
             <li style="width: 15px;">
                 <img src="images/map/tools/tool_vertical.png" />
             </li>
-            <li style ="width: 60px;">
+            <li>
+                <img src="images/map/tools/overview_map_OFF.png" title="鹰眼查看" onclick="mapTool.activeButton('overview');" id="overview_map" />
+            </li>
+            <li>
+                <img src="images/map/tools/layer_OFF.png" title="图层控制" onclick="mapTool.activeButton('layer');" id="layer" />
+            </li>
+            <li style="width: 60px;">
                 <a style="cursor:pointer;" onclick="cityNav.showNavContainer();">区域导航</a>
             </li>
         </ul>
@@ -131,27 +119,184 @@
     <!-------------------------------------------------功能菜单------------------------------------------------->
     <!--测量工具-->
     <div id="measures"></div>
-    <!--几何图形查询结果-->
-    <div id="dgQuery" dojotype="dojo.dnd.Moveable" style="position: absolute; left: 70px; top: 120px; z-index: 130; width: 450px; height: 307px; border: solid 1px whitesmoke; background-color: whitesmoke; visibility: hidden;">
-        <div id="dgQueryTitle" style="background-image: url('images/map/searchdataTitle.png'); width: 450px; height: 37px; position: relative; left: 0px;">
-            <div id="dgQueryClose" onclick="closeDgQuery();" class="close" style="margin-right: 15px; margin-top: 12px; float: right; cursor: pointer;"></div>
+    <!--精准施肥-->
+    <div id="fertilizerContainer" style="position: absolute; left: 5px; top: 5px; z-index: 130; width: 450px; height: 560px; border: solid 1px whitesmoke; background-color: whitesmoke;visibility:hidden;">
+        <div style="background-image: url('images/map/searchdataTitle.png'); width: 450px; height: 37px; position: relative; left: 0px;">
+            <div onclick="mapTool.fertilizerClose();" class="close" style="margin-right: 15px; margin-top: 12px; float: right; cursor: pointer;"></div>
         </div>
-        <div id="tabContainer" style="width: 450px; height: 270px;" tabstrip="true">
-        </div>
-    </div>
-    <!--几何图形查询详细信息-->
-    <div id="query_result" dojotype="dojo.dnd.move.parentConstrainedMoveable" area="margin" within="true" handle="query_result_head">
-        <div id="query_result_head">
-            <table style="width: 100%;">
-                <tr>
-                    <td>详细信息</td>
-                    <td style="text-align: right; padding-right: 10px;">
-                        <img src="images/map/close.png" alt="关闭" onclick="closeQueryResult();" style="vertical-align: auto;" />
-                    </td>
-                </tr>
+        <div id="tabContainer" style="width: 450px;background-color:white;" tabstrip="true">
+            <table class="tc_kj" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr><td class="tc_kj_td tc_tex" colspan="2">基本信息</td></tr>
+                    <tr>
+                        <td class="tc_kj_td_bg" colspan="2">
+                            <p>
+                                <label style="color:black; font-size:16px;">★★★</label>
+                                本块地为木扎乡洪湖村，土地面积650.53亩，地力等级为三等地。
+                            </p>
+                            <p>
+                                当前地区根据大数据分析，破解氮含量为167.11mg/kg;有效磷含量为18.04mg/kg;速效钾含量为113.73mg/kg。
+                            </p>
+                        </td>
+                    </tr>
+                    <tr><td class="tc_kj_td tc_tex" colspan="2">农作物信息</td></tr>
+                    <tr>
+                        <td class="tc_kj_td_bg" style="width:95px;">
+                            <select style="height:60px;width:95px;background-color:green;font-size:large;font-weight:600;">
+                                <option>&nbsp;&nbsp;&nbsp;水稻</option>
+                                <option>&nbsp;&nbsp;&nbsp;小麦</option>
+                                <option>&nbsp;&nbsp;&nbsp;油菜</option>
+                                <option>&nbsp;&nbsp;&nbsp;棉花</option>
+                            </select>
+                        </td>
+                        <td style="width:350px;">
+                            <p style="color:red;">建议范围如下：</p>
+
+                            1.棉花产量范围150-400公斤&nbsp;&nbsp;&nbsp;
+                            2.碱解氮范围50-300mg/kg<br />
+                            3.有效磷范围5-50mg/kg&nbsp;&nbsp;&nbsp;
+                            4.速效钾范围30-200mg/kg
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <table style="width:450px;">
+                                <tr>
+                                    <td class="tc_kj_td_bg">
+                                        目标产量(kg/亩)：<input type="text" value="200" />
+                                    </td>
+                                    <td class="tc_kj_td_bg">
+                                        有效磷(mg/kg)：<input type="text" value="18.04" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tc_kj_td_bg">碱解氮(mg/kg)：<input type="text" value="167.11" /></td>
+                                    <td class="tc_kj_td_bg"><label style="color:red;">您可以根据自己的需要，对左侧数值进行修改。</label></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tc_kj_td tc_tex" colspan="2">
+                            <a>分析计算</a> <a>恢复默认</a>
+                        </td>
+                    </tr>
+                    <tr><td class="tc_kj_td tc_tex" colspan="2">施肥分析(公斤/亩)</td></tr>
+                    <tr>
+                        <td colspan="2">
+                            <table style="width:450px;">
+                                <tr>
+                                    <td class="tc_kj_td_bg1">施肥比例</td>
+                                    <td class="tc_kj_td_bg2" style="width:auto;">
+                                        氮：磷：钾(<input type="text" readonly="readonly" value="6" />:
+                                        <input type="text" readonly="readonly" value="4" />:
+                                        <input type="text" readonly="readonly" value="7" />)
+                                    </td>
+                                </tr>
+                                <tr><td class="tc_kj_td tc_tex" colspan="2">施肥方案一（单质肥）</td></tr>
+                                <tr>
+                                    <td class="tc_kj_td_bg1">基肥</td>
+                                    <td class="tc_kj_td_bg2">
+                                        <select>
+                                            <option>尿素</option>
+                                            <option>碳酸氰胺</option>
+                                            <option>硫酸铵</option>
+                                        </select><label>10.99</label>
+                                        <select>
+                                            <option>过磷酸钙</option>
+                                            <option>钙镁磷肥</option>
+                                        </select><label>30.45</label>
+                                        <select>
+                                            <option>氯化钾</option>
+                                            <option>硫酸钾</option>
+                                        </select><label>3.74</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tc_kj_td_bg1">有机肥</td>
+                                    <td class="tc_kj_td_bg2">
+                                        <select>
+                                            <option>猪粪</option>
+                                            <option>牛粪</option>
+                                            <option>鸡粪</option>
+                                            <option>紫云英</option>
+                                            <option>苕子</option>
+                                            <option>饼肥</option>
+                                            <option>商品有机肥</option>
+                                        </select><label>97.52公斤/亩</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tc_kj_td_bg1">追肥</td>
+                                    <td class="tc_kj_td_bg2">
+                                        <select>
+                                            <option>尿素</option>
+                                            <option>碳酸氰胺</option>
+                                            <option>硫酸铵</option>
+                                        </select><label>8.79</label>
+                                        <select>
+                                            <option>过磷酸钙</option>
+                                            <option>钙镁磷肥</option>
+                                        </select><label>0</label>
+                                        <select>
+                                            <option>氯化钾</option>
+                                            <option>硫酸钾</option>
+                                        </select><label>3.67</label>
+                                    </td>
+                                </tr>
+                                <tr><td class="tc_kj_td tc_tex" colspan="2">施肥方案二（配方肥）</td></tr>
+                                <tr>
+                                    <td class="tc_kj_td_bg1">基肥</td>
+                                    <td class="tc_kj_td_bg2">
+                                        配方比：<input type="text" value="18" />:<input type="text" value="10" />:<input type="text" value="12" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tc_kj_td_bg1">应施配方肥</td>
+                                    <td class="tc_kj_td_bg2">
+                                        33.97公斤/亩
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tc_kj_td_bg1">有机肥</td>
+                                    <td class="tc_kj_td_bg2">
+                                        <select>
+                                            <option>猪粪</option>
+                                            <option>牛粪</option>
+                                            <option>鸡粪</option>
+                                            <option>紫云英</option>
+                                            <option>苕子</option>
+                                            <option>饼肥</option>
+                                            <option>商品有机肥</option>
+                                        </select><label>97.52公斤/亩</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tc_kj_td_bg1">追肥</td>
+                                    <td class="tc_kj_td_bg2">
+                                        <select>
+                                            <option>尿素</option>
+                                            <option>碳酸氰胺</option>
+                                            <option>硫酸铵</option>
+                                        </select><label>8.79</label>
+                                        <select>
+                                            <option>过磷酸钙</option>
+                                            <option>钙镁磷肥</option>
+                                        </select><label>8.78</label>
+                                        <select>
+                                            <option>氯化钾</option>
+                                            <option>硫酸钾</option>
+                                        </select><label>2.37</label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
+
         </div>
-        <div id="query_result_content"></div>
     </div>
     <!--导航菜单-->
     <div id="navQuery" dojotype="dojo.dnd.Moveable" style="position: absolute; left: 70px; top: 120px; z-index: 30; width: 450px; height: 344px; border: solid 1px whitesmoke; background-color: whitesmoke; visibility:hidden;">
@@ -159,8 +304,7 @@
             <div id="navQueryClose" onclick="cityNav.closeNavContainer();" class="close" style="margin-right: 15px; margin-top: 12px; float: right; cursor: pointer;"></div>
         </div>
         <div id="navContainer" style="width: 450px; height: 307px;" tabstrip="true">
-            <div><a>合肥市</a><a>灵璧县</a></div>
-            <div><a>合肥市</a><a>灵璧县</a></div>
+
         </div>
     </div>
     <!--图层控制-->

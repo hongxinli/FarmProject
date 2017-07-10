@@ -111,8 +111,8 @@ function getVisibleLayer(layers, layer) {
 }
 
 function showControlLayer() {
-    deactivateControl();
-    initImage();
+    mapTool.deactivateControl();
+    mapTool.initImage();
     dojo.empty("tt");
     f_LayerControl();
     $("#control_layer").show();
